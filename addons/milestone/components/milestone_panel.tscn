@@ -1,16 +1,238 @@
-[gd_scene format=3 uid="uid://b35o10vjk7vse"]
+[gd_scene load_steps=6 format=3 uid="uid://b35o10vjk7vse"]
 
-[node name="MilestonePanel" type="Control"]
-layout_mode = 3
+[ext_resource type="Texture2D" uid="uid://bse7wi72sb2m8" path="res://addons/milestone/assets/logo.svg" id="1_ryifn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ryifn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfjv7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryifn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 5.0
+bg_color = Color(0.101961, 0.101961, 0.101961, 0.658824)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cg0tt"]
+
+[node name="MilestonePanel" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ryifn")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "MILESTONE"
-vertical_alignment = 1
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qfjv7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="logo" type="TextureRect" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer2"]
+texture_filter = 4
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+texture = ExtResource("1_ryifn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 5
+
+[node name="Tree" type="Tree" parent="MarginContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ryifn")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 58
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cg0tt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2"]
+layout_mode = 2
+
+[node name="IDSetting" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer"]
+show_behind_parent = true
+layout_mode = 2
+focus_mode = 0
+text = "Achievement ID"
+flat = true
+alignment = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer/IDSetting"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.145161
+anchor_right = 1.0
+anchor_bottom = 1.14516
+offset_top = 4.5
+offset_bottom = -4.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="_Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer/IDSetting/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer/IDSetting/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_font_sizes/font_size = 16
+placeholder_text = "some_achievement"
+
+[node name="NameSetting" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer"]
+show_behind_parent = true
+layout_mode = 2
+focus_mode = 0
+text = "Achievement Name"
+flat = true
+alignment = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer/NameSetting"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.145161
+anchor_right = 1.0
+anchor_bottom = 1.14516
+offset_top = 4.5
+offset_bottom = -4.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="_Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer/NameSetting/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer/NameSetting/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_font_sizes/font_size = 16
+placeholder_text = "Some Achievement"
+
+[node name="DescSetting" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer"]
+show_behind_parent = true
+layout_mode = 2
+focus_mode = 0
+text = "Achievement Description"
+flat = true
+alignment = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer/DescSetting"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.145161
+anchor_right = 1.0
+anchor_bottom = 1.14516
+offset_top = 4.5
+offset_bottom = -4.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="_Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer/DescSetting/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer/DescSetting/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_font_sizes/font_size = 16
+placeholder_text = "Some Achievement Description"
+
+[node name="IconSetting" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer"]
+show_behind_parent = true
+layout_mode = 2
+focus_mode = 0
+text = "Achievement Icon"
+flat = true
+alignment = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer/IconSetting"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.145161
+anchor_right = 1.0
+anchor_bottom = 1.14516
+offset_top = 4.5
+offset_bottom = -4.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="_Label" type="Label" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer/IconSetting/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/HBoxContainer/MarginContainer/PanelContainer2/VBoxContainer/IconSetting/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_font_sizes/font_size = 16
+placeholder_text = "res://some_achievement_icon.svg"

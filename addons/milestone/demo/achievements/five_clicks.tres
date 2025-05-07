@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=4 format=3 uid="uid://cuhusatau5xyq"]
+
+[ext_resource type="Texture2D" uid="uid://cg3b84ak8bsrv" path="res://addons/milestone/assets/hidden_achievement.svg" id="1_7m06o"]
+[ext_resource type="Texture2D" uid="uid://dmbey47vfsa2g" path="res://addons/milestone/assets/missing_icon.svg" id="1_yvqt8"]
+[ext_resource type="Script" uid="uid://dtyojmellf4e5" path="res://addons/milestone/scripts/achievement.gd" id="2_7m06o"]
+
+[resource]
+script = ExtResource("2_7m06o")
+id = "five_clicks"
+icon = ExtResource("1_yvqt8")
+hidden_icon = ExtResource("1_7m06o")
+name = "Five Clicks"
+description = "Click anywhere in the game five times."
+hidden = false
+progressive = true
+progress_goal = 5
+metadata/_custom_type_script = "uid://dtyojmellf4e5"

@@ -10,6 +10,21 @@ config_version=5
 
 [application]
 
-config/name="MILESTONE"
+config/name="Milestone"
+run/main_scene="uid://dgujxn340oh7j"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://d186rx7mxnthd"
+
+[autoload]
+
+AchievementManager="*res://addons/milestone/autoload/achievement_manager.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/milestone/plugin.cfg")
+
+[milestone]
+
+general/achievements_path="res://addons/milestone/demo/achievements/"
+debug/print_errors=true
+debug/print_output=true

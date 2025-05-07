@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=4 format=3 uid="uid://bwlnu0lttck5v"]
+
+[ext_resource type="Texture2D" uid="uid://dmbey47vfsa2g" path="res://addons/milestone/assets/missing_icon.svg" id="1_3w3h0"]
+[ext_resource type="Texture2D" uid="uid://cg3b84ak8bsrv" path="res://addons/milestone/assets/hidden_achievement.svg" id="1_h42m3"]
+[ext_resource type="Script" uid="uid://dtyojmellf4e5" path="res://addons/milestone/scripts/achievement.gd" id="2_h42m3"]
+
+[resource]
+script = ExtResource("2_h42m3")
+id = "game_launch"
+icon = ExtResource("1_3w3h0")
+hidden_icon = ExtResource("1_h42m3")
+name = "Game Launch"
+description = "Launch the game for the first time."
+hidden = false
+progressive = false
+progress_goal = 0
+metadata/_custom_type_script = "uid://dtyojmellf4e5"
