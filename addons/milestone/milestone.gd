@@ -62,5 +62,7 @@ func add_settings() -> void:
 		ProjectSettings.set_setting("milestone/debug/print_errors", true)
 	if not ProjectSettings.has_setting("milestone/debug/print_output"):
 		ProjectSettings.set_setting("milestone/debug/print_output", true)
+	if not ProjectSettings.has_setting("milestone/general/save_as_json"):
+		ProjectSettings.set_setting("milestone/general/save_as_json", true)
 
 	ProjectSettings.save()

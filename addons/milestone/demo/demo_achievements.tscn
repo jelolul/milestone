@@ -1,7 +1,121 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgujxn340oh7j"]
+[gd_scene load_steps=19 format=3 uid="uid://dgujxn340oh7j"]
 
 [ext_resource type="Script" uid="uid://ce0l0apak5iqi" path="res://addons/milestone/demo/demo_achievements.gd" id="1_ipve2"]
 [ext_resource type="PackedScene" uid="uid://dhdqvikxt7uvu" path="res://addons/milestone/components/achievement_notification.tscn" id="2_8h6ex"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8h6ex"]
+content_margin_left = 50.0
+content_margin_top = 50.0
+content_margin_right = 50.0
+content_margin_bottom = 50.0
+bg_color = Color(0.098235, 0.129401, 0.160567, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_8h6ex"]
+font_names = PackedStringArray("Inter")
+font_weight = 800
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4g53w"]
+bg_color = Color(0.054902, 0.0784314, 0.105882, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.188235, 0.211765, 0.254902, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uyofh"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.137255, 0.14902, 0.180392, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="SystemFont" id="SystemFont_pv48d"]
+font_names = PackedStringArray("Segoe UI", "Inter")
+font_weight = 700
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a28wf"]
+bg_color = Color(0.239216, 0.266667, 0.313726, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aa0m6"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.101961, 0.623529, 1, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_8h6ex"]
+color = Color(0.188235, 0.211765, 0.254902, 1)
+grow_begin = 5.0
+grow_end = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pgbcl"]
+
+[sub_resource type="SystemFont" id="SystemFont_t5dxj"]
+font_names = PackedStringArray("Segoe UI", "Inter")
+font_weight = 700
+
+[sub_resource type="SystemFont" id="SystemFont_pgbcl"]
+font_names = PackedStringArray("Inter")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8h6ex"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pv48d"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.3268, 0.3784, 0.43, 0.592157)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5dxj"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.321751, 0.373539, 0.425325, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pestd"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.321751, 0.373539, 0.425325, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgbcl"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.248339, 0.292706, 0.337072, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="DemoAchievements" type="Control"]
 layout_mode = 3
@@ -17,20 +131,164 @@ layout_mode = 1
 offset_right = 302.0
 offset_bottom = 86.0
 
-[node name="Label" type="Label" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "achievements demo
+focus_mode = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_8h6ex")
 
-hi :)"
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+alignment = 1
+vertical = true
+
+[node name="Label" type="Label" parent="PanelContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.509804)
+theme_override_fonts/font = SubResource("SystemFont_8h6ex")
+theme_override_font_sizes/font_size = 12
+text = "Achievements"
 horizontal_alignment = 1
+uppercase = true
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_4g53w")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/BoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 15
+
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+vertical = true
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uyofh")
+
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+vertical = true
+
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AchievementsUnlockedLabel" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.745098)
+theme_override_fonts/font = SubResource("SystemFont_pv48d")
+theme_override_font_sizes/font_size = 12
+text = "% of % achievements unlocked"
+vertical_alignment = 1
+uppercase = true
+
+[node name="AchievementsUnlockedPercentage" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(1, 1, 1, 0.745098)
+theme_override_fonts/font = SubResource("SystemFont_pv48d")
+theme_override_font_sizes/font_size = 12
+text = "0%"
+horizontal_alignment = 2
+vertical_alignment = 1
+uppercase = true
+
+[node name="AchievementsProgressBar" type="ProgressBar" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/background = SubResource("StyleBoxFlat_a28wf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_aa0m6")
+show_percentage = false
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+theme_override_styles/separator = SubResource("StyleBoxLine_8h6ex")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pgbcl")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
+
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+vertical = true
+
+[node name="UnlockedContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+vertical = true
+
+[node name="Label" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/UnlockedContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.705882)
+theme_override_fonts/font = SubResource("SystemFont_t5dxj")
+theme_override_font_sizes/font_size = 12
+text = "Unlocked Achievements"
+uppercase = true
+
+[node name="UnlockedAchievementContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/UnlockedContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+vertical = true
+
+[node name="LockedContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+vertical = true
+
+[node name="Label" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.705882)
+theme_override_fonts/font = SubResource("SystemFont_t5dxj")
+theme_override_font_sizes/font_size = 12
+text = "Locked Achievements"
+uppercase = true
+
+[node name="LockedAchievementContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+vertical = true
+
+[node name="ResetAchievements" type="Button" parent="PanelContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_fonts/font = SubResource("SystemFont_pgbcl")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6ex")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_pv48d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t5dxj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pestd")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pgbcl")
+toggle_mode = true
+action_mode = 0
+text = "Reset all achievements"

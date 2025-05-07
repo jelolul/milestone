@@ -121,11 +121,19 @@ func update_achievement_display(achievement_id: String, display_type: String) ->
 		notification_shown = true
 
 	%AchievementName.text = achievement_resource.name
+
+	%AchievementIcon.texture_filter = achievement_resource.icon_filter
 	%AchievementIcon.texture = achievement_resource.icon
+
+	%ProgressContainer.visible = achievement_resource.progressive
+
+	if achievement_resource.progressive:
+		%AchievementProgressBar.value = achievement.progress
+		%AchievementProgressBar.max_value = achievement_resource.progress_goal
+		%AchievementProgressLabel.text = "(%s/%s)" % [int(achievement.progress), achievement_resource.progress_goal]
 
 	if display_type == "unlock":
 		%AchievementActionLabel.text = "Achievement Unlocked!"
-		%ProgressContainer.visible = false
 		
 		%AchievementRareOverlay.visible = achievement_resource.considered_rare
 
@@ -134,17 +142,19 @@ func update_achievement_display(achievement_id: String, display_type: String) ->
 
 	elif display_type == "progress":
 		%AchievementActionLabel.text = "Achievement Progress"
-		%ProgressContainer.visible = achievement_resource.progressive
 
 		%AchievementRareOverlay.visible = false
 
-		if achievement_resource.progressive:
-			%AchievementProgressBar.value = achievement.progress
-			%AchievementProgressBar.max_value = achievement_resource.progress_goal
-			%AchievementProgressLabel.text = "(%s/%s)" % [achievement.progress, achievement_resource.progress_goal]
-
 		if progress_sound:
 			play_sfx(progress_sound)
+
+	if achievement.unlocked:
+		%AchievementIcon.material.set_shader_parameter("use_grayscale", false)
+	else:
+		if not achievement_resource.unachieved_icon:
+			%AchievementIcon.material.set_shader_parameter("use_grayscale", true)
+		else:
+			%AchievementIcon.texture = achievement_resource.unachieved_icon
 
 func play_sfx(stream: AudioStream) -> void:
 	var player := AudioStreamPlayer.new()

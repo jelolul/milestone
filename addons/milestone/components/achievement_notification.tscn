@@ -1,11 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://dhdqvikxt7uvu"]
+[gd_scene load_steps=19 format=3 uid="uid://dhdqvikxt7uvu"]
 
 [ext_resource type="Texture2D" uid="uid://dmbey47vfsa2g" path="res://addons/milestone/assets/missing_icon.svg" id="1_5drgf"]
 [ext_resource type="Script" uid="uid://l3111s1bbinp" path="res://addons/milestone/scripts/achievement_notification.gd" id="1_o4xp5"]
 [ext_resource type="Shader" uid="uid://5j1fq85a0wof" path="res://addons/milestone/assets/ray_shine.gdshader" id="3_4xbx4"]
+[ext_resource type="Shader" uid="uid://b6j5u0yo2a6u7" path="res://addons/milestone/assets/grayscale.gdshader" id="3_jaqhe"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5drgf"]
-bg_color = Color(0.128596, 0.141119, 0.14699, 1)
+[sub_resource type="Gradient" id="Gradient_jaqhe"]
+colors = PackedColorArray(0.137255, 0.14902, 0.180392, 1, 0.1064, 0.11536, 0.14, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ey7mj"]
+gradient = SubResource("Gradient_jaqhe")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qf7c7"]
+texture = SubResource("GradientTexture2D_ey7mj")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ey7mj"]
 draw_center = false
@@ -13,7 +21,7 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(1, 1, 1, 0.317647)
+border_color = Color(0.188235, 0.211765, 0.254902, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o4xp5"]
 bg_color = Color(0.0994691, 0.0994691, 0.0994691, 1)
@@ -51,6 +59,11 @@ expand_margin_top = 10.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4xbx4"]
+resource_local_to_scene = true
+shader = ExtResource("3_jaqhe")
+shader_parameter/use_grayscale = false
+
 [sub_resource type="SystemFont" id="SystemFont_5drgf"]
 font_names = PackedStringArray("Inter")
 font_weight = 600
@@ -58,25 +71,30 @@ font_weight = 600
 [sub_resource type="SystemFont" id="SystemFont_o4xp5"]
 font_names = PackedStringArray("Inter")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xbx4"]
-bg_color = Color(0, 0, 0, 1)
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7177w"]
+bg_color = Color(0.239216, 0.266667, 0.313726, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jaqhe"]
-content_margin_top = 2.0
-content_margin_bottom = 2.0
-bg_color = Color(0, 0.466577, 1, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3trb"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.101961, 0.623529, 1, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
 
 [node name="AchievementNotification" type="PanelContainer"]
+z_index = 128
 offset_right = 84.0
 offset_bottom = 84.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5drgf")
+theme_override_styles/panel = SubResource("StyleBoxTexture_qf7c7")
 script = ExtResource("1_o4xp5")
 outro_animation_type = 3
 
@@ -113,6 +131,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_qf7c7")
 
 [node name="AchievementIcon" type="TextureRect" parent="MarginContainer/BoxContainer/PanelContainer"]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_4xbx4")
 layout_mode = 2
 texture = ExtResource("1_5drgf")
 expand_mode = 1
@@ -162,6 +181,6 @@ text = "(0/0)"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_styles/background = SubResource("StyleBoxFlat_4xbx4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_jaqhe")
+theme_override_styles/background = SubResource("StyleBoxFlat_7177w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_f3trb")
 show_percentage = false

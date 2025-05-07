@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwijtnyuheig8"
-path="res://.godot/imported/press_space_icon.svg-97cd90cdea6e3783f1616ffd604916ab.ctex"
+path="res://.godot/imported/press_space.svg-32c1b91cc27e0bdae53483cb20a6a443.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/milestone/demo/assets/press_space_icon.svg"
-dest_files=["res://.godot/imported/press_space_icon.svg-97cd90cdea6e3783f1616ffd604916ab.ctex"]
+source_file="res://addons/milestone/demo/assets/press_space.svg"
+dest_files=["res://.godot/imported/press_space.svg-32c1b91cc27e0bdae53483cb20a6a443.ctex"]
 
 [params]
 

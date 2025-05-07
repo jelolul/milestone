@@ -9,8 +9,10 @@ extends Resource
 @export var id: String = "achievement_id"
 ## The icon of the achievement.
 @export var icon: Texture2D = preload("res://addons/milestone/assets/missing_icon.svg")
+## The filter the icon should use.
+@export var icon_filter: CanvasItem.TextureFilter = CanvasItem.TextureFilter.TEXTURE_FILTER_LINEAR
 ## The unachieved icon (optional).
-@export var unachived_icon: Texture2D
+@export var unachieved_icon: Texture2D
 ## The hidden icon of the achievement.
 @export var hidden_icon: Texture2D = preload("res://addons/milestone/assets/hidden_achievement.svg")
 ## Name of the achievement.

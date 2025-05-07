@@ -19,6 +19,11 @@ config/icon="uid://d186rx7mxnthd"
 
 AchievementManager="*res://addons/milestone/autoload/achievement_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/milestone/plugin.cfg")
@@ -28,3 +33,8 @@ enabled=PackedStringArray("res://addons/milestone/plugin.cfg")
 general/achievements_path="res://addons/milestone/demo/achievements/"
 debug/print_errors=true
 debug/print_output=true
+general/save_as_json=true
+
+[rendering]
+
+2d/snap/snap_2d_transforms_to_pixel=true
