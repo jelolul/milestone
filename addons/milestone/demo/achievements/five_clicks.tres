@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Achievement" load_steps=4 format=3 uid="uid://cguxa7d668xq8"]
 
 [ext_resource type="Texture2D" uid="uid://cg3b84ak8bsrv" path="res://addons/milestone/assets/hidden_achievement.svg" id="1_7m06o"]
-[ext_resource type="Script" uid="uid://dtyojmellf4e5" path="res://addons/milestone/scripts/achievement.gd" id="2_7m06o"]
+[ext_resource type="Script" uid="uid://dtyojmellf4e5" path="res://addons/milestone/scripts/achievements/achievement.gd" id="2_7m06o"]
 [ext_resource type="Texture2D" uid="uid://cqdbt2s7bnyxt" path="res://addons/milestone/demo/assets/five_clicks.svg" id="2_pchbh"]
 
 [resource]

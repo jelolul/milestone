@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://dgujxn340oh7j"]
 
-[ext_resource type="Script" uid="uid://ce0l0apak5iqi" path="res://addons/milestone/demo/demo_achievements.gd" id="1_ipve2"]
-[ext_resource type="Script" uid="uid://wn30x7o3f47m" path="res://addons/milestone/scripts/achievement_notifier.gd" id="2_8h6ex"]
+[ext_resource type="Script" uid="uid://ce0l0apak5iqi" path="res://addons/milestone/demo/scripts/demo_achievements.gd" id="1_fibc6"]
+[ext_resource type="Script" uid="uid://wn30x7o3f47m" path="res://addons/milestone/scripts/achievements/achievement_notifier.gd" id="2_gbuwq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t5dxj"]
 
@@ -182,7 +182,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme = SubResource("Theme_t5dxj")
-script = ExtResource("1_ipve2")
+script = ExtResource("1_fibc6")
 
 [node name="AchievementNotifier" type="Control" parent="."]
 unique_name_in_owner = true
@@ -192,7 +192,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_8h6ex")
+script = ExtResource("2_gbuwq")
 volume = 0.3
 pitch_scale = 1.2
 metadata/_custom_type_script = "uid://wn30x7o3f47m"

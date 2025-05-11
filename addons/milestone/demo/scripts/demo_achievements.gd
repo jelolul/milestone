@@ -1,6 +1,6 @@
 extends Control
 
-const AchievementDisplay = preload("uid://b2ygwvy3dv00a")
+const ACHIEVEMENT_DISPLAY = preload("uid://b2ygwvy3dv00a")
 
 func _ready() -> void:
 	%UnlockAllAchievements.pressed.connect(AchievementManager.unlock_all_achievements)
@@ -78,7 +78,7 @@ func _on_achievements_loaded() -> void:
 	var sorted_ids = AchievementManager.achievements_list.keys()
 
 	for achievement_id in sorted_ids:
-		var achievement_display = AchievementDisplay.instantiate()
+		var achievement_display = ACHIEVEMENT_DISPLAY.instantiate()
 		achievement_display.achievement_id = achievement_id
 
 		var data = AchievementManager.achievements.get(achievement_id, null)
@@ -86,7 +86,7 @@ func _on_achievements_loaded() -> void:
 			if AchievementManager.achievements_list.get(achievement_id).hidden:
 				achievement_display.visible = false
 				if !hidden_achievement_display:
-					hidden_achievement_display = AchievementDisplay.instantiate()
+					hidden_achievement_display = ACHIEVEMENT_DISPLAY.instantiate()
 					%LockedContainer.add_child(hidden_achievement_display)
 				%HiddenAchievementContainer.add_child(achievement_display)
 				hidden_achievement_display.find_child("AchievementIcon").texture = load("uid://cg3b84ak8bsrv")

@@ -17,7 +17,7 @@ var outro_animation_type: ANIMATION_TYPE = ANIMATION_TYPE.FADE
 var on_screen_duration: float = 5.0
 
 ## The sound to play when unlocked.
-var unlocked_sound: AudioStream = preload("../assets/achievement_unlocked.wav")
+var unlocked_sound: AudioStream = preload("uid://cnwln1wanowhk")
 ## The sound to play when progress is made.
 var progress_sound: AudioStream = null
 ## The volume of the sounds.

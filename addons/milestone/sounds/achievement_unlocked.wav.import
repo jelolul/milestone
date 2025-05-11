@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cnwln1wanowhk"
-path="res://.godot/imported/achievement_unlocked.wav-6388edf463e593f9957dffcb8d4f53f4.sample"
+path="res://.godot/imported/achievement_unlocked.wav-4d794bb08bf47110db6deb6aae9f549e.sample"
 
 [deps]
 
-source_file="res://addons/milestone/assets/achievement_unlocked.wav"
-dest_files=["res://.godot/imported/achievement_unlocked.wav-6388edf463e593f9957dffcb8d4f53f4.sample"]
+source_file="res://addons/milestone/sounds/achievement_unlocked.wav"
+dest_files=["res://.godot/imported/achievement_unlocked.wav-4d794bb08bf47110db6deb6aae9f549e.sample"]
 
 [params]
 

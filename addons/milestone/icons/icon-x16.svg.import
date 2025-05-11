@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqdbt2s7bnyxt"
-path="res://.godot/imported/five_clicks.svg-a5c992d752e66480696d879f30a9ad67.ctex"
+uid="uid://ctdctl2mfp36l"
+path="res://.godot/imported/icon-x16.svg-e4bdb1107a06b479b30de25d1ba31822.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/milestone/demo/assets/five_clicks.svg"
-dest_files=["res://.godot/imported/five_clicks.svg-a5c992d752e66480696d879f30a9ad67.ctex"]
+source_file="res://addons/milestone/icons/icon-x16.svg"
+dest_files=["res://.godot/imported/icon-x16.svg-e4bdb1107a06b479b30de25d1ba31822.ctex"]
 
 [params]
 

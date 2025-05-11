@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg3b84ak8bsrv"
-path="res://.godot/imported/hidden_achievement.svg-b77246893c845a4a6c9b03cb05b3a4f6.ctex"
+uid="uid://3v6vgfe40jpk"
+path="res://.godot/imported/game_launch.svg-59bbf25dfd9e6bca5a28a3d599ad637c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/milestone/assets/hidden_achievement.svg"
-dest_files=["res://.godot/imported/hidden_achievement.svg-b77246893c845a4a6c9b03cb05b3a4f6.ctex"]
+source_file="res://addons/milestone/demo/icons/game_launch.svg"
+dest_files=["res://.godot/imported/game_launch.svg-59bbf25dfd9e6bca5a28a3d599ad637c.ctex"]
 
 [params]
 

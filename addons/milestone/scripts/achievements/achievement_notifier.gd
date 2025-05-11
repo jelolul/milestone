@@ -1,4 +1,4 @@
-@icon("res://addons/milestone/assets/icon-x16.svg")
+@icon("uid://ctdctl2mfp36l")
 
 ## AchievementNotifier displays on-screen notifications when achievements are unlocked or their progress is updated.
 ## Useful for visually informing players about achievement milestones during gameplay.
@@ -10,8 +10,8 @@ extends Node
 
 
 ## The notification scene to use.[br][br]
-## [b]Note:[/b] Needs to be setup similarily to the [code]res://addons/milestone/components/achievement_notification.tscn[/code] file.
-@export var notification_scene: PackedScene = preload("../components/achievement_notification.tscn")
+## [b]Note:[/b] Needs to be setup similarily to the [code]res://addons/milestone/components/achievement_notification.tscn[/code] file, you could as well edit that component to your liking.
+@export var notification_scene: PackedScene = preload("uid://dhdqvikxt7uvu")
 ## The animation duration.
 @export var animation_duration: float = 0.2
 
@@ -47,7 +47,7 @@ extends Node
 ## The bus to play sounds on. Defaults to Master if can't be found.
 @export var bus_name: String = "Master"
 ## The sound to play when unlocked. Can be empty.
-@export var unlocked_sound: AudioStream = preload("../assets/achievement_unlocked.wav")
+@export var unlocked_sound: AudioStream = preload("uid://cnwln1wanowhk")
 ## The sound to play when progress is made. Can be empty.
 @export var progress_sound: AudioStream = null
 ## The volume of the sounds.

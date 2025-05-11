@@ -1,10 +1,10 @@
 [gd_scene load_steps=27 format=3 uid="uid://b35o10vjk7vse"]
 
-[ext_resource type="Script" uid="uid://c8p1sd0scafee" path="res://addons/milestone/scripts/milestone_panel.gd" id="1_qfjv7"]
-[ext_resource type="Texture2D" uid="uid://bse7wi72sb2m8" path="res://addons/milestone/assets/logo.svg" id="1_ryifn"]
+[ext_resource type="Script" uid="uid://c8p1sd0scafee" path="res://addons/milestone/scripts/milestone_editor/milestone_panel.gd" id="1_qfjv7"]
+[ext_resource type="Texture2D" uid="uid://bse7wi72sb2m8" path="res://addons/milestone/icons/logo.svg" id="1_ryifn"]
 [ext_resource type="PackedScene" uid="uid://dhdqvikxt7uvu" path="res://addons/milestone/components/achievement_notification.tscn" id="3_cg0tt"]
 [ext_resource type="PackedScene" uid="uid://b2ygwvy3dv00a" path="res://addons/milestone/components/achievement_display.tscn" id="3_q5u40"]
-[ext_resource type="PackedScene" uid="uid://76j1kceq4xk8" path="res://addons/milestone/components/milestone_setting.tscn" id="5_uwxb5"]
+[ext_resource type="PackedScene" uid="uid://76j1kceq4xk8" path="res://addons/milestone/components/editor/milestone_setting.tscn" id="5_uwxb5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ryifn"]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=21 format=3 uid="uid://b2ygwvy3dv00a"]
 
-[ext_resource type="Shader" uid="uid://5j1fq85a0wof" path="res://addons/milestone/assets/ray_shine.gdshader" id="1_6ekf5"]
-[ext_resource type="Script" uid="uid://duq7n487fomxs" path="res://addons/milestone/scripts/achievement_display.gd" id="1_7177w"]
-[ext_resource type="Shader" uid="uid://b6j5u0yo2a6u7" path="res://addons/milestone/assets/grayscale.gdshader" id="2_7177w"]
-[ext_resource type="Texture2D" uid="uid://dmbey47vfsa2g" path="res://addons/milestone/assets/missing_icon.svg" id="3_f3trb"]
+[ext_resource type="Script" uid="uid://duq7n487fomxs" path="res://addons/milestone/scripts/achievements/achievement_display.gd" id="1_7177w"]
+[ext_resource type="Shader" uid="uid://5j1fq85a0wof" path="res://addons/milestone/shaders/ray_shine.gdshader" id="2_f3trb"]
+[ext_resource type="Shader" uid="uid://b6j5u0yo2a6u7" path="res://addons/milestone/shaders/grayscale.gdshader" id="3_7177w"]
+[ext_resource type="Texture2D" uid="uid://dmbey47vfsa2g" path="res://addons/milestone/icons/missing_icon.svg" id="4_7177w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pv48d"]
 bg_color = Color(0.137255, 0.14902, 0.180392, 1)
@@ -24,7 +24,7 @@ colors = PackedColorArray(1, 0.655, 0.1, 0.647059)
 gradient = SubResource("Gradient_4xbx4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7177w"]
-shader = ExtResource("1_6ekf5")
+shader = ExtResource("2_f3trb")
 shader_parameter/gradient = SubResource("GradientTexture2D_jaqhe")
 shader_parameter/spread = 0.23
 shader_parameter/cutoff = 1.0
@@ -46,7 +46,7 @@ expand_margin_bottom = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uyofh"]
 resource_local_to_scene = true
-shader = ExtResource("2_7177w")
+shader = ExtResource("3_7177w")
 shader_parameter/use_grayscale = false
 
 [sub_resource type="SystemFont" id="SystemFont_7177w"]
@@ -126,7 +126,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_uyofh")
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_uyofh")
 layout_mode = 2
-texture = ExtResource("3_f3trb")
+texture = ExtResource("4_7177w")
 expand_mode = 1
 stretch_mode = 6
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d186rx7mxnthd"
-path="res://.godot/imported/icon.svg-bd4428c00e0873141bbc41867d1f31c1.ctex"
+uid="uid://bse7wi72sb2m8"
+path="res://.godot/imported/logo.svg-fd786d528eb27fa6b49a5ab508ba4ac2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/milestone/assets/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-bd4428c00e0873141bbc41867d1f31c1.ctex"]
+source_file="res://addons/milestone/icons/logo.svg"
+dest_files=["res://.godot/imported/logo.svg-fd786d528eb27fa6b49a5ab508ba4ac2.ctex"]
 
 [params]
 

@@ -1,17 +1,17 @@
 @tool
 extends EditorPlugin
 
-const MILESTONE_PANEL = preload("./components/milestone_panel.tscn")
+const MILESTONE_PANEL = preload("uid://b35o10vjk7vse")
 var milestone_view
 
 ## Used for generating the preview icon (in the Editor) of the achievement resource.
-const PREVIEW_GENERATOR = preload("./scripts/resource_icon_gen/preview_generator.gd")
+const PREVIEW_GENERATOR = preload("uid://bbshmcisuacik")
 var preview_gen
 
-var achievements_resource: Script = preload("./scripts/achievement.gd")
+var achievements_resource: Script = preload("uid://dtyojmellf4e5")
 
 func _enable_plugin() -> void:
-	add_autoload_singleton("AchievementManager", get_plugin_path() + "/autoload/achievement_manager.gd")
+	add_autoload_singleton("AchievementManager", "autoload/achievement_manager.gd")
 
 	add_settings()
 
@@ -24,7 +24,7 @@ func _enter_tree() -> void:
 
 	milestone_view = MILESTONE_PANEL.instantiate()
 
-	add_custom_type("Achievement", "Resource", achievements_resource, load(get_plugin_path() + "/assets/icon.svg"))
+	add_custom_type("Achievement", "Resource", achievements_resource, load("uid://d186rx7mxnthd"))
 
 	_make_visible(false)
 	EditorInterface.get_editor_main_screen().add_child(milestone_view)
@@ -56,7 +56,7 @@ func _get_plugin_name() -> String:
 	return "Milestone"
 
 func _get_plugin_icon() -> Texture2D:
-	return load(get_plugin_path() + "/assets/icon-x16.svg")
+	return load("uid://ctdctl2mfp36l")
 
 func get_version() -> String:
 	var config: ConfigFile = ConfigFile.new()

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dinr2gdmunavu"]
+
+[ext_resource type="Script" uid="uid://dsm6o6anqv7ve" path="res://addons/milestone/demo/scripts/demo_game.gd" id="1_famhy"]
+[ext_resource type="Script" uid="uid://wn30x7o3f47m" path="res://addons/milestone/scripts/achievements/achievement_notifier.gd" id="2_hq7o8"]
+
+[node name="Control" type="Node2D"]
+script = ExtResource("1_famhy")
+
+[node name="AchievementNotifier" type="Node" parent="."]
+script = ExtResource("2_hq7o8")
+metadata/_custom_type_script = "uid://wn30x7o3f47m"

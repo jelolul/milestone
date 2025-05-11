@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmbey47vfsa2g"
-path="res://.godot/imported/missing_icon.svg-8c2b825776dd63d108d97c826e084d88.ctex"
+uid="uid://cg3b84ak8bsrv"
+path="res://.godot/imported/hidden_achievement.svg-d300ce8f93613d82731392e0d55a278f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/milestone/assets/missing_icon.svg"
-dest_files=["res://.godot/imported/missing_icon.svg-8c2b825776dd63d108d97c826e084d88.ctex"]
+source_file="res://addons/milestone/icons/hidden_achievement.svg"
+dest_files=["res://.godot/imported/hidden_achievement.svg-d300ce8f93613d82731392e0d55a278f.ctex"]
 
 [params]
 

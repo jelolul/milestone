@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bse7wi72sb2m8"
-path="res://.godot/imported/logo.svg-6fa028544b550ccd1383214e38ddd54a.ctex"
+uid="uid://cqdbt2s7bnyxt"
+path="res://.godot/imported/five_clicks.svg-7fe00382977524a04b50a1a73c7d041e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/milestone/assets/logo.svg"
-dest_files=["res://.godot/imported/logo.svg-6fa028544b550ccd1383214e38ddd54a.ctex"]
+source_file="res://addons/milestone/demo/icons/five_clicks.svg"
+dest_files=["res://.godot/imported/five_clicks.svg-7fe00382977524a04b50a1a73c7d041e.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

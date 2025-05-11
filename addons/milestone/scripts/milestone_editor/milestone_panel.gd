@@ -337,7 +337,7 @@ func create_achievement_resource() -> Achievement:
 	_new_achievement.id = resource_name
 	_new_achievement.name = "NEW_ACHIEVEMENT_NAME"
 	_new_achievement.description = "NEW_ACHIEVEMENT_DESC"
-	_new_achievement.icon = load("res://addons/milestone/assets/missing_icon.svg")
+	_new_achievement.icon = load("uid://dmbey47vfsa2g")
 
 	ResourceSaver.save(_new_achievement, path)
 	_new_achievement.set_path(path)
@@ -424,7 +424,6 @@ func _update_tree() -> void:
 	root = tree.create_item()
 	root.set_text(0, "Achievements")
 	root.set_icon_max_width(0, 16)
-	root.set_icon(0, load("res://addons/milestone/assets/icon-x16.svg"))
 	root.set_selectable(0, false)
 	tree.set_hide_root(true)
 	tree.set_column_expand(1, false)
