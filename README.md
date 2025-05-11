@@ -25,7 +25,7 @@
 This plugin is still in beta and may contain bugs or incomplete features. Please report any issues you encounter on the [GitHub repository](https://github.com/jelolul/milestone/issues).
 
 ## Features
-- Easily create and manage achievements with an in-editor editor
+- Easily create and manage achievements with an in-engine editor
 - Customize the look, behavior, and visibility of each achievement
 - Display achievements in-game using a simple API
 - Track player progress, completion, and rare achievements
