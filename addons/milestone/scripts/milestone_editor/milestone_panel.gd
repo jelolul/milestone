@@ -61,12 +61,11 @@ func _ready() -> void:
 		print_output_setting.button_pressed = ProjectSettings.get_setting("milestone/debug/print_output", true)
 		print_output_setting.pressed.connect(_on_print_output_setting_pressed)
 
-		save_button.icon = get_theme_icon("Save", "EditorIcons")
-		save_button.pressed.connect(_on_save_button_pressed.bind(save_button))
-
-		new_achievement.icon = get_theme_icon("Add", "EditorIcons")
 		new_achievement.pressed.connect(_on_add_achievement_pressed.bind("new_achievement"))
 
+		save_button.icon = get_theme_icon("Save", "EditorIcons")
+		save_button.pressed.connect(_on_save_button_pressed.bind(save_button))
+		
 		delete_achievement.icon = get_theme_icon("Remove", "EditorIcons")
 		delete_achievement.pressed.connect(_on_delete_achievement_pressed)
 		delete_achievement_2.icon = get_theme_icon("Remove", "EditorIcons")

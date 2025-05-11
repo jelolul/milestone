@@ -8,6 +8,7 @@ offset_right = 259.0
 offset_bottom = 31.0
 mouse_filter = 2
 label = "Setting"
+name_split_ratio = 0.35
 script = ExtResource("1_dxau1")
 spin_box_max = 10000000000000
 metadata/_custom_type_script = "uid://k6ju11vyqu6g"

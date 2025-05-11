@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://5j1fq85a0wof" path="res://addons/milestone/shaders/ray_shine.gdshader" id="3_4xbx4"]
 [ext_resource type="Shader" uid="uid://b6j5u0yo2a6u7" path="res://addons/milestone/shaders/grayscale.gdshader" id="3_jaqhe"]
 [ext_resource type="Texture2D" uid="uid://dmbey47vfsa2g" path="res://addons/milestone/icons/missing_icon.svg" id="4_ey7mj"]
-[ext_resource type="Texture2D" uid="uid://ctdctl2mfp36l" path="res://addons/milestone/icons/icon-x16.svg" id="5_ey7mj"]
+[ext_resource type="Texture2D" uid="uid://ctdctl2mfp36l" path="res://addons/milestone/icons/editor/icon-x16.svg" id="5_ey7mj"]
 
 [sub_resource type="Gradient" id="Gradient_jaqhe"]
 colors = PackedColorArray(0.137255, 0.14902, 0.180392, 1, 0.1064, 0.11536, 0.14, 1)
