@@ -154,4 +154,4 @@ func _unhandled_input(event: InputEvent) -> void:
 			AchievementManager.unlock_achievement("press_space")
 	elif event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			AchievementManager.progress_achievement("five_clicks", 1)
+			AchievementManager.progress_achievement("quintuple_click", 1)
