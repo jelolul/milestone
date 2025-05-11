@@ -1,3 +1,4 @@
+@tool
 extends Control
 
 var achievement_id: String:
@@ -11,18 +12,18 @@ var achievement_id: String:
 		AchievementManager.achievements_loaded.connect(_on_achievements_updated)
 		_on_achievements_updated()
 
-func _on_achievement_unlocked(achievement_id: String) -> void:
-	if achievement_id == self.achievement_id:
-		update_achievement_display(achievement_id)
+func _on_achievement_unlocked(_achievement_id: String) -> void:
+	if _achievement_id == self.achievement_id:
+		update_achievement_display()
 
-func _on_achievement_progressed(achievement_id: String, _progress_amount: int) -> void:
-	if achievement_id == self.achievement_id:
-		update_achievement_display(achievement_id)
+func _on_achievement_progressed(_achievement_id: String, _progress_amount: int) -> void:
+	if _achievement_id == self.achievement_id:
+		update_achievement_display()
 
 func _on_achievements_updated() -> void:
-	update_achievement_display(self.achievement_id)
+	update_achievement_display()
 
-func update_achievement_display(achievement_id: String) -> void:
+func update_achievement_display() -> void:
 	var achievement_resource: Achievement = AchievementManager.get_achievement_resource(achievement_id)
 	var achievement: Dictionary = AchievementManager.get_achievement(achievement_id)
 
@@ -54,7 +55,6 @@ func update_achievement_display(achievement_id: String) -> void:
 		%AchievementActionLabel.visible = true
 		%AchievementActionLabel.text = "Unlocked %s" % get_readable_date(achievement.unlocked_date)
 		%AchievementRareOverlay.visible = achievement_resource.considered_rare
-		%AchievementProgressLabel.visible = false
 	else:
 		%AchievementActionLabel.visible = false
 		%AchievementRareOverlay.visible = false

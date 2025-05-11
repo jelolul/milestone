@@ -19,14 +19,22 @@ config/icon="uid://d186rx7mxnthd"
 
 AchievementManager="*res://addons/milestone/autoload/achievement_manager.gd"
 
+[debug]
+
+file_logging/enable_file_logging=true
+gdscript/warnings/exclude_addons=false
+
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/milestone/plugin.cfg")
+enabled=PackedStringArray("res://addons/explore-editor-theme/plugin.cfg", "res://addons/milestone/plugin.cfg")
 
 [milestone]
 

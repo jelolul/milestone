@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://76j1kceq4xk8"]
+
+[ext_resource type="Script" uid="uid://uyk8nd77y0jx" path="res://addons/milestone/scripts/milestone_editor/milestone_setting.gd" id="1_dxau1"]
+[ext_resource type="Script" uid="uid://bcd4xuu17wi0d" path="res://addons/milestone/scripts/milestone_editor/resource_picker.gd" id="2_5qmjr"]
+
+[node name="Setting" type="EditorProperty"]
+offset_right = 259.0
+offset_bottom = 31.0
+mouse_filter = 2
+label = "Setting"
+script = ExtResource("1_dxau1")
+spin_box_max = 10000000000000
+metadata/_custom_type_script = "uid://k6ju11vyqu6g"
+metadata/_edit_use_anchors_ = true
+
+[node name="LineEdit" type="LineEdit" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_font_sizes/font_size = 16
+placeholder_text = "Placeholder Text"
+flat = true
+
+[node name="TexturePicker" type="EditorResourcePicker" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+base_type = "Texture"
+script = ExtResource("2_5qmjr")
+metadata/_custom_type_script = "uid://bcd4xuu17wi0d"
+
+[node name="CheckBox" type="CheckBox" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+text = "On"
+flat = true
+
+[node name="SpinBox" type="SpinBox" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+mouse_filter = 1
+
+[node name="OptionButton" type="OptionButton" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+mouse_filter = 1
+flat = true
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="PathButton" type="BoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="PathButton"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_font_sizes/font_size = 16
+flat = true
+
+[node name="Button" type="Button" parent="PathButton"]
+layout_mode = 2

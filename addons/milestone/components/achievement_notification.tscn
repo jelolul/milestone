@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://dhdqvikxt7uvu"]
+[gd_scene load_steps=23 format=3 uid="uid://dhdqvikxt7uvu"]
 
 [ext_resource type="Texture2D" uid="uid://dmbey47vfsa2g" path="res://addons/milestone/assets/missing_icon.svg" id="1_5drgf"]
 [ext_resource type="Script" uid="uid://l3111s1bbinp" path="res://addons/milestone/scripts/achievement_notification.gd" id="1_o4xp5"]
 [ext_resource type="Shader" uid="uid://5j1fq85a0wof" path="res://addons/milestone/assets/ray_shine.gdshader" id="3_4xbx4"]
 [ext_resource type="Shader" uid="uid://b6j5u0yo2a6u7" path="res://addons/milestone/assets/grayscale.gdshader" id="3_jaqhe"]
+[ext_resource type="Texture2D" uid="uid://ctdctl2mfp36l" path="res://addons/milestone/assets/icon-x16.svg" id="5_ey7mj"]
 
 [sub_resource type="Gradient" id="Gradient_jaqhe"]
 colors = PackedColorArray(0.137255, 0.14902, 0.180392, 1, 0.1064, 0.11536, 0.14, 1)
@@ -33,7 +34,7 @@ border_color = Color(1, 1, 1, 0.392157)
 
 [sub_resource type="Gradient" id="Gradient_4xbx4"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 0.649661, 0.0988327, 1)
+colors = PackedColorArray(1, 0.655, 0.1, 0.352941)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jaqhe"]
 gradient = SubResource("Gradient_4xbx4")
@@ -67,9 +68,17 @@ shader_parameter/use_grayscale = false
 [sub_resource type="SystemFont" id="SystemFont_5drgf"]
 font_names = PackedStringArray("Inter")
 font_weight = 600
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ey7mj"]
 
 [sub_resource type="SystemFont" id="SystemFont_o4xp5"]
 font_names = PackedStringArray("Inter")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qf7c7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7ipa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7177w"]
 bg_color = Color(0.239216, 0.266667, 0.313726, 1)
@@ -91,14 +100,14 @@ corner_radius_bottom_left = 24
 z_index = 128
 offset_right = 84.0
 offset_bottom = 84.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_qf7c7")
 script = ExtResource("1_o4xp5")
-outro_animation_type = 3
 
 [node name="Border" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ey7mj")
@@ -135,7 +144,7 @@ material = SubResource("ShaderMaterial_4xbx4")
 layout_mode = 2
 texture = ExtResource("1_5drgf")
 expand_mode = 1
-stretch_mode = 5
+stretch_mode = 6
 
 [node name="BoxContainer" type="BoxContainer" parent="MarginContainer/BoxContainer"]
 custom_minimum_size = Vector2(206, 0)
@@ -145,11 +154,26 @@ theme_override_constants/separation = 2
 alignment = 1
 vertical = true
 
-[node name="AchievementActionLabel" type="Label" parent="MarginContainer/BoxContainer/BoxContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="AchievementBadge" type="TextureRect" parent="MarginContainer/BoxContainer/BoxContainer/BoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("5_ey7mj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AchievementActionLabel" type="Label" parent="MarginContainer/BoxContainer/BoxContainer/BoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = SubResource("SystemFont_5drgf")
 theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ey7mj")
 text = "achievement_action"
 vertical_alignment = 1
 
@@ -160,6 +184,7 @@ size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 1, 1, 0.666667)
 theme_override_fonts/font = SubResource("SystemFont_o4xp5")
 theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qf7c7")
 text = "achievement_name"
 
 [node name="ProgressContainer" type="BoxContainer" parent="MarginContainer/BoxContainer/BoxContainer"]
@@ -175,6 +200,7 @@ size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 1, 1, 0.666667)
 theme_override_fonts/font = SubResource("SystemFont_o4xp5")
 theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o7ipa")
 text = "(0/0)"
 
 [node name="AchievementProgressBar" type="ProgressBar" parent="MarginContainer/BoxContainer/BoxContainer/ProgressContainer"]

@@ -4,6 +4,7 @@ const AchievementDisplay = preload("uid://b2ygwvy3dv00a")
 
 func _ready() -> void:
 	%ResetAchievements.pressed.connect(AchievementManager.reset_achievements)
+	%CloseGame.pressed.connect(get_tree().quit)
 	AchievementManager.achievement_unlocked.connect(_on_achievement_unlocked)
 	AchievementManager.achievements_reset.connect(_on_achievements_reset)
 	AchievementManager.achievements_loaded.connect(_on_achievements_loaded)
@@ -45,6 +46,7 @@ func _on_achievements_reset() -> void:
 		%LockedAchievementContainer.move_child(child, index)
 
 	update_achievements_unlocked_percentage()
+	%AchievementNotifier.clear_notifications()
 
 func _on_achievements_loaded() -> void:
 	var sorted_ids = AchievementManager.achievements_list.keys()
@@ -59,7 +61,6 @@ func _on_achievements_loaded() -> void:
 		else:
 			var unlocked_achievements = []
 			for child in %UnlockedAchievementContainer.get_children():
-				var child_data = AchievementManager.achievements.get(child.achievement_id, null)
 				unlocked_achievements.append(child)
 			unlocked_achievements.sort_custom(func(a, b):
 				var a_data = AchievementManager.achievements.get(a.achievement_id, null)
@@ -99,10 +100,12 @@ func _process(_delta: float) -> void:
 
 	%UnlockedContainer.visible = AchievementManager.unlocked_achievements_number > 0
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_SPACE:
 			AchievementManager.progress_achievement("press_space")
 	elif event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			AchievementManager.progress_achievement("five_clicks", 1)
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+			AchievementManager.progress_achievement("testing", 1)

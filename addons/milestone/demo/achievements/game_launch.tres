@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Achievement" load_steps=4 format=3 uid="uid://bwlnu0lttck5v"]
+[gd_resource type="Resource" script_class="Achievement" load_steps=4 format=3 uid="uid://cnir5um4pfwld"]
 
 [ext_resource type="Texture2D" uid="uid://cg3b84ak8bsrv" path="res://addons/milestone/assets/hidden_achievement.svg" id="1_h42m3"]
 [ext_resource type="Script" uid="uid://dtyojmellf4e5" path="res://addons/milestone/scripts/achievement.gd" id="2_h42m3"]
@@ -16,4 +16,5 @@ hidden = false
 considered_rare = false
 progressive = false
 progress_goal = 0
+indicate_progress_interval = 1
 metadata/_custom_type_script = "uid://dtyojmellf4e5"

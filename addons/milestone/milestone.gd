@@ -8,6 +8,7 @@ var milestone_view
 const PREVIEW_GENERATOR = preload("./scripts/resource_icon_gen/preview_generator.gd")
 var preview_gen
 
+var achievements_resource: Script = preload("./scripts/achievement.gd")
 
 func _enable_plugin() -> void:
 	add_autoload_singleton("AchievementManager", get_plugin_path() + "/autoload/achievement_manager.gd")
@@ -18,20 +19,27 @@ func _disable_plugin() -> void:
 	remove_autoload_singleton("AchievementManager")
 
 func _enter_tree() -> void:
+	if Engine.is_editor_hint():
+		Engine.set_meta("MilestonePlugin", self)
+
 	milestone_view = MILESTONE_PANEL.instantiate()
 
+	add_custom_type("Achievement", "Resource", achievements_resource, load(get_plugin_path() + "/assets/icon.svg"))
+
 	_make_visible(false)
-	get_editor_interface().get_editor_main_screen().add_child(milestone_view)
+	EditorInterface.get_editor_main_screen().add_child(milestone_view)
 
 	preview_gen = PREVIEW_GENERATOR.new()
-	get_editor_interface().get_resource_previewer().add_preview_generator(preview_gen)
+	EditorInterface.get_resource_previewer().add_preview_generator(preview_gen)
 
 func _exit_tree() -> void:
+	remove_custom_type("Achievement")
+
 	if milestone_view:
 		milestone_view.queue_free()
 
 	if preview_gen:
-		get_editor_interface().get_resource_previewer().remove_preview_generator(preview_gen)
+		EditorInterface.get_resource_previewer().remove_preview_generator(preview_gen)
 
 func _has_main_screen() -> bool:
 	return true
@@ -48,7 +56,7 @@ func _get_plugin_name() -> String:
 	return "Milestone"
 
 func _get_plugin_icon() -> Texture2D:
-	return load(get_plugin_path() + "/assets/icon.svg")
+	return load(get_plugin_path() + "/assets/icon-x16.svg")
 
 func get_version() -> String:
 	var config: ConfigFile = ConfigFile.new()

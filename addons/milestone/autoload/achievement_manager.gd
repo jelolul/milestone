@@ -33,7 +33,7 @@ func _ready() -> void:
 	if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
 		print("[Milestone] Loaded %s achievements!" % achievements_number)
 
-func _on_achievement_unlocked(achievement_id: String) -> void:
+func _on_achievement_unlocked(_achievement_id: String) -> void:
 	unlocked_achievements_number = get_unlocked_achievements().size()
 
 func get_achievement_resource(achievement_id: String) -> Achievement:
@@ -55,7 +55,7 @@ func progress_achievement(achievement_id: String, progress_amount: int = 1) -> v
 			}
 		if achievements[achievement_id]["unlocked"] == false:
 			if achievement.progressive:
-				achievements[achievement_id]["progress"] = min(achievements[achievement_id]["progress"] + progress_amount, achievement.progress_goal)
+				achievements[achievement_id]["progress"] = int(min(achievements[achievement_id]["progress"] + progress_amount, achievement.progress_goal))
 
 				if achievements[achievement_id]["progress"] >= achievement.progress_goal:
 					achievements[achievement_id]["unlocked"] = true

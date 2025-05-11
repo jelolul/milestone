@@ -4,7 +4,7 @@ extends EditorResourcePreviewGenerator
 func _can_generate_small_preview() -> bool:
 	return true
 
-func _generate(resource, size, metadata) -> Texture2D:
+func _generate(resource, size, _metadata) -> Texture2D:
 	var img: Image = Image.new()
 
 	if "icon" in resource and resource is Achievement:

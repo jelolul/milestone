@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=4 format=3 uid="uid://dqcdxc4jfyc1h"]
+
+[ext_resource type="Texture2D" uid="uid://cg3b84ak8bsrv" path="res://addons/milestone/assets/hidden_achievement.svg" id="1_1de4e"]
+[ext_resource type="Texture2D" uid="uid://dmbey47vfsa2g" path="res://addons/milestone/assets/missing_icon.svg" id="2_0ldik"]
+[ext_resource type="Script" uid="uid://dtyojmellf4e5" path="res://addons/milestone/scripts/achievement.gd" id="3_we51c"]
+
+[resource]
+script = ExtResource("3_we51c")
+id = "testing"
+icon = ExtResource("2_0ldik")
+icon_filter = 1
+hidden_icon = ExtResource("1_1de4e")
+name = "testing achievement"
+description = "made for testing"
+hidden = false
+considered_rare = true
+progressive = true
+progress_goal = 1.0
+indicate_progress_interval = 1
+metadata/_custom_type_script = "uid://dtyojmellf4e5"
