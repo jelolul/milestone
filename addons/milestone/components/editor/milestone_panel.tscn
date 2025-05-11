@@ -273,7 +273,7 @@ self_modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 12
-text = "# of achievements loaded: 3"
+text = "# of achievements loaded: 0"
 horizontal_alignment = 1
 
 [node name="BoxContainer2" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer"]
@@ -300,7 +300,7 @@ self_modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
 theme_override_font_sizes/font_size = 14
 theme_override_styles/focus = SubResource("StyleBoxEmpty_pwvwq")
-text = "1.0.0.beta"
+text = "{version}"
 underline = 1
 uri = "https://github.com/jelolul/milestone"
 
