@@ -38,6 +38,8 @@ var selected_achievement
 @onready var change_folder_button = %AchievementsFolderSetting.path_button
 @onready var change_folder_line_edit = %AchievementsFolderSetting.path_button_line_edit
 @onready var save_as_json_setting = %SaveAsJsonSetting.toggle
+@onready var print_errors_setting = %PrintErrorsSetting.toggle
+@onready var print_output_setting = %PrintOutputSetting.toggle
 
 var selected_achievements = []
 
@@ -52,6 +54,12 @@ func _ready() -> void:
 		change_folder_button.pressed.connect(_on_change_folder_button_pressed)
 		save_as_json_setting.button_pressed = ProjectSettings.get_setting("milestone/general/save_as_json", true)
 		save_as_json_setting.pressed.connect(_on_save_as_json_setting_pressed)
+
+		print_errors_setting.button_pressed = ProjectSettings.get_setting("milestone/debug/print_errors", true)
+		print_errors_setting.pressed.connect(_on_print_errors_setting_pressed)
+
+		print_output_setting.button_pressed = ProjectSettings.get_setting("milestone/debug/print_output", true)
+		print_output_setting.pressed.connect(_on_print_output_setting_pressed)
 
 		save_button.icon = get_theme_icon("Save", "EditorIcons")
 		save_button.pressed.connect(_on_save_button_pressed.bind(save_button))
@@ -343,6 +351,14 @@ func _on_save_as_json_setting_pressed() -> void:
 	ProjectSettings.set_setting("milestone/general/save_as_json", save_as_json_setting.button_pressed)
 	ProjectSettings.save()
 
+func _on_print_errors_setting_pressed() -> void:
+	ProjectSettings.set_setting("milestone/debug/print_errors", print_errors_setting.button_pressed)
+	ProjectSettings.save()
+
+func _on_print_output_setting_pressed() -> void:
+	ProjectSettings.set_setting("milestone/debug/print_output", print_output_setting.button_pressed)
+	ProjectSettings.save()
+
 func _on_change_folder_button_pressed() -> void:
 	var popup = FileDialog.new()
 	self.add_child(popup)
@@ -373,11 +389,12 @@ func rename_resource(resource: Resource, new_name: String) -> void:
 	var dir := DirAccess.open("res://")
 	
 	if not dir.file_exists(old_path):
-		# push_error("[Milestone] Original file does not exist: " + old_path)
+		if ProjectSettings.get_setting("milestone/debug/print_errors"):
+			push_error("[Milestone] Original file does not exist: " + old_path)
 		return
 
 	if dir.file_exists(new_path):
-		# print("[Milestone] A file with that name already exists: " + new_path)
+		ResourceSaver.save(resource, new_path)
 		return
 
 	var err := ResourceSaver.save(resource, new_path)
@@ -395,7 +412,6 @@ var selected_item
 var selected_id
 
 func _update_tree() -> void:
-	await get_tree().process_frame
 	if !tree:
 		return
 
@@ -432,8 +448,7 @@ func _update_notification(node) -> void:
 
 	achievement_icon.texture_filter = selected_achievement.icon_filter
 	achievement_icon.texture = selected_achievement.icon
-
-	progress_container.visible = selected_achievement.progressive
+	progress_container.visible = selected_achievement.progressive if !selected_achievement.hidden else false
 
 	achievement_rare_overlay.visible = selected_achievement.considered_rare
 	

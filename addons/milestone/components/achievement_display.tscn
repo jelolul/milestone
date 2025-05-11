@@ -18,7 +18,7 @@ border_color = Color(1, 1, 1, 0.392157)
 
 [sub_resource type="Gradient" id="Gradient_4xbx4"]
 offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 0.655, 0.1, 0.352941)
+colors = PackedColorArray(1, 0.655, 0.1, 0.647059)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jaqhe"]
 gradient = SubResource("Gradient_4xbx4")

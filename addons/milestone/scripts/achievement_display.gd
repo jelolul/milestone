@@ -45,11 +45,13 @@ func update_achievement_display() -> void:
 	%AchievementIcon.material.set_shader_parameter("use_grayscale", grayscale)
 
 	%ProgressContainer.visible = achievement_resource.progressive
+	
 	if achievement_resource.progressive:
 		%AchievementProgressBar.value = int(achievement.progress)
 		%AchievementProgressBar.max_value = achievement_resource.progress_goal
 		%AchievementProgressLabel.text = "%s / %s" % [int(achievement.progress), achievement_resource.progress_goal]
 		%AchievementProgressLabel.visible = true
+
 
 	if achievement.unlocked:
 		%AchievementActionLabel.visible = true
@@ -58,6 +60,8 @@ func update_achievement_display() -> void:
 	else:
 		%AchievementActionLabel.visible = false
 		%AchievementRareOverlay.visible = false
+		if achievement_resource.hidden:
+			%ProgressContainer.visible = false
 
 func get_readable_date(unix: int) -> String:
 	var date_dict = Time.get_datetime_dict_from_unix_time(unix)

@@ -6,6 +6,9 @@ var achievements_list: Dictionary = {}
 ## How many achievements are available.
 var achievements_number: int = 0
 
+## How many hidden achievements are available.
+var hidden_achievements_number: int = 0
+
 ## How many achievements are unlocked.
 var unlocked_achievements_number: int = 0:
 	get:
@@ -29,6 +32,7 @@ func _ready() -> void:
 	achievements_loaded.connect(_on_achievement_unlocked.bind(""))
 	achievements_list = get_achievements()
 	achievements_number = achievements_list.size()
+	hidden_achievements_number = get_hidden_achievements().size()
 
 	if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
 		print("[Milestone] Loaded %s achievements!" % achievements_number)
@@ -37,12 +41,42 @@ func _on_achievement_unlocked(_achievement_id: String) -> void:
 	unlocked_achievements_number = get_unlocked_achievements().size()
 
 func get_achievement_resource(achievement_id: String) -> Achievement:
-	var achievement: Achievement = load(ProjectSettings.get_setting("milestone/general/achievements_path") + achievement_id + ".tres")
+	var path = str(ProjectSettings.get_setting("milestone/general/achievements_path") + achievement_id + ".tres")
 
-	if achievement:
-		return achievement
+	if FileAccess.open(path, FileAccess.READ):
+		var achievement: Achievement = load(ProjectSettings.get_setting("milestone/general/achievements_path") + achievement_id + ".tres")
+
+		if achievement:
+			return achievement
+		else:
+			return null
 	else:
 		return null
+
+func unlock_achievement(achievement_id: String) -> void:
+	var achievement: Achievement = get_achievement_resource(achievement_id)
+	if achievement:
+		if not achievements.has(achievement_id):
+			achievements[achievement_id] = {
+				"unlocked": false,
+				"unlocked_date": 0,
+				"progress": 0,
+			}
+		if achievements[achievement_id]["unlocked"] == false:
+			achievements[achievement_id]["progress"] = achievement.progress_goal
+			achievements[achievement_id]["unlocked"] = true
+			achievements[achievement_id]["unlocked_date"] = Time.get_unix_time_from_system()
+
+			emit_signal("achievement_unlocked", achievement_id)
+
+			if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
+				print("[Milestone] Achievement '%s' was unlocked!" % achievement_id)
+				print("[Milestone] Unlocked %s/%s achievements" % [unlocked_achievements_number, achievements_number])
+		save_achievements()
+	else:
+		if ProjectSettings.get_setting("milestone/debug/print_errors") == true and OS.is_debug_build():
+			push_error("[Milestone] Could not find achievement with ID '%s'" % achievement_id)
+
 
 func progress_achievement(achievement_id: String, progress_amount: int = 1) -> void:
 	var achievement: Achievement = get_achievement_resource(achievement_id)
@@ -83,7 +117,7 @@ func progress_achievement(achievement_id: String, progress_amount: int = 1) -> v
 		save_achievements()
 	else:
 		if ProjectSettings.get_setting("milestone/debug/print_errors") == true and OS.is_debug_build():
-			print("[Milestone] Could not find achievement with ID '%s'" % achievement_id)
+			push_error("[Milestone] Could not find achievement with ID '%s'" % achievement_id)
 
 func get_achievement(achievement_id: String) -> Dictionary:
 	if not achievements.has(achievement_id):
@@ -94,7 +128,6 @@ func get_achievement(achievement_id: String) -> Dictionary:
 		}
 	return achievements[achievement_id]
 
-# TODO: Implement a function that resets all achievements.
 func reset_achievements() -> void:
 	achievements.clear()
 	save_achievements()
@@ -102,7 +135,10 @@ func reset_achievements() -> void:
 	if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
 		print("[Milestone] Reset all achievements!")
 
-# TODO: Implement a function that clears a specific achievement.
+func unlock_all_achievements() -> void:
+	for i in achievements_list:
+		unlock_achievement(i)
+
 func achievement_clear(achievement_id) -> void:
 	achievements.erase(achievement_id)
 	save_achievements()
@@ -115,6 +151,13 @@ func get_unlocked_achievements() -> Dictionary:
 	for achievement_id in achievements:
 		if achievements[achievement_id]["unlocked"]:
 			_achievements[achievement_id] = achievements[achievement_id]
+	return _achievements
+
+func get_hidden_achievements() -> Dictionary:
+	var _achievements: Dictionary = {}
+	for achievement_id in achievements_list:
+		if achievements_list[achievement_id]["hidden"]:
+			_achievements[achievement_id] = achievements_list[achievement_id]
 	return _achievements
 
 func get_achievements() -> Dictionary:

@@ -43,6 +43,7 @@ func _ready() -> void:
 		return
 	if not id.is_empty():
 		self.name = id
+		
 	AchievementManager.achievement_unlocked.connect(_on_achievement_unlocked)
 
 func _on_achievement_unlocked(achievement_id: String) -> void:

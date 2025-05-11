@@ -1,7 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://dgujxn340oh7j"]
+[gd_scene load_steps=27 format=3 uid="uid://dgujxn340oh7j"]
 
 [ext_resource type="Script" uid="uid://ce0l0apak5iqi" path="res://addons/milestone/demo/demo_achievements.gd" id="1_ipve2"]
 [ext_resource type="Script" uid="uid://wn30x7o3f47m" path="res://addons/milestone/scripts/achievement_notifier.gd" id="2_8h6ex"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t5dxj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pv48d"]
+
+[sub_resource type="Theme" id="Theme_t5dxj"]
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_t5dxj")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_pv48d")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8h6ex"]
 content_margin_left = 50.0
@@ -159,6 +167,7 @@ grow_begin = 5.0
 grow_end = 5.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pgbcl"]
+content_margin_bottom = 20.0
 
 [sub_resource type="SystemFont" id="SystemFont_t5dxj"]
 font_names = PackedStringArray("Segoe UI", "Inter")
@@ -172,6 +181,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme = SubResource("Theme_t5dxj")
 script = ExtResource("1_ipve2")
 
 [node name="AchievementNotifier" type="Control" parent="."]
@@ -183,7 +193,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_8h6ex")
-screen_corner = "BottomRight"
+volume = 0.3
+pitch_scale = 1.2
 metadata/_custom_type_script = "uid://wn30x7o3f47m"
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -206,10 +217,10 @@ vertical = true
 [node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_constants/separation = 20
+theme_override_constants/separation = 10
 alignment = 2
 
-[node name="ResetAchievements" type="Button" parent="PanelContainer/BoxContainer/BoxContainer"]
+[node name="UnlockAllAchievements" type="Button" parent="PanelContainer/BoxContainer/BoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
@@ -229,7 +240,29 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_t5dxj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pestd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_pgbcl")
 action_mode = 0
-text = "Reset all achievements"
+text = "Unlock all achievements"
+
+[node name="ResetAchievements" type="Button" parent="PanelContainer/BoxContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+mouse_behavior_recursive = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_disabled_color = Color(0.42, 0.294, 0.294, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.878431, 0.615686, 0.615686, 1)
+theme_override_colors/font_hover_color = Color(0.878431, 0.615686, 0.615686, 1)
+theme_override_colors/font_color = Color(0.88, 0.616, 0.616, 1)
+theme_override_colors/font_focus_color = Color(0.878431, 0.615686, 0.615686, 1)
+theme_override_colors/font_pressed_color = Color(0.878431, 0.615686, 0.615686, 1)
+theme_override_fonts/font = SubResource("SystemFont_pgbcl")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6ex")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_yu2xc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d8ixd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t6ylx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_f47fg")
+action_mode = 0
+text = "Reset Achievements"
 
 [node name="CloseGame" type="Button" parent="PanelContainer/BoxContainer/BoxContainer"]
 unique_name_in_owner = true
@@ -386,6 +419,12 @@ text = "Locked Achievements"
 uppercase = true
 
 [node name="LockedAchievementContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+vertical = true
+
+[node name="HiddenAchievementContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8

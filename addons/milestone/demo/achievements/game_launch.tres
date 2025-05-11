@@ -15,6 +15,6 @@ description = "Launch the game for the first time."
 hidden = false
 considered_rare = false
 progressive = false
-progress_goal = 0
+progress_goal = 1.0
 indicate_progress_interval = 1
 metadata/_custom_type_script = "uid://dtyojmellf4e5"

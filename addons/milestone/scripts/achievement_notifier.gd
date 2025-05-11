@@ -6,7 +6,7 @@ class_name AchievementNotifier
 extends Node
 
 ## Where the notification should be displayed at.
-@export_enum("TopLeft", "TopRight", "BottomLeft", "BottomRight") var screen_corner := "TopRight"
+@export_enum("TopLeft", "TopRight", "BottomLeft", "BottomRight") var screen_corner := "BottomRight"
 
 
 ## The notification scene to use.[br][br]
@@ -67,9 +67,12 @@ var _notification_timers: Dictionary = {}
 # Stores all tweens for each notification. Only used for cleanup.
 var _notification_tweens: Dictionary = {}
 
+var start_pos
+
 func _ready() -> void:
 	AchievementManager.achievement_unlocked.connect(_on_achievement_unlocked)
 	AchievementManager.achievement_progressed.connect(_on_achievement_progressed)
+	get_viewport().size_changed.connect(_update_notification_positions)
 
 func _on_achievement_unlocked(achievement_id: String) -> void:
 	if unlocked_sound:
@@ -99,7 +102,8 @@ func _on_achievement_progressed(achievement_id: String, _progress_amount: int) -
 	_progress_tracker[achievement_id] += _progress_amount
 
 	var achievement = AchievementManager.get_achievement(achievement_id)
-	if _progress_tracker[achievement_id] % AchievementManager.get_achievement_resource(achievement_id).indicate_progress_interval == 0 and not achievement.unlocked:
+	var achievement_resource = AchievementManager.get_achievement_resource(achievement_id)
+	if _progress_tracker[achievement_id] % achievement_resource.indicate_progress_interval == 0 and not achievement.unlocked and not achievement_resource.hidden:
 		if _is_notification_already_displayed(achievement_id):
 			var notif = _get_notification_by_id(achievement_id)
 			if notif:
@@ -144,8 +148,12 @@ func _is_notification_already_displayed(achievement_id: String) -> bool:
 	
 	return false
 
+var player: AudioStreamPlayer
+
 func play_sfx(stream: AudioStream) -> void:
-	var player := AudioStreamPlayer.new()
+	if player:
+		return
+	player = AudioStreamPlayer.new()
 	player.stream = stream
 	player.volume_db = linear_to_db(clamp(volume, -5.0, 3.0))
 	player.pitch_scale = pitch_scale
@@ -165,14 +173,13 @@ func show_notification(_notification: Control) -> void:
 	add_child(_notification)
 	_active_notifications.insert(0, _notification)
 
-	var start_pos = _get_offscreen_position_from_type(_notification)
+	start_pos = _get_offscreen_position_from_type(_notification)
 	_notification.position = start_pos
 
 	var target_pos: Vector2 = _get_target_position(_notification)
 
 	_notification.z_index += _active_notifications.size()
 
-	_update_notification_positions()
 	
 	var tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_OUT_IN)
 	_notification_tweens[_notification.id] = tween
@@ -183,6 +190,7 @@ func show_notification(_notification: Control) -> void:
 			_notification.z_index -= _active_notifications.size()
 	)
 
+	_update_notification_positions()
 
 	var timer = Timer.new()
 	timer.wait_time = on_screen_duration
@@ -226,21 +234,23 @@ func _get_target_position(_notification: Control) -> Vector2:
 	return corner_pos + offset
 
 func _get_corner_position() -> Vector2:
+	var screen_size = get_viewport().get_visible_rect().size
+
 	match screen_corner:
 		"TopLeft":
 			return Vector2(0, 0)
 		"TopRight":
-			return Vector2(get_viewport().size.x, 0)
+			return Vector2(screen_size.x, 0)
 		"BottomLeft":
-			return Vector2(0, get_viewport().size.y)
+			return Vector2(0, screen_size.y)
 		"BottomRight":
-			return Vector2(get_viewport().size.x, get_viewport().size.y)
+			return Vector2(screen_size.x, screen_size.y)
 		_:
 			return Vector2(0, 0)
 
 func _get_offscreen_position_from_type(_notification: Control) -> Vector2:
-	var screen_size = get_viewport().size
-
+	var screen_size = get_viewport().get_visible_rect().size
+	
 	# TODO: Add support for different animation types in the future. I barely slept coding this so it's very buggy at the moment.
 	# match in_animation_type:
 	# 	ANIMATION_TYPE.TOP_TO_BOTTOM:
@@ -252,7 +262,18 @@ func _get_offscreen_position_from_type(_notification: Control) -> Vector2:
 	# 	ANIMATION_TYPE.RIGHT_TO_LEFT:
 	# 		return Vector2(screen_size.x + margin, _get_corner_position().y)
 
-	return Vector2(_get_corner_position().x - _notification.size.x - margin, screen_size.y)
+	match screen_corner:
+		"TopLeft":
+			return Vector2(0 + margin, -_notification.size.y + margin)
+		"TopRight":
+			return Vector2(_get_corner_position().x - _notification.size.x - margin, -_notification.size.y - margin)
+		"BottomLeft":
+			return Vector2(0 + margin, screen_size.y + margin)
+		"BottomRight":
+			return Vector2(_get_corner_position().x - _notification.size.x - margin, screen_size.y - margin)
+		_:
+			return Vector2(0, 0)
+
 
 # TODO: Rewrite the notification stacking. 
 func _update_notification_positions():
@@ -274,6 +295,8 @@ func _update_notification_positions():
 			current_offset = Vector2(-_active_notifications[0].size.x - margin, margin)
 		"TopLeft":
 			current_offset = Vector2(margin, margin)
+
+	start_pos = _get_offscreen_position_from_type(_active_notifications[0])
 
 	for i in range(_active_notifications.size()):
 		var notif = _active_notifications[i]

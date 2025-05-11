@@ -15,6 +15,6 @@ description = "Press the space key."
 hidden = true
 considered_rare = true
 progressive = false
-progress_goal = 0
+progress_goal = 1.0
 indicate_progress_interval = 1
 metadata/_custom_type_script = "uid://dtyojmellf4e5"

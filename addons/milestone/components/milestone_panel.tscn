@@ -78,8 +78,6 @@ font_weight = 500
 subpixel_positioning = 0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4vfm"]
-content_margin_left = 30.0
-content_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kf1yf"]
 content_margin_left = 10.0
@@ -438,6 +436,12 @@ setting_name = "Hidden"
 setting_type = 2
 toggle_text = "On"
 
+[node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer5/BoxContainer"]
+modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Toggle this on if the achievement is not supposed to be revealed before unlocking."
+
 [node name="PanelContainer6" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
 self_modulate = Color(1, 1, 1, 0.627451)
 layout_mode = 2
@@ -454,12 +458,6 @@ label = "Considered Rare"
 setting_name = "Considered Rare"
 setting_type = 2
 toggle_text = "On"
-
-[node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer6/BoxContainer"]
-modulate = Color(1, 1, 1, 0.588235)
-layout_mode = 2
-size_flags_vertical = 0
-text = "Toggle this on if the achievement is not supposed to be revealed before unlocking."
 
 [node name="PanelContainer7" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
 self_modulate = Color(1, 1, 1, 0.627451)
@@ -511,6 +509,7 @@ layout_mode = 2
 label = "Indicate Progress Interval"
 setting_name = "Indicate Progress Interval"
 setting_type = 3
+spin_box_min = 1
 
 [node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer9/BoxContainer"]
 modulate = Color(1, 1, 1, 0.588235)
@@ -684,8 +683,18 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 8
 
-[node name="AchievementsFolderSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer" instance=ExtResource("5_uwxb5")]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer"]
+self_modulate = Color(1, 1, 1, 0.627451)
+layout_mode = 2
+theme_type_variation = &"TreeSecondary"
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer"]
+layout_mode = 2
+vertical = true
+
+[node name="AchievementsFolderSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer/BoxContainer" instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
@@ -697,7 +706,16 @@ path_button_text = "Change Folder"
 path_button_line_edit_placeholder_text = "res://achievements/"
 path_button_line_edit_editable = false
 
-[node name="SaveAsJsonSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer" instance=ExtResource("5_uwxb5")]
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer"]
+self_modulate = Color(1, 1, 1, 0.627451)
+layout_mode = 2
+theme_type_variation = &"TreeSecondary"
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer2"]
+layout_mode = 2
+vertical = true
+
+[node name="SaveAsJsonSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer2/BoxContainer" instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
@@ -705,12 +723,45 @@ label = "Save As JSON"
 setting_name = "Save As JSON"
 setting_type = 2
 
-[node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer"]
+[node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer2/BoxContainer"]
 modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_l4vfm")
 text = "Storing achievements as JSON means anyone can edit it.
 It's recommended to store it in an encrypted binary file."
+
+[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer"]
+self_modulate = Color(1, 1, 1, 0.627451)
+layout_mode = 2
+theme_type_variation = &"TreeSecondary"
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer3"]
+layout_mode = 2
+vertical = true
+
+[node name="PrintErrorsSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer3/BoxContainer" instance=ExtResource("5_uwxb5")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+label = "Print Errors"
+setting_name = "Print Errors"
+setting_type = 2
+
+[node name="PanelContainer4" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer"]
+self_modulate = Color(1, 1, 1, 0.627451)
+layout_mode = 2
+theme_type_variation = &"TreeSecondary"
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer4"]
+layout_mode = 2
+vertical = true
+
+[node name="PrintOutputSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer4/BoxContainer" instance=ExtResource("5_uwxb5")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+label = "Print Output"
+setting_name = "Print Output"
+setting_type = 2
 
 [node name="Note3" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer"]
 layout_mode = 2
