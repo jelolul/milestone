@@ -44,8 +44,8 @@ var selected_achievement
 var selected_achievements = []
 
 func _ready() -> void:
-	plugin = Engine.get_meta("MilestonePlugin")
-	if !get_tree().edited_scene_root in [self, owner]:
+	if !self.is_part_of_edited_scene():
+		plugin = Engine.get_meta("MilestonePlugin")
 		EditorInterface.get_resource_filesystem().filesystem_changed.connect(_update_tree)
 
 		# Settings signals
@@ -118,7 +118,7 @@ func _ready() -> void:
 
 		_update_tree()
 
-	%VersionNumber.text = "%s" % plugin.get_version()
+		%VersionNumber.text = "%s" % plugin.get_version()
 
 func get_all_descendants(node: Node) -> Array:
 	var result := []

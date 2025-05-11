@@ -19,8 +19,7 @@ func _disable_plugin() -> void:
 	remove_autoload_singleton("AchievementManager")
 
 func _enter_tree() -> void:
-	if Engine.is_editor_hint():
-		Engine.set_meta("MilestonePlugin", self)
+	Engine.set_meta("MilestonePlugin", self)
 
 	milestone_view = MILESTONE_PANEL.instantiate()
 
@@ -31,6 +30,7 @@ func _enter_tree() -> void:
 
 	preview_gen = PREVIEW_GENERATOR.new()
 	EditorInterface.get_resource_previewer().add_preview_generator(preview_gen)
+	add_settings()
 
 func _exit_tree() -> void:
 	remove_custom_type("Achievement")

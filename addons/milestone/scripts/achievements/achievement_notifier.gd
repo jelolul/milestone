@@ -11,7 +11,7 @@ extends Node
 
 ## The notification scene to use.[br][br]
 ## [b]Note:[/b] Needs to be setup similarily to the [code]res://addons/milestone/components/achievement_notification.tscn[/code] file, you could as well edit that component to your liking.
-@export var notification_scene: PackedScene = preload("uid://dhdqvikxt7uvu")
+@export var notification_component: PackedScene = preload("uid://dhdqvikxt7uvu")
 ## The animation duration.
 @export var animation_duration: float = 0.2
 
@@ -128,7 +128,7 @@ func _process_queue(type: String) -> void:
 		return
 	
 	var data = _queue.pop_front()
-	var achievement_notification = notification_scene.instantiate()
+	var achievement_notification = notification_component.instantiate()
 	
 	if achievement_notification.has_method("update_achievement_display"):
 		achievement_notification.id = data.id

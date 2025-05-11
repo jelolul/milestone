@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b35o10vjk7vse"]
+[gd_scene load_steps=29 format=3 uid="uid://b35o10vjk7vse"]
 
 [ext_resource type="Script" uid="uid://c8p1sd0scafee" path="res://addons/milestone/scripts/milestone_editor/milestone_panel.gd" id="1_qfjv7"]
 [ext_resource type="Texture2D" uid="uid://bse7wi72sb2m8" path="res://addons/milestone/icons/editor/logo.svg" id="1_ryifn"]
@@ -33,9 +33,14 @@ subpixel_positioning = 0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kf1yf"]
 
-[sub_resource type="SVGTexture" id="SVGTexture_uwxb5"]
-source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#ff5d5d\" d=\"M2 1v8.586l1.293-1.293a1 1 0 0 1 1.414 0L7 10.587l2.293-2.293a1 1 0 0 1 1.414 0L13 10.586l1-1V6H9V1H2zm8 0v4h4zm-6 9.414-2 2V15h12v-2.586l-.293.293a1 1 0 0 1-1.414 0L10 10.414l-2.293 2.293a1 1 0 0 1-1.414 0L4 10.414z\"/></svg>
+[sub_resource type="SVGTexture" id="SVGTexture_on843"]
+source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"M3 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4l-3-3h-1v6H3zm1 0v5h3V1zm4 8a1 1 0 0 1 0 4 1 1 0 0 1 0-4z\"/></svg>
 "
+color_map = {
+Color(1, 0.372549, 0.372549, 1): Color(1, 0.47, 0.42, 1),
+Color(0.372549, 1, 0.592157, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.866667, 0.396078, 1): Color(1, 0.87, 0.4, 1)
+}
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ldk8i"]
 
@@ -66,6 +71,15 @@ border_width_bottom = 1
 border_color = Color(0.7, 0.288922, 0.338505, 0.8)
 corner_detail = 2
 anti_aliasing = false
+
+[sub_resource type="SVGTexture" id="SVGTexture_2fac8"]
+source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"m5 1v1h-4v2h14v-2h-4v-1zm-3 4v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8zm1 2h2v6h-2zm4 0h2v6h-2zm4 0h2v6h-2z\"/></svg>
+"
+color_map = {
+Color(1, 0.372549, 0.372549, 1): Color(1, 0.47, 0.42, 1),
+Color(0.372549, 1, 0.592157, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.866667, 0.396078, 1): Color(1, 0.87, 0.4, 1)
+}
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_256x5"]
 
@@ -208,7 +222,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_kf1yf")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g2rl1")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_i11vs")
 disabled = true
-icon = SubResource("SVGTexture_uwxb5")
+icon = SubResource("SVGTexture_on843")
 
 [node name="DeleteAchievementButton" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -229,7 +243,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_ldk8i")
 theme_override_styles/hover = SubResource("StyleBoxFlat_l4vfm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l4vfm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_uwxb5")
-icon = SubResource("SVGTexture_uwxb5")
+icon = SubResource("SVGTexture_2fac8")
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer"]
 custom_minimum_size = Vector2(220, 0)
@@ -259,7 +273,7 @@ self_modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 12
-text = "# of achievements loaded: 5"
+text = "# of achievements loaded: 3"
 horizontal_alignment = 1
 
 [node name="BoxContainer2" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer"]
@@ -299,6 +313,7 @@ theme_type_variation = &"EditorInspector"
 
 [node name="SettingsContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
@@ -625,7 +640,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_l4vfm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l4vfm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_uwxb5")
 text = "Delete Achievement"
-icon = SubResource("SVGTexture_uwxb5")
+icon = SubResource("SVGTexture_2fac8")
 
 [node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/BoxContainer"]
 modulate = Color(1, 1, 1, 0.588235)
@@ -634,7 +649,6 @@ text = "There's no undo for this!"
 
 [node name="NotSelectedLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "Create a new achievement / Select an achievement"
 horizontal_alignment = 1
