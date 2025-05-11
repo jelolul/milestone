@@ -9,7 +9,7 @@
 <p align="center">
   <img alt="Version badge" src="https://img.shields.io/badge/milestone_version-v1.0.0.beta-eee?style=flat&logoSize=auto&labelColor=eee&color=FFCC3F">
   <a href="https://godotengine.org/download/windows/">
-    <img alt="Godot badge" src="https://img.shields.io/badge/godot-v4.4%2B-478cbf?style=flat&logo=godotengine&logoSize=auto&  labelColor=eee&color=478cbf">
+    <img alt="Godot badge" src="https://img.shields.io/badge/godot-v4.4%2B-478cbf?style=flat&logo=godotengine&logoSize=auto&labelColor=eee&color=478cbf">
   </a>
 </p>
 
