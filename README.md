@@ -25,7 +25,7 @@
 This plugin is still in beta and may contain bugs or incomplete features. Please report any issues you encounter on the [GitHub repository](https://github.com/jelolul/milestone/issues).
 
 ## Features
-- Easily create and manage achievements with an in-editor editor
+- Easily create and manage achievements with an in-engine editor
 - Customize the look, behavior, and visibility of each achievement
 - Display achievements in-game using a simple API
 - Track player progress, completion, and rare achievements
@@ -34,7 +34,7 @@ This plugin is still in beta and may contain bugs or incomplete features. Please
 
 ## Installation
 To install Milestone, follow these steps:
-1. Make sure you have Godot **4.4** or later installed (i didn't test older versions).
+1. Make sure you have Godot **4.4** or later installed (i didn't test older versions, but i'm using UIDs which weren't really used in 4.4).
 1. Download the latest release from the [releases page](https://github.com/jelolul/milestone/releases).
 2. Extract the `addons` folder from the downloaded ZIP file into your root project directory. Should look like this:
    ```
