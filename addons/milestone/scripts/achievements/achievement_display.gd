@@ -78,7 +78,7 @@ func get_readable_date(unix: int) -> String:
 	if hour == 0:
 		hour = 12
 	
-	var month = get_month_name(date_dict.month)
+	var month = get_month_name(date_dict.month, true)
 	var day = date_dict.day
 
 	return "%s %s, %s, %d:%02d %s" % [month, date_dict.day, date_dict.year, hour, date_dict.minute, meridian]
