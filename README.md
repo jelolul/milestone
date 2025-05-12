@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="350" alt="Milestone logo" src="https://raw.githubusercontent.com/jelolul/milestone/refs/heads/main/addons/milestone/icons/editor/logo.svg">
+  <img width="480" alt="Milestone logo" src="https://raw.githubusercontent.com/jelolul/milestone/refs/heads/main/assets/logo/cover.png">
 </p>
 
 <h1 align="center">Milestone</h1>
