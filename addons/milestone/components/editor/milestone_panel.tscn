@@ -217,7 +217,6 @@ icon = ExtResource("3_on843")
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Save the edited achievement."
-theme_override_constants/icon_max_width = 16
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kf1yf")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g2rl1")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_i11vs")
@@ -311,7 +310,6 @@ theme_type_variation = &"EditorInspector"
 
 [node name="SettingsContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
