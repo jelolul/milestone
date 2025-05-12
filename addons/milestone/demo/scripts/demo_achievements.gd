@@ -2,6 +2,20 @@ extends Control
 
 const ACHIEVEMENT_DISPLAY = preload("uid://b2ygwvy3dv00a")
 
+@export var achievement_notifier: AchievementNotifier
+
+@export var achievements_unlocked_label: Label
+@export var achievements_unlocked_percentage: Label
+@export var achievements_progress_bar: ProgressBar
+
+@export var unlocked_container: Node
+@export var unlocked_achievements_container: Node
+
+@export var locked_container: Node
+@export var locked_achievements_container: Node
+@export var hidden_achievements_container: Node
+
+
 func _ready() -> void:
 	%UnlockAllAchievements.pressed.connect(AchievementManager.unlock_all_achievements)
 	%ResetAchievements.pressed.connect(AchievementManager.reset_achievements)
@@ -15,15 +29,16 @@ func _ready() -> void:
 
 	ProjectSettings.set_setting("input_devices/pointing/emulate_touch_from_mouse", true)
 
+
 func _on_achievement_unlocked(achievement_id: String) -> void:
 	if AchievementManager.achievements_list[achievement_id].hidden:
-		for child in %HiddenAchievementContainer.get_children():
+		for child in hidden_achievements_container.get_children():
 			if child.achievement_id == achievement_id:
 				child.visible = true
 				child.get_parent().remove_child(child)
 
 				var index = 0
-				for sibling in %UnlockedAchievementContainer.get_children():
+				for sibling in unlocked_achievements_container.get_children():
 					var sibling_data = AchievementManager.achievements.get(sibling.achievement_id, null)
 					var achievement_data = AchievementManager.achievements.get(achievement_id, null)
 
@@ -32,17 +47,17 @@ func _on_achievement_unlocked(achievement_id: String) -> void:
 					index += 1
 				
 
-				%UnlockedAchievementContainer.add_child(child)
-				%UnlockedAchievementContainer.move_child(child, index)
+				unlocked_achievements_container.add_child(child)
+				unlocked_achievements_container.move_child(child, index)
 				break
 	else:
-		for child in %LockedAchievementContainer.get_children():
+		for child in locked_achievements_container.get_children():
 			if child.achievement_id == achievement_id:
 				child.visible = true
 				child.get_parent().remove_child(child)
 
 				var index = 0
-				for sibling in %UnlockedAchievementContainer.get_children():
+				for sibling in unlocked_achievements_container.get_children():
 					var sibling_data = AchievementManager.achievements.get(sibling.achievement_id, null)
 					var achievement_data = AchievementManager.achievements.get(achievement_id, null)
 
@@ -51,8 +66,8 @@ func _on_achievement_unlocked(achievement_id: String) -> void:
 					index += 1
 				
 
-				%UnlockedAchievementContainer.add_child(child)
-				%UnlockedAchievementContainer.move_child(child, index)
+				unlocked_achievements_container.add_child(child)
+				unlocked_achievements_container.move_child(child, index)
 				break
 		
 	update_achievements_unlocked_percentage()
@@ -61,18 +76,18 @@ func _on_achievements_reset() -> void:
 	_on_achievements_loaded()
 
 	update_achievements_unlocked_percentage()
-	%AchievementNotifier.clear_notifications()
+	achievement_notifier.clear_notifications()
 
 var hidden_achievement_display
 
 func _on_achievements_loaded() -> void:
-	for i in %UnlockedAchievementContainer.get_children():
+	for i in unlocked_achievements_container.get_children():
 		i.queue_free()
 		
-	for i in %LockedAchievementContainer.get_children():
+	for i in locked_achievements_container.get_children():
 		i.queue_free()
 
-	for i in %HiddenAchievementContainer.get_children():
+	for i in hidden_achievements_container.get_children():
 		i.queue_free()
 
 	var sorted_ids = AchievementManager.achievements_list.keys()
@@ -87,18 +102,18 @@ func _on_achievements_loaded() -> void:
 				achievement_display.visible = false
 				if !hidden_achievement_display:
 					hidden_achievement_display = ACHIEVEMENT_DISPLAY.instantiate()
-					%LockedContainer.add_child(hidden_achievement_display)
-				%HiddenAchievementContainer.add_child(achievement_display)
-				hidden_achievement_display.find_child("AchievementIcon").texture = load("uid://cg3b84ak8bsrv")
-				hidden_achievement_display.find_child("AchievementName").text = "Hidden Achievements"
-				hidden_achievement_display.find_child("ProgressContainer").visible = false
-				hidden_achievement_display.find_child("AchievementActionLabel").visible = false
+					locked_container.add_child(hidden_achievement_display)
+				hidden_achievements_container.add_child(achievement_display)
+				hidden_achievement_display.achievement_icon.texture = load("uid://cg3b84ak8bsrv")
+				hidden_achievement_display.achievement_name.text = "Hidden Achievements"
+				hidden_achievement_display.progress_container.visible = false
+				hidden_achievement_display.achievement_action_label.visible = false
 				update_hidden_achievements()
 			else:
-				%LockedAchievementContainer.add_child(achievement_display)
+				locked_achievements_container.add_child(achievement_display)
 		else:
 			var unlocked_achievements = []
-			for child in %UnlockedAchievementContainer.get_children():
+			for child in unlocked_achievements_container.get_children():
 				unlocked_achievements.append(child)
 			unlocked_achievements.sort_custom(func(a, b):
 				var a_data = AchievementManager.achievements.get(a.achievement_id, null)
@@ -115,36 +130,36 @@ func _on_achievements_loaded() -> void:
 					break
 				index += 1
 
-			%UnlockedAchievementContainer.add_child(achievement_display)
-			%UnlockedAchievementContainer.move_child(achievement_display, index)
+			unlocked_achievements_container.add_child(achievement_display)
+			unlocked_achievements_container.move_child(achievement_display, index)
 		
 	update_achievements_unlocked_percentage()
 
 func update_achievements_unlocked_percentage() -> void:
 	if AchievementManager.unlocked_achievements_number == AchievementManager.achievements_number:
-		%AchievementsUnlockedLabel.text = "You've unlocked all achievements! %s/%s" % [AchievementManager.unlocked_achievements_number, AchievementManager.achievements_number]
+		achievements_unlocked_label.text = "You've unlocked all achievements! %s/%s" % [AchievementManager.unlocked_achievements_number, AchievementManager.achievements_number]
 	else:
-		%AchievementsUnlockedLabel.text = "%s of %s achievements unlocked" % [AchievementManager.unlocked_achievements_number, AchievementManager.achievements_number]
+		achievements_unlocked_label.text = "%s of %s achievements unlocked" % [AchievementManager.unlocked_achievements_number, AchievementManager.achievements_number]
 	var percent = float(AchievementManager.unlocked_achievements_number) / AchievementManager.achievements_number * 100.0
-	%AchievementsUnlockedPercentage.text = "(%.0f%%)" % [percent]
-	%AchievementsProgressBar.max_value = AchievementManager.achievements_number
-	%AchievementsProgressBar.value = AchievementManager.unlocked_achievements_number
+	achievements_unlocked_percentage.text = "(%.0f%%)" % [percent]
+	achievements_progress_bar.max_value = AchievementManager.achievements_number
+	achievements_progress_bar.value = AchievementManager.unlocked_achievements_number
 
 func update_hidden_achievements():
 	if hidden_achievement_display:
-		hidden_achievement_display.find_child("AchievementDescription").text = "%d achievements are hidden." % int(%HiddenAchievementContainer.get_child_count())
-		if %HiddenAchievementContainer.get_child_count() < 1:
+		hidden_achievement_display.achievement_description.text = "%d achievements are hidden." % int(hidden_achievements_container.get_child_count())
+		if hidden_achievements_container.get_child_count() < 1:
 			hidden_achievement_display.visible = false
 		else:
 			hidden_achievement_display.visible = true
 	
 func _process(_delta: float) -> void:
 	if AchievementManager.achievements_number == 0 or AchievementManager.unlocked_achievements_number == AchievementManager.achievements_number:
-		%LockedContainer.visible = false
+		locked_container.visible = false
 	else:
-		%LockedContainer.visible = true
+		locked_container.visible = true
 
-	%UnlockedContainer.visible = AchievementManager.unlocked_achievements_number > 0
+	unlocked_container.visible = AchievementManager.unlocked_achievements_number > 0
 
 	update_hidden_achievements()
 

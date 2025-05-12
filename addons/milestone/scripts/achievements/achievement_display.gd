@@ -1,6 +1,15 @@
 @tool
 extends Control
 
+@export var achievement_rare_overlay: Node
+@export var achievement_icon: TextureRect
+@export var achievement_name: Label
+@export var achievement_description: Label
+@export var achievement_action_label: Label
+@export var progress_container: Node
+@export var achievement_progress_label: Label
+@export var achievement_progress_bar: ProgressBar
+
 var achievement_id: String:
 	get:
 		return achievement_id
@@ -27,41 +36,41 @@ func update_achievement_display() -> void:
 	var achievement_resource: Achievement = AchievementManager.get_achievement_resource(achievement_id)
 	var achievement: Dictionary = AchievementManager.get_achievement(achievement_id)
 
-	%AchievementName.text = achievement_resource.name
-	%AchievementDescription.text = achievement_resource.description
-	%AchievementIcon.texture_filter = achievement_resource.icon_filter
+	achievement_name.text = achievement_resource.name
+	achievement_description.text = achievement_resource.description
+	achievement_icon.texture_filter = achievement_resource.icon_filter
 
 	if achievement_resource.hidden and not achievement.unlocked:
-		%AchievementIcon.texture_filter = CanvasItem.TextureFilter.TEXTURE_FILTER_LINEAR
-		%AchievementIcon.texture = achievement_resource.hidden_icon
-		%AchievementName.text = "???"
-		%AchievementDescription.text = "This achievement is hidden."
+		achievement_icon.texture_filter = CanvasItem.TextureFilter.TEXTURE_FILTER_LINEAR
+		achievement_icon.texture = achievement_resource.hidden_icon
+		achievement_name.text = "???"
+		achievement_description.text = "This achievement is hidden."
 	elif not achievement.unlocked and achievement_resource.unachieved_icon:
-		%AchievementIcon.texture = achievement_resource.unachieved_icon
+		achievement_icon.texture = achievement_resource.unachieved_icon
 	else:
-		%AchievementIcon.texture = achievement_resource.icon
+		achievement_icon.texture = achievement_resource.icon
 
 	var grayscale = not achievement.unlocked and not achievement_resource.unachieved_icon and not achievement_resource.hidden
-	%AchievementIcon.material.set_shader_parameter("use_grayscale", grayscale)
+	achievement_icon.material.set_shader_parameter("use_grayscale", grayscale)
 
-	%ProgressContainer.visible = achievement_resource.progressive
+	progress_container.visible = achievement_resource.progressive
 	
 	if achievement_resource.progressive:
-		%AchievementProgressBar.value = int(achievement.progress)
-		%AchievementProgressBar.max_value = achievement_resource.progress_goal
-		%AchievementProgressLabel.text = "%s / %s" % [int(achievement.progress), achievement_resource.progress_goal]
-		%AchievementProgressLabel.visible = true
+		achievement_progress_bar.value = int(achievement.progress)
+		achievement_progress_bar.max_value = achievement_resource.progress_goal
+		achievement_progress_label.text = "%s / %s" % [int(achievement.progress), achievement_resource.progress_goal]
+		achievement_progress_label.visible = true
 
 
 	if achievement.unlocked:
-		%AchievementActionLabel.visible = true
-		%AchievementActionLabel.text = "Unlocked %s" % get_readable_date(achievement.unlocked_date)
-		%AchievementRareOverlay.visible = achievement_resource.considered_rare
+		achievement_action_label.visible = true
+		achievement_action_label.text = "Unlocked %s" % get_readable_date(achievement.unlocked_date)
+		achievement_rare_overlay.visible = achievement_resource.considered_rare
 	else:
-		%AchievementActionLabel.visible = false
-		%AchievementRareOverlay.visible = false
+		achievement_action_label.visible = false
+		achievement_rare_overlay.visible = false
 		if achievement_resource.hidden:
-			%ProgressContainer.visible = false
+			progress_container.visible = false
 
 func get_readable_date(unix: int) -> String:
 	var date_dict = Time.get_datetime_dict_from_unix_time(unix)
@@ -82,6 +91,7 @@ func get_readable_date(unix: int) -> String:
 	var day = date_dict.day
 
 	return "%s %s, %s, %d:%02d %s" % [month, date_dict.day, date_dict.year, hour, date_dict.minute, meridian]
+
 
 func get_month_name(month_number: int, use_short_form: bool = false) -> String:
 	var month_names = [

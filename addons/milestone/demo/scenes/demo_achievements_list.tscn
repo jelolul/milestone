@@ -173,7 +173,7 @@ content_margin_bottom = 20.0
 font_names = PackedStringArray("Segoe UI", "Inter")
 font_weight = 700
 
-[node name="DemoAchievements" type="Control"]
+[node name="DemoAchievements" type="Control" node_paths=PackedStringArray("achievement_notifier", "achievements_unlocked_label", "achievements_unlocked_percentage", "achievements_progress_bar", "unlocked_container", "unlocked_achievements_container", "locked_container", "locked_achievements_container", "hidden_achievements_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,6 +183,15 @@ grow_vertical = 2
 mouse_filter = 1
 theme = SubResource("Theme_t5dxj")
 script = ExtResource("1_fibc6")
+achievement_notifier = NodePath("AchievementNotifier")
+achievements_unlocked_label = NodePath("PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer/BoxContainer/AchievementsUnlockedLabel")
+achievements_unlocked_percentage = NodePath("PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer/BoxContainer/AchievementsUnlockedPercentage")
+achievements_progress_bar = NodePath("PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer/AchievementsProgressBar")
+unlocked_container = NodePath("PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/UnlockedContainer")
+unlocked_achievements_container = NodePath("PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/UnlockedContainer/UnlockedAchievementContainer")
+locked_container = NodePath("PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer")
+locked_achievements_container = NodePath("PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer/LockedAchievementContainer")
+hidden_achievements_container = NodePath("PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer/HiddenAchievementContainer")
 
 [node name="AchievementNotifier" type="Control" parent="."]
 unique_name_in_owner = true
