@@ -432,14 +432,19 @@ func _update_tree() -> void:
 var achievement_notif_tween: Tween
 
 func _update_notification(node) -> void:
-	var achievement_name = node.find_child("AchievementName")
-	var achievement_icon = node.find_child("AchievementIcon")
-	var achievement_progress_bar = node.find_child("AchievementProgressBar")
-	var achievement_progress_label = node.find_child("AchievementProgressLabel")
-	var achievement_action_label = node.find_child("AchievementActionLabel")
-	var achievement_rare_overlay = node.find_child("AchievementRareOverlay")
-	var achievement_badge = node.find_child("AchievementBadge")
-	var progress_container = node.find_child("ProgressContainer")
+	var achievement_name = node.achievement_name
+	var achievement_description
+	var achievement_icon = node.achievement_icon
+	var achievement_progress_bar = node.achievement_progress_bar
+	var achievement_progress_label = node.achievement_progress_label
+	var achievement_action_label = node.achievement_action_label
+	var achievement_rare_overlay = node.achievement_rare_overlay
+	var achievement_badge
+	if node.achievement_badge:
+		achievement_badge = node.achievement_badge
+	if node.achievement_description:
+		achievement_description = node.achievement_description
+	var progress_container = node.progress_container
 	var tween
 
 	achievement_name.text = selected_achievement.name
@@ -456,17 +461,18 @@ func _update_notification(node) -> void:
 			tween.stop()
 			tween.kill()
 		if selected_achievement.progressive:
-			achievement_action_label.text = "Achievement Progress"
+			if !selected_achievement.hidden:
+				achievement_action_label.text = "Achievement Progress"
 		else:
 			achievement_action_label.text = "Achievement Unlocked!"
 	else:
 		achievement_action_label.visible = false
-		node.find_child("AchievementDescription").text = selected_achievement.description
+		achievement_description.text = selected_achievement.description
 		if selected_achievement.hidden:
 			achievement_icon.texture_filter = CanvasItem.TextureFilter.TEXTURE_FILTER_LINEAR
 			achievement_icon.texture = selected_achievement.hidden_icon
 			achievement_name.text = "???"
-			node.find_child("AchievementDescription").text = "This achievement is hidden."
+			achievement_description.text = "This achievement is hidden."
 		else:
 			if selected_achievement.unachieved_icon:
 				achievement_icon.texture = selected_achievement.unachieved_icon

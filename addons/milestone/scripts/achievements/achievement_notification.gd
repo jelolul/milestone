@@ -38,6 +38,16 @@ var notification_shown := false
 # Tracks how many increments have happened
 var progress_tracker: int = 0
 
+@export var achievement_rare_overlay: Node
+@export var achievement_icon: TextureRect
+@export var achievement_badge: TextureRect
+@export var achievement_name: Label
+var achievement_description: Label
+@export var achievement_action_label: Label
+@export var progress_container: Node
+@export var achievement_progress_label: Label
+@export var achievement_progress_bar: ProgressBar
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
@@ -59,37 +69,37 @@ func update_achievement_display(achievement_id: String, display_type: String = "
 	var achievement_resource: Achievement = AchievementManager.get_achievement_resource(achievement_id)
 	var achievement: Dictionary = AchievementManager.get_achievement(achievement_id)
 
-	%AchievementName.text = achievement_resource.name
+	achievement_name.text = achievement_resource.name
 
-	%AchievementIcon.texture_filter = achievement_resource.icon_filter
-	%AchievementIcon.texture = achievement_resource.icon
+	achievement_icon.texture_filter = achievement_resource.icon_filter
+	achievement_icon.texture = achievement_resource.icon
 
-	%ProgressContainer.visible = achievement_resource.progressive
+	progress_container.visible = achievement_resource.progressive
 
 	if achievement_resource.progressive:
-		%AchievementProgressBar.value = achievement.progress
-		%AchievementProgressBar.max_value = achievement_resource.progress_goal
-		%AchievementProgressLabel.text = "(%s/%s)" % [int(achievement.progress), achievement_resource.progress_goal]
+		achievement_progress_bar.value = achievement.progress
+		achievement_progress_bar.max_value = achievement_resource.progress_goal
+		achievement_progress_label.text = "(%s/%s)" % [int(achievement.progress), achievement_resource.progress_goal]
 
-	%AchievementBadge.visible = false
+	achievement_badge.visible = false
 
 	if display_type == "unlock":
-		%AchievementActionLabel.text = "Achievement Unlocked!"
-		%AchievementBadge.visible = true
+		achievement_action_label.text = "Achievement Unlocked!"
+		achievement_badge.visible = true
 		
-		%AchievementRareOverlay.visible = achievement_resource.considered_rare
-		%AchievementProgressBar.visible = false
+		achievement_rare_overlay.visible = achievement_resource.considered_rare
+		achievement_progress_bar.visible = false
 
 	elif display_type == "progress":
-		%AchievementActionLabel.text = "Achievement Progress"
+		achievement_action_label.text = "Achievement Progress"
 
-		%AchievementRareOverlay.visible = false
-		%AchievementProgressBar.visible = true
+		achievement_rare_overlay.visible = false
+		achievement_progress_bar.visible = true
 
 	if achievement.unlocked:
-		%AchievementIcon.material.set_shader_parameter("use_grayscale", false)
+		achievement_icon.material.set_shader_parameter("use_grayscale", false)
 	else:
 		if not achievement_resource.unachieved_icon:
-			%AchievementIcon.material.set_shader_parameter("use_grayscale", true)
+			achievement_icon.material.set_shader_parameter("use_grayscale", true)
 		else:
-			%AchievementIcon.texture = achievement_resource.unachieved_icon
+			achievement_icon.texture = achievement_resource.unachieved_icon

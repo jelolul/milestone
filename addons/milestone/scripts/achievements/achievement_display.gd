@@ -10,6 +10,8 @@ extends Control
 @export var achievement_progress_label: Label
 @export var achievement_progress_bar: ProgressBar
 
+var achievement_badge
+
 var achievement_id: String:
 	get:
 		return achievement_id

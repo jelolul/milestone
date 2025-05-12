@@ -96,7 +96,7 @@ corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
-[node name="AchievementNotification" type="PanelContainer"]
+[node name="AchievementNotification" type="PanelContainer" node_paths=PackedStringArray("achievement_rare_overlay", "achievement_icon", "achievement_badge", "achievement_name", "achievement_action_label", "progress_container", "achievement_progress_label", "achievement_progress_bar")]
 z_index = 128
 offset_right = 84.0
 offset_bottom = 84.0
@@ -105,6 +105,14 @@ size_flags_vertical = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_qf7c7")
 script = ExtResource("1_o4xp5")
+achievement_rare_overlay = NodePath("MarginContainer/BoxContainer/PanelContainer/AchievementRareOverlay")
+achievement_icon = NodePath("MarginContainer/BoxContainer/PanelContainer/AchievementIcon")
+achievement_badge = NodePath("MarginContainer/BoxContainer/BoxContainer/BoxContainer/AchievementBadge")
+achievement_name = NodePath("MarginContainer/BoxContainer/BoxContainer/AchievementName")
+achievement_action_label = NodePath("MarginContainer/BoxContainer/BoxContainer/BoxContainer/AchievementActionLabel")
+progress_container = NodePath("MarginContainer/BoxContainer/BoxContainer/ProgressContainer")
+achievement_progress_label = NodePath("MarginContainer/BoxContainer/BoxContainer/ProgressContainer/AchievementProgressLabel")
+achievement_progress_bar = NodePath("MarginContainer/BoxContainer/BoxContainer/ProgressContainer/AchievementProgressBar")
 
 [node name="Border" type="PanelContainer" parent="."]
 visible = false
