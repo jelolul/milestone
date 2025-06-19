@@ -69,7 +69,7 @@ The `AchievementManager` API provides a simple way to manage and track achieveme
 | `AchievementManager.progress_achievement(achievement_id: String, progress_amount: int)`      | Progresses the achievement with the given ID using the specified progress amount.  |
 | `AchievementManager.get_progress(achievement_id: String)`      | Returns the progress of the achievement.  |
 | `AchievementManager.reset_achievements()`             | Resets all achievements.                     |
-| `AchievementManager.reset_achievement(achievemente_id: String)`             | Resets the achievement with the given ID.                     |
+| `AchievementManager.reset_achievement(achievement_id: String)`             | Resets the achievement with the given ID.                     |
 | `AchievementManager.unlock_all_achievements()`             | Unlocks all achievements.                     |
 
 ## License
