@@ -558,6 +558,7 @@ layout_mode = 2
 label = "Icon"
 setting_name = "Icon"
 setting_type = 1
+base_type = "Texture2D"
 
 [node name="PanelContainer12" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
 self_modulate = Color(1, 1, 1, 0.627451)
@@ -574,6 +575,7 @@ layout_mode = 2
 label = "Unachieved Icon"
 setting_name = "Unachieved Icon"
 setting_type = 1
+base_type = "Texture2D"
 
 [node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer12/BoxContainer"]
 modulate = Color(1, 1, 1, 0.588235)
@@ -596,6 +598,7 @@ layout_mode = 2
 label = "Hidden Icon"
 setting_name = "Hidden Icon"
 setting_type = 1
+base_type = "Texture2D"
 
 [node name="Empty" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
 modulate = Color(1, 1, 1, 0.588235)
