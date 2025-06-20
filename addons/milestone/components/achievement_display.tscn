@@ -124,7 +124,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_t5dxj")
 
 [node name="AchievementRareOverlay" type="Panel" parent="MarginContainer/BoxContainer/PanelContainer"]
 unique_name_in_owner = true
-visible = false
 show_behind_parent = true
 material = SubResource("ShaderMaterial_7177w")
 layout_mode = 2

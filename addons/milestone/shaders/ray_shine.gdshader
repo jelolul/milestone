@@ -62,5 +62,5 @@ void fragment() {
     vec4 blurred = vec4(0.1, 0.1, 0.1, 1.0);
     shine = screen(blurred, vec4(shine, rays)).rgb;
 
-    COLOR = vec4(shine, rays * gradient_color.a);
+    COLOR = vec4(shine, rays * gradient_color.a) * COLOR.a;
 }

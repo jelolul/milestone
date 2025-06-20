@@ -10,5 +10,5 @@ void fragment() {
 		tex_color.rgb = vec3(gray);
 	}
 
-	COLOR = tex_color;
+	COLOR = vec4(tex_color.rgb, COLOR.a);
 }
