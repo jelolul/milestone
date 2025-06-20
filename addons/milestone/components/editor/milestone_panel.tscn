@@ -13,12 +13,8 @@
 content_margin_top = 0.0
 
 [sub_resource type="SVGTexture" id="SVGTexture_qfjv7"]
-source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8\" height=\"48\"><path fill=\"gray\" fill-opacity=\".65\" d=\"M3.15 4v40h1.7V4z\"/></svg>
-"
 
 [sub_resource type="SVGTexture" id="SVGTexture_cg0tt"]
-source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"8\"><path fill=\"none\" stroke=\"gray\" stroke-opacity=\".65\" stroke-width=\"1.7\" d=\"M4 4h40\"/></svg>
-"
 
 [sub_resource type="SystemFont" id="SystemFont_q5u40"]
 font_names = PackedStringArray("Inter")
@@ -27,36 +23,18 @@ subpixel_positioning = 0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwxb5"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g2rl1"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i11vs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g2rl1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kf1yf"]
 
 [sub_resource type="SVGTexture" id="SVGTexture_on843"]
-source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"M3 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4l-3-3h-1v6H3zm1 0v5h3V1zm4 8a1 1 0 0 1 0 4 1 1 0 0 1 0-4z\"/></svg>
-"
 color_map = {
 Color(1, 0.372549, 0.372549, 1): Color(1, 0.47, 0.42, 1),
 Color(0.372549, 1, 0.592157, 1): Color(0.45, 0.95, 0.5, 1),
 Color(1, 0.866667, 0.396078, 1): Color(1, 0.87, 0.4, 1)
 }
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ldk8i"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4vfm"]
-content_margin_left = 10.0
-content_margin_top = 4.0
-content_margin_right = 10.0
-content_margin_bottom = 4.0
-bg_color = Color(0.54, 0.216, 0.2592, 0.521569)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.7, 0.288922, 0.338505, 0.8)
-corner_detail = 2
-anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwxb5"]
 content_margin_left = 10.0
@@ -72,9 +50,23 @@ border_color = Color(0.7, 0.288922, 0.338505, 0.8)
 corner_detail = 2
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4vfm"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0.54, 0.216, 0.2592, 0.521569)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7, 0.288922, 0.338505, 0.8)
+corner_detail = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ldk8i"]
+
 [sub_resource type="SVGTexture" id="SVGTexture_2fac8"]
-source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"m5 1v1h-4v2h14v-2h-4v-1zm-3 4v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8zm1 2h2v6h-2zm4 0h2v6h-2zm4 0h2v6h-2z\"/></svg>
-"
 color_map = {
 Color(1, 0.372549, 0.372549, 1): Color(1, 0.47, 0.42, 1),
 Color(0.372549, 1, 0.592157, 1): Color(0.45, 0.95, 0.5, 1),
@@ -209,17 +201,17 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Create a new achievement."
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_g2rl1")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_i11vs")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_g2rl1")
 icon = ExtResource("3_on843")
 
 [node name="SaveButton" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Save the edited achievement."
-theme_override_styles/focus = SubResource("StyleBoxEmpty_kf1yf")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_g2rl1")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_i11vs")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_g2rl1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kf1yf")
 disabled = true
 icon = SubResource("SVGTexture_on843")
 
@@ -228,20 +220,20 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "Delete Achievement"
-theme_override_colors/font_hover_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/font_hover_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_hover_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_hover_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_focus_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_normal_color = Color(1, 0.4, 0.48, 1)
 theme_override_colors/font_color = Color(1, 0.4, 0.478431, 1)
 theme_override_colors/font_focus_color = Color(1, 0.4, 0.478431, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ldk8i")
-theme_override_styles/hover = SubResource("StyleBoxFlat_l4vfm")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_l4vfm")
+theme_override_colors/font_hover_color = Color(1, 0.4, 0.478431, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.4, 0.478431, 1)
+theme_override_colors/icon_normal_color = Color(1, 0.4, 0.48, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.4, 0.478431, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.4, 0.478431, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.4, 0.478431, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.4, 0.478431, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_uwxb5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l4vfm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_l4vfm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ldk8i")
 icon = SubResource("SVGTexture_2fac8")
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer"]
@@ -358,6 +350,7 @@ size_flags_horizontal = 1
 
 [node name="AchievementDisplay" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/BoxContainer" instance=ExtResource("3_q5u40")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -618,22 +611,22 @@ theme_override_constants/separation = 10
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_colors/font_disabled_color = Color(1, 0.4, 0.478431, 0.4)
-theme_override_colors/font_hover_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/font_hover_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_disabled_color = Color(1, 0.4, 0.48, 0.4)
-theme_override_colors/icon_hover_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_hover_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_focus_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_normal_color = Color(1, 0.4, 0.478431, 1)
 theme_override_colors/font_color = Color(1, 0.4, 0.478431, 1)
 theme_override_colors/font_focus_color = Color(1, 0.4, 0.478431, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_styles/disabled = SubResource("StyleBoxFlat_kf1yf")
-theme_override_styles/hover = SubResource("StyleBoxFlat_l4vfm")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_l4vfm")
+theme_override_colors/font_hover_color = Color(1, 0.4, 0.478431, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.4, 0.478431, 1)
+theme_override_colors/font_disabled_color = Color(1, 0.4, 0.478431, 0.4)
+theme_override_colors/icon_normal_color = Color(1, 0.4, 0.478431, 1)
+theme_override_colors/icon_focus_color = Color(1, 0.4, 0.478431, 1)
+theme_override_colors/icon_pressed_color = Color(1, 0.4, 0.478431, 1)
+theme_override_colors/icon_hover_color = Color(1, 0.4, 0.478431, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1, 0.4, 0.478431, 1)
+theme_override_colors/icon_disabled_color = Color(1, 0.4, 0.48, 0.4)
 theme_override_styles/normal = SubResource("StyleBoxFlat_uwxb5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l4vfm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_l4vfm")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kf1yf")
 text = "Delete Achievement"
 icon = SubResource("SVGTexture_2fac8")
 
@@ -644,6 +637,7 @@ text = "There's no undo for this!"
 
 [node name="NotSelectedLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Create a new achievement / Select an achievement"
 horizontal_alignment = 1
