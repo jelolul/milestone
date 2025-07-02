@@ -41,15 +41,11 @@ func _on_achievement_unlocked(_achievement_id: String) -> void:
 	unlocked_achievements_number = get_unlocked_achievements().size()
 
 func get_achievement_resource(achievement_id: String) -> Achievement:
-	var path = str(ProjectSettings.get_setting("milestone/general/achievements_path") + achievement_id + ".tres")
+	var path = ProjectSettings.get_setting("milestone/general/achievements_path") + achievement_id + ".tres"
+	var achievement = load(path)
 
-	if FileAccess.open(path, FileAccess.READ):
-		var achievement: Achievement = load(ProjectSettings.get_setting("milestone/general/achievements_path") + achievement_id + ".tres")
-
-		if achievement:
-			return achievement
-		else:
-			return null
+	if achievement is Achievement:
+		return achievement
 	else:
 		return null
 

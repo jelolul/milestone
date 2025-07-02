@@ -7,6 +7,7 @@ addons/explore-editor-theme/
 export.cfg
 export_presets.cfg
 project.godot
+export-tests/*
 
 # Imported translations (automatically generated from CSV files)
 *.translation
