@@ -197,8 +197,8 @@ func get_achievements() -> Dictionary:
 		dir.list_dir_begin()
 		var file = dir.get_next()
 		while file != "":
-			if file.get_extension() == "tres" or file.get_extension() == "res":
-				var resource = load(ProjectSettings.get_setting("milestone/general/achievements_path") + file)
+			if file.replace(".remap", "").get_extension() == "tres" or file.replace(".remap", "").get_extension() == "res":
+				var resource = load(ProjectSettings.get_setting("milestone/general/achievements_path") + file.replace(".remap", ""))
 				if resource is Achievement:
 					_achievements[resource.id] = resource
 			file = dir.get_next()
