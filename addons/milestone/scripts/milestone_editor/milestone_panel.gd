@@ -127,36 +127,91 @@ func get_all_descendants(node: Node) -> Array:
 		result += get_all_descendants(child)
 	return result
 
+
+#region Natural Sorting
+func chunk_string(s: String) -> Array:
+	var chunks := []
+	var current := ""
+	var is_digit := false
+	
+	for c in s:
+		var digit = (c >= "0" and c <= "9")
+		if digit != is_digit:
+			if current != "":
+				chunks.append(current)
+			current = c
+			is_digit = digit
+		else:
+			current += c
+
+	if current != "":
+		chunks.append(current)
+
+	return chunks
+
+
+func comparator(a: String, b: String) -> bool:
+	var chunks_a := chunk_string(a)
+	var chunks_b := chunk_string(b)
+
+	var n = min(chunks_a.size(), chunks_b.size())
+
+	for i in range(n):
+		var ca = chunks_a[i]
+		var cb = chunks_b[i]
+
+		if ca.is_valid_int() and cb.is_valid_int():
+			var na = int(ca)
+			var nb = int(cb)
+			if na != nb:
+				return na < nb
+		elif ca.is_valid_int():
+			return true
+		elif cb.is_valid_int():
+			return false
+		elif ca != cb:
+			return ca < cb
+
+	return chunks_a.size() < chunks_b.size()
+#endregion
+
 func _on_load_achievements() -> void:
 	var path = ProjectSettings.get_setting("milestone/general/achievements_path")
 	var dir = DirAccess.open(path)
-	if dir:
-		dir.list_dir_begin()
-		var file = dir.get_next()
-		while file != "":
-			if file.get_extension() == "tres" or file.get_extension() == "res":
-				var resource = load(path + file)
-				if resource is Achievement:
-					var _file = file.get_file().replace(str(".", file.get_extension()), "")
-					if resource.id.is_empty() or _file.is_empty():
-						continue
-					var achievement_item = tree.create_item(root)
-					achievement_item.set_text(0, _file)
-					achievement_item.set_icon(0, resource.icon)
-					achievement_item.set_selectable(0, true)
-					achievement_item.set_icon_max_width(0, 16)
-					achievement_item.set_metadata(0, resource.id)
-					if resource.hidden:
-						achievement_item.set_icon(1, resource.hidden_icon)
-					else:
-						achievement_item.set_icon(1, null)
-					achievement_item.set_selectable(1, false)
-					_achievements.append(achievement_item)
+	if not dir:
+		return
 
-					if _file == selected_id:
-						tree.set_selected(achievement_item, 0)
-			file = dir.get_next()
+	var files := []
+	dir.list_dir_begin()
+	var raw_file = dir.get_next()
+	while raw_file != "":
+		if raw_file.get_extension() == "tres" or raw_file.get_extension() == "res":
+			files.append(raw_file)
+		raw_file = dir.get_next()
 
+	files.sort_custom(comparator)
+
+	for file_name in files:
+		var resource = load(path + file_name)
+		if resource is Achievement:
+			var display_name = file_name.get_file().replace("." + file_name.get_extension(), "")
+			if resource.id.is_empty() or display_name.is_empty():
+				continue
+			var achievement_item = tree.create_item(root)
+			achievement_item.set_text(0, display_name)
+			achievement_item.set_icon(0, resource.icon)
+			achievement_item.set_selectable(0, true)
+			achievement_item.set_icon_max_width(0, 16)
+			achievement_item.set_metadata(0, resource.id)
+			if resource.hidden:
+				achievement_item.set_icon(1, resource.hidden_icon)
+			else:
+				achievement_item.set_icon(1, null)
+			achievement_item.set_selectable(1, false)
+			_achievements.append(achievement_item)
+
+			if display_name == selected_id:
+				tree.set_selected(achievement_item, 0)
 
 	%AchievementsCount.text = "# of achievements loaded: %d" % _achievements.size()
 
