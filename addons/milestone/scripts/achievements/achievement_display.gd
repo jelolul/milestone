@@ -58,8 +58,8 @@ func update_achievement_display() -> void:
 	progress_container.visible = achievement_resource.progressive
 	
 	if achievement_resource.progressive:
-		achievement_progress_bar.value = int(achievement.progress)
 		achievement_progress_bar.max_value = achievement_resource.progress_goal
+		achievement_progress_bar.value = int(achievement.progress)
 		achievement_progress_label.text = "%s / %s" % [int(achievement.progress), achievement_resource.progress_goal]
 		achievement_progress_label.visible = true
 

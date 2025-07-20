@@ -548,8 +548,8 @@ func _update_notification(node) -> void:
 		achievement_notif_tween = tween
 
 	elif selected_achievement.progressive and node.name == "AchievementDisplay":
-		achievement_progress_bar.min_value = 1
 		achievement_progress_bar.max_value = selected_achievement.progress_goal
+		achievement_progress_bar.min_value = 1
 		achievement_progress_bar.value = selected_achievement.progress_goal / 3
 		_update_progress_label(achievement_progress_bar.value, achievement_progress_label, node)
 
