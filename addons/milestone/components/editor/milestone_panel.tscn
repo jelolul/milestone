@@ -12,10 +12,6 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfjv7"]
 content_margin_top = 0.0
 
-[sub_resource type="SVGTexture" id="SVGTexture_qfjv7"]
-
-[sub_resource type="SVGTexture" id="SVGTexture_cg0tt"]
-
 [sub_resource type="SystemFont" id="SystemFont_q5u40"]
 font_names = PackedStringArray("Inter")
 font_weight = 600
@@ -28,13 +24,6 @@ subpixel_positioning = 0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g2rl1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kf1yf"]
-
-[sub_resource type="SVGTexture" id="SVGTexture_on843"]
-color_map = {
-Color(1, 0.372549, 0.372549, 1): Color(1, 0.47, 0.42, 1),
-Color(0.372549, 1, 0.592157, 1): Color(0.45, 0.95, 0.5, 1),
-Color(1, 0.866667, 0.396078, 1): Color(1, 0.87, 0.4, 1)
-}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwxb5"]
 content_margin_left = 10.0
@@ -65,13 +54,6 @@ corner_detail = 2
 anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ldk8i"]
-
-[sub_resource type="SVGTexture" id="SVGTexture_2fac8"]
-color_map = {
-Color(1, 0.372549, 0.372549, 1): Color(1, 0.47, 0.42, 1),
-Color(0.372549, 1, 0.592157, 1): Color(0.45, 0.95, 0.5, 1),
-Color(1, 0.866667, 0.396078, 1): Color(1, 0.87, 0.4, 1)
-}
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_256x5"]
 
@@ -174,8 +156,6 @@ metadata/_tab_index = 0
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
-theme_override_icons/h_grabber = SubResource("SVGTexture_qfjv7")
-theme_override_icons/v_grabber = SubResource("SVGTexture_cg0tt")
 split_offset = 250
 
 [node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer"]
@@ -213,7 +193,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_i11vs")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_g2rl1")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kf1yf")
 disabled = true
-icon = SubResource("SVGTexture_on843")
 
 [node name="DeleteAchievementButton" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -234,7 +213,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_uwxb5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l4vfm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_l4vfm")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ldk8i")
-icon = SubResource("SVGTexture_2fac8")
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer"]
 custom_minimum_size = Vector2(220, 0)
@@ -635,7 +613,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_l4vfm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_l4vfm")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_kf1yf")
 text = "Delete Achievement"
-icon = SubResource("SVGTexture_2fac8")
 
 [node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/BoxContainer"]
 modulate = Color(1, 1, 1, 0.588235)
@@ -670,8 +647,6 @@ metadata/_tab_index = 1
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
-theme_override_icons/h_grabber = SubResource("SVGTexture_qfjv7")
-theme_override_icons/v_grabber = SubResource("SVGTexture_cg0tt")
 split_offset = 250
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer"]
