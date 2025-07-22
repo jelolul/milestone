@@ -192,7 +192,7 @@ func _on_load_achievements() -> void:
 	files.sort_custom(comparator)
 
 	for file_name in files:
-		var resource = load(path + file_name)
+		var resource = load(path.path_join(file_name))
 		if resource is Achievement:
 			var display_name = file_name.get_file().replace("." + file_name.get_extension(), "")
 			if resource.id.is_empty() or display_name.is_empty():
@@ -364,7 +364,7 @@ func get_achievement_resource(achievement_id: String) -> Achievement:
 	if !achievement_id:
 		return null
 
-	var achievement: Achievement = load(ProjectSettings.get_setting("milestone/general/achievements_path") + achievement_id + ".tres")
+	var achievement: Achievement = load(ProjectSettings.get_setting("milestone/general/achievements_path").path_join(achievement_id + ".tres"))
 
 	if !achievement:
 		return null

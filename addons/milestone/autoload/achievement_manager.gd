@@ -41,7 +41,7 @@ func _on_achievement_unlocked(_achievement_id: String) -> void:
 	unlocked_achievements_number = get_unlocked_achievements().size()
 
 func get_achievement_resource(achievement_id: String) -> Achievement:
-	var path = ProjectSettings.get_setting("milestone/general/achievements_path") + achievement_id + ".tres"
+	var path = ProjectSettings.get_setting("milestone/general/achievements_path").path_join(achievement_id + ".tres")
 	var achievement = load(path)
 
 	if achievement is Achievement:
@@ -194,7 +194,7 @@ func get_achievements() -> Dictionary:
 		var file = dir.get_next()
 		while file != "":
 			if file.replace(".remap", "").get_extension() == "tres" or file.replace(".remap", "").get_extension() == "res":
-				var resource = load(ProjectSettings.get_setting("milestone/general/achievements_path") + file.replace(".remap", ""))
+				var resource = load(ProjectSettings.get_setting("milestone/general/achievements_path").path_join(file.replace(".remap", "")))
 				if resource is Achievement:
 					_achievements[resource.id] = resource
 			file = dir.get_next()
