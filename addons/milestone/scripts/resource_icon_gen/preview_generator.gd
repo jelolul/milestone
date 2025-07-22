@@ -17,6 +17,9 @@ func _generate(resource, size, _metadata) -> Texture2D:
 				img = resource.icon.get_image()
 				img.resize(size.x, size.y, Image.INTERPOLATE_LANCZOS)
 
+	if img.is_empty():
+		return null
+
 	return ImageTexture.create_from_image(img)
 
 func _handles(type) -> bool:
