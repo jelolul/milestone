@@ -9,6 +9,8 @@ extends Node
 @export_enum("TopLeft", "TopRight", "BottomLeft", "BottomRight") var screen_corner := "BottomRight"
 
 
+@export var user_interface : Node
+
 ## The notification scene to use.[br][br]
 ## [b]Note:[/b] Needs to be setup similarily to the [code]res://addons/milestone/components/achievement_notification.tscn[/code] file, you could as well edit that component to your liking.
 @export var notification_component: PackedScene = preload("uid://dhdqvikxt7uvu")
@@ -166,11 +168,17 @@ func play_sfx(stream: AudioStream) -> void:
 	player.autoplay = false
 	player.finished.connect(player.queue_free)
 	
-	add_child(player)
+	if user_interface:
+		user_interface.add_child(player)
+	else:
+		add_child(player)
 	player.play()
 
 func show_notification(_notification: Control) -> void:
-	add_child(_notification)
+	if user_interface:
+		user_interface.add_child(_notification)
+	else:
+		add_child(_notification)
 	_active_notifications.insert(0, _notification)
 
 	start_pos = _get_offscreen_position_from_type(_notification)
