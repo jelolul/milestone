@@ -324,9 +324,14 @@ func _get_notification_by_id(achievement_id: String) -> Node:
 
 func clear_notifications() -> void:
 	for notif in _active_notifications:
+		_notification_timers[notif.id].stop()
+		_notification_timers[notif.id].emit_signal("timeout")
 		_notification_tweens[notif.id].kill()
 		notif.queue_free()
-	
+		
 	_active_notifications.clear()
 	_queue.clear()
 	_notification_timers.clear()
+
+func _exit_tree() -> void:
+	clear_notifications()
