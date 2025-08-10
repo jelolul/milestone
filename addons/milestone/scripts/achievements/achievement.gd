@@ -13,6 +13,8 @@ extends Resource
 @export var unachieved_icon: Texture2D
 ## The hidden icon of the achievement.
 @export var hidden_icon: Texture2D = preload("uid://cg3b84ak8bsrv")
+## The group ID, used for grouping achievements.
+@export var group: String = ""
 ## Name of the achievement.
 @export var name: String = "Achievement Name"
 ## Description of the achievement.

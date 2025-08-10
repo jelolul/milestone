@@ -29,7 +29,6 @@ func _ready() -> void:
 
 	ProjectSettings.set_setting("input_devices/pointing/emulate_touch_from_mouse", true)
 
-
 func _on_achievement_unlocked(achievement_id: String) -> void:
 	if AchievementManager.achievements_list[achievement_id].hidden:
 		for child in hidden_achievements_container.get_children():

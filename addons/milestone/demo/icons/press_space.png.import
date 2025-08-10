@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqdbt2s7bnyxt"
-path="res://.godot/imported/quintuple_click.svg-aad00762ba576bbeff7915e0fe2ddf54.ctex"
+uid="uid://bikhvxxhsx08q"
+path="res://.godot/imported/press_space.png-c99acb24715f910f4f6822216e649282.ctex"
 metadata={
-"has_editor_variant": true,
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/milestone/demo/icons/quintuple_click.svg"
-dest_files=["res://.godot/imported/quintuple_click.svg-aad00762ba576bbeff7915e0fe2ddf54.ctex"]
+source_file="res://addons/milestone/demo/icons/press_space.png"
+dest_files=["res://.godot/imported/press_space.png-c99acb24715f910f4f6822216e649282.ctex"]
 
 [params]
 
@@ -39,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=true
-editor/convert_colors_with_editor_theme=false

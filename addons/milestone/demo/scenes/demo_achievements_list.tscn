@@ -21,25 +21,12 @@ bg_color = Color(0.098235, 0.129401, 0.160567, 1)
 [sub_resource type="SystemFont" id="SystemFont_pgbcl"]
 font_names = PackedStringArray("Inter")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8h6ex"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pv48d"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgbcl"]
 content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-bg_color = Color(0.3268, 0.36593, 0.43, 0.592157)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5dxj"]
-content_margin_left = 10.0
-content_margin_top = 5.0
-content_margin_right = 10.0
-content_margin_bottom = 5.0
-bg_color = Color(0.3268, 0.3784, 0.43, 1)
+bg_color = Color(0.248339, 0.292706, 0.337072, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -56,34 +43,36 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgbcl"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5dxj"]
 content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-bg_color = Color(0.248339, 0.292706, 0.337072, 1)
+bg_color = Color(0.3268, 0.3784, 0.43, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu2xc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pv48d"]
 content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-bg_color = Color(0.43, 0.3268, 0.3268, 0.592157)
+bg_color = Color(0.3268, 0.36593, 0.43, 0.592157)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8ixd"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8h6ex"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f47fg"]
 content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-bg_color = Color(0.43, 0.3268, 0.3268, 1)
+bg_color = Color(0.337072, 0.248991, 0.248339, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -100,12 +89,23 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f47fg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8ixd"]
 content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 5.0
-bg_color = Color(0.337072, 0.248991, 0.248339, 1)
+bg_color = Color(0.43, 0.3268, 0.3268, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu2xc"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.43, 0.3268, 0.3268, 0.592157)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -235,19 +235,19 @@ layout_mode = 2
 focus_mode = 0
 mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
-theme_override_colors/font_disabled_color = Color(0.301, 0.3655, 0.43, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.615686, 0.74902, 0.878431, 1)
-theme_override_colors/font_hover_color = Color(0.615686, 0.74902, 0.878431, 1)
 theme_override_colors/font_color = Color(0.615686, 0.74902, 0.878431, 1)
 theme_override_colors/font_focus_color = Color(0.615686, 0.74902, 0.878431, 1)
 theme_override_colors/font_pressed_color = Color(0.616, 0.748, 0.88, 1)
+theme_override_colors/font_hover_color = Color(0.615686, 0.74902, 0.878431, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.615686, 0.74902, 0.878431, 1)
+theme_override_colors/font_disabled_color = Color(0.301, 0.3655, 0.43, 1)
 theme_override_fonts/font = SubResource("SystemFont_pgbcl")
 theme_override_font_sizes/font_size = 14
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6ex")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_pv48d")
-theme_override_styles/hover = SubResource("StyleBoxFlat_t5dxj")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_pestd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_pgbcl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pestd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t5dxj")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_pv48d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6ex")
 action_mode = 0
 text = "Unlock all achievements"
 
@@ -257,19 +257,19 @@ layout_mode = 2
 focus_mode = 0
 mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
-theme_override_colors/font_disabled_color = Color(0.42, 0.294, 0.294, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.878431, 0.615686, 0.615686, 1)
-theme_override_colors/font_hover_color = Color(0.878431, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0.88, 0.616, 0.616, 1)
 theme_override_colors/font_focus_color = Color(0.878431, 0.615686, 0.615686, 1)
 theme_override_colors/font_pressed_color = Color(0.878431, 0.615686, 0.615686, 1)
+theme_override_colors/font_hover_color = Color(0.878431, 0.615686, 0.615686, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.878431, 0.615686, 0.615686, 1)
+theme_override_colors/font_disabled_color = Color(0.42, 0.294, 0.294, 1)
 theme_override_fonts/font = SubResource("SystemFont_pgbcl")
 theme_override_font_sizes/font_size = 14
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6ex")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_yu2xc")
-theme_override_styles/hover = SubResource("StyleBoxFlat_d8ixd")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t6ylx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_f47fg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t6ylx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d8ixd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_yu2xc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6ex")
 action_mode = 0
 text = "Reset Achievements"
 
@@ -279,19 +279,19 @@ layout_mode = 2
 focus_mode = 0
 mouse_behavior_recursive = 2
 mouse_default_cursor_shape = 2
-theme_override_colors/font_disabled_color = Color(0.42, 0.294, 0.294, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.878431, 0.615686, 0.615686, 1)
-theme_override_colors/font_hover_color = Color(0.878431, 0.615686, 0.615686, 1)
 theme_override_colors/font_color = Color(0.88, 0.616, 0.616, 1)
 theme_override_colors/font_focus_color = Color(0.878431, 0.615686, 0.615686, 1)
 theme_override_colors/font_pressed_color = Color(0.878431, 0.615686, 0.615686, 1)
+theme_override_colors/font_hover_color = Color(0.878431, 0.615686, 0.615686, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.878431, 0.615686, 0.615686, 1)
+theme_override_colors/font_disabled_color = Color(0.42, 0.294, 0.294, 1)
 theme_override_fonts/font = SubResource("SystemFont_pgbcl")
 theme_override_font_sizes/font_size = 14
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6ex")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_yu2xc")
-theme_override_styles/hover = SubResource("StyleBoxFlat_d8ixd")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t6ylx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_f47fg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t6ylx")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d8ixd")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_yu2xc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6ex")
 action_mode = 0
 text = "Close game"
 

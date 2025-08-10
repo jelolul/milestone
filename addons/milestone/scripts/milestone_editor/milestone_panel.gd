@@ -14,6 +14,7 @@ var selected_achievement
 @onready var achievement_display = %AchievementDisplay
 
 @onready var id_setting = %IDSetting
+@onready var group_setting = %GroupSetting
 @onready var name_setting = %NameSetting
 @onready var desc_setting = %DescSetting
 @onready var considered_rare_setting = %ConsideredRareSetting
@@ -239,6 +240,7 @@ func _on_tree_item_clicked() -> void:
 	selected_achievement = item
 	
 	id_setting.line_edit.text = item.id
+	group_setting.line_edit.text = item.group
 	name_setting.line_edit.text = item.name
 	desc_setting.line_edit.text = item.description
 	hidden_setting.toggle.button_pressed = item.hidden
@@ -284,6 +286,7 @@ func _store_changes(_achievement = selected_achievement) -> void:
 	tree.get_selected().set_text(0, achievement.id.to_snake_case())
 	tree.get_selected().set_metadata(0, achievement.id.to_snake_case())
 	achievement.name = name_setting.line_edit.text
+	achievement.group = group_setting.line_edit.text
 	achievement.description = desc_setting.line_edit.text
 	achievement.hidden = hidden_setting.toggle.button_pressed
 	achievement.considered_rare = considered_rare_setting.toggle.button_pressed

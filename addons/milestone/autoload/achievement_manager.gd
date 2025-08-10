@@ -117,6 +117,14 @@ func progress_achievement(achievement_id: String, progress_amount: int = 1) -> v
 		if ProjectSettings.get_setting("milestone/debug/print_errors") == true and OS.is_debug_build():
 			push_error("[Milestone] Could not find achievement with ID '%s'" % achievement_id)
 
+## Progresses all achievements in the specified group by the given amount.
+func progress_group(group_id: String, amount: int = 1) -> void:
+	for achievement_id in achievements_list.keys():
+		var achievement_res: Achievement = get_achievement_resource(achievement_id)
+		if achievement_res and achievement_res.group == group_id:
+			progress_achievement(achievement_id, amount)
+	
+## Returns an achievement dictionary.
 func get_achievement(achievement_id: String) -> Dictionary:
 	if not achievements.has(achievement_id) and achievements_list.has(achievement_id):
 		achievements[achievement_id] = {
@@ -131,6 +139,22 @@ func get_achievement(achievement_id: String) -> Dictionary:
 		if ProjectSettings.get_setting("milestone/debug/print_errors") == true and OS.is_debug_build():
 			print("[Milestone] Couldn't find an achievement with the ID: %s" % achievement_id)
 		return {}
+	
+## Returns an array of achievement resources belonging to the given group.
+func get_achievements_by_group(group_id: String) -> Array:
+	var group_achievements: Array = []
+
+	for achievement_id in achievements_list.keys():
+		var achievement_res: Achievement = get_achievement_resource(achievement_id)
+		if achievement_res.group:
+			if achievement_res and achievement_res.group == group_id:
+				group_achievements.append(achievement_res)
+
+	if group_achievements.is_empty():
+		if ProjectSettings.get_setting("milestone/debug/print_errors") == true and OS.is_debug_build():
+			print("[Milestone] Couldn't find any achievements in the group: %s" % group_id)
+
+	return group_achievements
 	
 ## Resets all achievements.
 func reset_achievements() -> void:

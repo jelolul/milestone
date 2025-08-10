@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b35o10vjk7vse"]
+[gd_scene load_steps=24 format=3 uid="uid://b35o10vjk7vse"]
 
 [ext_resource type="Script" uid="uid://c8p1sd0scafee" path="res://addons/milestone/scripts/milestone_editor/milestone_panel.gd" id="1_qfjv7"]
 [ext_resource type="Texture2D" uid="uid://bse7wi72sb2m8" path="res://addons/milestone/icons/editor/logo.svg" id="1_ryifn"]
@@ -57,10 +57,6 @@ anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_256x5"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nevu8"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pwvwq"]
-
 [sub_resource type="SystemFont" id="SystemFont_uwxb5"]
 font_names = PackedStringArray("Inter")
 font_weight = 500
@@ -89,6 +85,8 @@ content_margin_bottom = 0.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tays"]
 content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pwvwq"]
 
 [node name="MilestonePanel" type="PanelContainer"]
 anchors_preset = 15
@@ -140,7 +138,6 @@ stretch_mode = 5
 [node name="TabContainer" type="TabContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-tab_alignment = 2
 current_tab = 0
 
 [node name="Achievements" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer"]
@@ -248,29 +245,6 @@ horizontal_alignment = 1
 layout_mode = 2
 vertical = true
 
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-alignment = 2
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/BoxContainer"]
-visible = false
-modulate = Color(1, 1, 1, 0.588235)
-layout_mode = 2
-size_flags_vertical = 5
-theme_override_font_sizes/font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxEmpty_nevu8")
-vertical_alignment = 1
-
-[node name="VersionNumber" type="LinkButton" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/BoxContainer"]
-unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0.588235)
-layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_pwvwq")
-text = "{version}"
-underline = 1
-uri = "https://github.com/jelolul/milestone"
-
 [node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
@@ -353,6 +327,7 @@ theme_override_constants/separation = 8
 [node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
 self_modulate = Color(1, 1, 1, 0.627451)
 layout_mode = 2
+tooltip_text = "IDs should ALWAYS use snake case."
 theme_type_variation = &"TreeSecondary"
 
 [node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer2"]
@@ -366,11 +341,22 @@ label = "ID"
 setting_name = "ID"
 placeholder_text = "achievement_id"
 
-[node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer2/BoxContainer"]
-modulate = Color(1, 1, 1, 0.588235)
+[node name="PanelContainer14" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
+self_modulate = Color(1, 1, 1, 0.627451)
 layout_mode = 2
-size_flags_vertical = 0
-text = "IDs should ALWAYS use snake case."
+tooltip_text = "IDs should ALWAYS use snake case."
+theme_type_variation = &"TreeSecondary"
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer14"]
+layout_mode = 2
+vertical = true
+
+[node name="GroupSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer14/BoxContainer" instance=ExtResource("5_uwxb5")]
+unique_name_in_owner = true
+layout_mode = 2
+label = "Group"
+setting_name = "Group"
+placeholder_text = "group_01"
 
 [node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
 self_modulate = Color(1, 1, 1, 0.627451)
@@ -407,6 +393,7 @@ placeholder_text = "Achievement Description"
 [node name="PanelContainer5" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
 self_modulate = Color(1, 1, 1, 0.627451)
 layout_mode = 2
+tooltip_text = "Toggle this on if the achievement is not supposed to be revealed before unlocking."
 theme_type_variation = &"TreeSecondary"
 
 [node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer5"]
@@ -420,12 +407,6 @@ label = "Hidden"
 setting_name = "Hidden"
 setting_type = 2
 toggle_text = "On"
-
-[node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer5/BoxContainer"]
-modulate = Color(1, 1, 1, 0.588235)
-layout_mode = 2
-size_flags_vertical = 0
-text = "Toggle this on if the achievement is not supposed to be revealed before unlocking."
 
 [node name="PanelContainer6" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
 self_modulate = Color(1, 1, 1, 0.627451)
@@ -482,6 +463,8 @@ spin_box_min = 1
 [node name="PanelContainer9" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
 self_modulate = Color(1, 1, 1, 0.627451)
 layout_mode = 2
+tooltip_text = "Number of increments between each popup display.
+For example, set to 3 to show the popup every 3 increments."
 theme_type_variation = &"TreeSecondary"
 
 [node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer9"]
@@ -496,16 +479,10 @@ setting_name = "Indicate Progress Interval"
 setting_type = 3
 spin_box_min = 1
 
-[node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer9/BoxContainer"]
-modulate = Color(1, 1, 1, 0.588235)
-layout_mode = 2
-size_flags_vertical = 0
-text = "Number of increments between each popup display.
-For example, set to 3 to show the popup every 3 increments."
-
 [node name="PanelContainer10" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
 self_modulate = Color(1, 1, 1, 0.627451)
 layout_mode = 2
+tooltip_text = "If achievement icon is pixel art, it's recommended to set this to Nearest."
 theme_type_variation = &"TreeSecondary"
 
 [node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer10"]
@@ -518,12 +495,6 @@ layout_mode = 2
 label = "Icon Filter"
 setting_name = "Icon Filter"
 setting_type = 4
-
-[node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer10/BoxContainer"]
-modulate = Color(1, 1, 1, 0.588235)
-layout_mode = 2
-size_flags_vertical = 0
-text = "If achievement icon is pixel art, it's recommended to set this to Nearest."
 
 [node name="PanelContainer11" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
 self_modulate = Color(1, 1, 1, 0.627451)
@@ -545,6 +516,7 @@ base_type = "Texture2D"
 [node name="PanelContainer12" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
 self_modulate = Color(1, 1, 1, 0.627451)
 layout_mode = 2
+tooltip_text = "If empty, it will grayscale the regular icon."
 theme_type_variation = &"TreeSecondary"
 
 [node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer12"]
@@ -558,12 +530,6 @@ label = "Unachieved Icon"
 setting_name = "Unachieved Icon"
 setting_type = 1
 base_type = "Texture2D"
-
-[node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer12/BoxContainer"]
-modulate = Color(1, 1, 1, 0.588235)
-layout_mode = 2
-size_flags_vertical = 0
-text = "If empty, it will grayscale the regular icon."
 
 [node name="PanelContainer13" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
 self_modulate = Color(1, 1, 1, 0.627451)
@@ -765,3 +731,25 @@ text = "[color=#FFEE8C][center]Since this is still in beta, I'd recommend making
 Report any bugs/crashes you find on [b][url=https://github.com/jelolul/milestone/issues]GitHub[/url][/b]"
 fit_content = true
 horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+vertical = true
+
+[node name="VersionNumber" type="LinkButton" parent="MarginContainer/PanelContainer/MarginContainer/BoxContainer"]
+unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0.588235)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pwvwq")
+text = "{version}"
+underline = 1
+uri = "https://github.com/jelolul/milestone"
