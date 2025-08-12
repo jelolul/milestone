@@ -72,9 +72,9 @@ The `AchievementManager` API provides a simple way to manage and track achieveme
 | `AchievementManager.unlock_achievement(achievement_id: String)` | Unlocks the achievement with the given ID. |
 | `AchievementManager.is_unlocked(achievement_id: String)` | Returns true if the achievement is unlocked. |
 | `AchievementManager.progress_achievement(achievement_id: String, progress_amount: int)` | Progresses the achievement with the given ID using the specified progress amount. |
-| `AchievementManager.progress_group(group_id: String, progress_amount: int)` | Progresses all achievements in the group using the specified progress amount. |
+| `AchievementManager.progress_group(group_id: String, progress_amount: int)` | [since 1.1.0] Progresses all achievements in the group using the specified progress amount. |
 | `AchievementManager.get_progress(achievement_id: String)` | Returns the progress of the achievement. |
-| `AchievementManager.get_achievements_by_group(group_id: String)` | Returns a list of achievements in the group. |
+| `AchievementManager.get_achievements_by_group(group_id: String)` | [since 1.1.0] Returns a list of achievements in the group. |
 | `AchievementManager.reset_achievements()` | Resets all achievements. |
 | `AchievementManager.reset_achievement(achievement_id: String)` | Resets the achievement with the given ID. |
 | `AchievementManager.unlock_all_achievements()` | Unlocks all achievements. |
