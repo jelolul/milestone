@@ -79,6 +79,15 @@ The `AchievementManager` API provides a simple way to manage and track achieveme
 | `AchievementManager.reset_achievement(achievement_id: String)` | Resets the achievement with the given ID. |
 | `AchievementManager.unlock_all_achievements()` | Unlocks all achievements. |
 
+There are also these signals on the `AchievementManager` class:
+| Signal | Arguments | Description |
+| ----------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| `achievement_unlocked` | `achievement_id: String` | Emitted when an achievement is unlocked either directly or through progress. |
+| `achievement_progressed` | `achievement_id: String, progress_amount: int` | Emitted when an achievement is progressed. |
+| `achievement_reset` | `achievement_id: String` | Emitted when an achievement is reset. |
+| `achievements_reset` | | Emitted when reset_achievements() is called. |
+| `achievements_loaded` | | Emitted when achievements have finished loading from file. |
+
 ## License
 
 This project is licensed under the [MIT License](https://github.com/jelolul/milestone?tab=MIT-1-ov-file).
