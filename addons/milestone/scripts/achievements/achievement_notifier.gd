@@ -9,7 +9,7 @@ extends Node
 @export_enum("TopLeft", "TopRight", "BottomLeft", "BottomRight") var screen_corner := "BottomRight"
 
 
-@export var user_interface : Node
+@export var user_interface: Node
 
 ## The notification scene to use.[br][br]
 ## [b]Note:[/b] Needs to be setup similarily to the [code]res://addons/milestone/components/achievement_notification.tscn[/code] file, you could as well edit that component to your liking.
@@ -332,14 +332,18 @@ func _get_notification_by_id(achievement_id: String) -> Node:
 
 func clear_notifications() -> void:
 	for notif in _active_notifications:
-		_notification_timers[notif.id].stop()
-		_notification_timers[notif.id].emit_signal("timeout")
-		_notification_tweens[notif.id].kill()
+		if not is_instance_valid(notif):
+			continue
+		if _notification_timers.has(notif.id):
+			_notification_timers[notif.id].stop()
+		if _notification_tweens.has(notif.id):
+			_notification_tweens[notif.id].kill()
 		notif.queue_free()
-		
+
 	_active_notifications.clear()
 	_queue.clear()
 	_notification_timers.clear()
+	_notification_tweens.clear()
 
 func _exit_tree() -> void:
 	clear_notifications()

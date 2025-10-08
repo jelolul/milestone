@@ -27,18 +27,12 @@ signal achievements_loaded
 
 func _ready() -> void:
 	load_achievements()
-	achievement_unlocked.connect(_on_achievement_unlocked)
-	achievements_reset.connect(_on_achievement_unlocked.bind(""))
-	achievements_loaded.connect(_on_achievement_unlocked.bind(""))
 	achievements_list = get_achievements()
 	achievements_number = achievements_list.size()
 	hidden_achievements_number = get_hidden_achievements().size()
 
 	if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
 		print("[Milestone] Loaded %s achievements!" % achievements_number)
-
-func _on_achievement_unlocked(_achievement_id: String) -> void:
-	unlocked_achievements_number = get_unlocked_achievements().size()
 
 func get_achievement_resource(achievement_id: String) -> Achievement:
 	var path = ProjectSettings.get_setting("milestone/general/achievements_path").path_join(achievement_id + ".tres")
@@ -51,7 +45,7 @@ func get_achievement_resource(achievement_id: String) -> Achievement:
 
 
 ## Unlocks the achievement with the given ID.
-func unlock_achievement(achievement_id: String) -> void:
+func unlock_achievement(achievement_id: String, save_on_unlock: bool = true) -> void:
 	var achievement: Achievement = get_achievement_resource(achievement_id)
 	if achievement:
 		if not achievements.has(achievement_id):
@@ -70,7 +64,8 @@ func unlock_achievement(achievement_id: String) -> void:
 			if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
 				print("[Milestone] Achievement '%s' was unlocked!" % achievement_id)
 				print("[Milestone] Unlocked %s/%s achievements" % [unlocked_achievements_number, achievements_number])
-		save_achievements()
+		if save_on_unlock:
+			save_achievements()
 	else:
 		if ProjectSettings.get_setting("milestone/debug/print_errors") == true and OS.is_debug_build():
 			push_error("[Milestone] Could not find achievement with ID '%s'" % achievement_id)
@@ -85,33 +80,36 @@ func progress_achievement(achievement_id: String, progress_amount: int = 1) -> v
 				"unlocked_date": 0,
 				"progress": 0,
 			}
-		if achievements[achievement_id]["unlocked"] == false:
-			if achievement.progressive:
-				achievements[achievement_id]["progress"] = int(min(achievements[achievement_id]["progress"] + progress_amount, achievement.progress_goal))
 
-				if achievements[achievement_id]["progress"] >= achievement.progress_goal:
-					achievements[achievement_id]["unlocked"] = true
-					achievements[achievement_id]["unlocked_date"] = Time.get_unix_time_from_system()
+		if achievements[achievement_id]["unlocked"]:
+			return
 
-					emit_signal("achievement_unlocked", achievement_id)
+		if achievement.progressive:
+			achievements[achievement_id]["progress"] = int(min(achievements[achievement_id]["progress"] + progress_amount, achievement.progress_goal))
 
-					if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
-						print("[Milestone] Achievement '%s' was unlocked! (%s/%s)" % [achievement_id, achievements[achievement_id]["progress"], achievement.progress_goal])
-						print("[Milestone] Unlocked %s/%s achievements" % [unlocked_achievements_number, achievements_number])
-				else:
-					emit_signal("achievement_progressed", achievement_id, progress_amount)
-
-					if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
-						print("[Milestone] Achievement '%s' progressed to (%s/%s)" % [achievement_id, achievements[achievement_id]["progress"], achievement.progress_goal])
-			else:
+			if achievements[achievement_id]["progress"] >= achievement.progress_goal:
 				achievements[achievement_id]["unlocked"] = true
 				achievements[achievement_id]["unlocked_date"] = Time.get_unix_time_from_system()
 
 				emit_signal("achievement_unlocked", achievement_id)
 
 				if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
-					print("[Milestone] Achievement '%s' was unlocked!" % achievement_id)
+					print("[Milestone] Achievement '%s' was unlocked! (%s/%s)" % [achievement_id, achievements[achievement_id]["progress"], achievement.progress_goal])
 					print("[Milestone] Unlocked %s/%s achievements" % [unlocked_achievements_number, achievements_number])
+			else:
+				emit_signal("achievement_progressed", achievement_id, progress_amount)
+
+				if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
+					print("[Milestone] Achievement '%s' progressed to (%s/%s)" % [achievement_id, achievements[achievement_id]["progress"], achievement.progress_goal])
+		else:
+			achievements[achievement_id]["unlocked"] = true
+			achievements[achievement_id]["unlocked_date"] = Time.get_unix_time_from_system()
+
+			emit_signal("achievement_unlocked", achievement_id)
+
+			if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
+				print("[Milestone] Achievement '%s' was unlocked!" % achievement_id)
+				print("[Milestone] Unlocked %s/%s achievements" % [unlocked_achievements_number, achievements_number])
 		save_achievements()
 	else:
 		if ProjectSettings.get_setting("milestone/debug/print_errors") == true and OS.is_debug_build():
@@ -121,7 +119,7 @@ func progress_achievement(achievement_id: String, progress_amount: int = 1) -> v
 func progress_group(group_id: String, amount: int = 1) -> void:
 	for achievement_id in achievements_list.keys():
 		var achievement_res: Achievement = get_achievement_resource(achievement_id)
-		if achievement_res and achievement_res.group == group_id:
+		if achievement_res and achievement_res.group == group_id and not is_unlocked(achievement_id):
 			progress_achievement(achievement_id, amount)
 	
 ## Returns an achievement dictionary.
@@ -158,6 +156,8 @@ func get_achievements_by_group(group_id: String) -> Array:
 	
 ## Resets all achievements.
 func reset_achievements() -> void:
+	if achievements.is_empty():
+		return
 	achievements.clear()
 	save_achievements()
 	emit_signal("achievements_reset")
@@ -167,12 +167,14 @@ func reset_achievements() -> void:
 ## Unlocks all achievements.
 func unlock_all_achievements() -> void:
 	for i in achievements_list:
-		unlock_achievement(i)
+		unlock_achievement(i, false)
+	
+	save_achievements()
 
 ## Returns true if the achievement is unlocked.
 func is_unlocked(achievement_id: String) -> bool:
 	if achievements.has(achievement_id):
-		return achievements[achievement_id].unlocked
+		return achievements[achievement_id]["unlocked"]
 	else:
 		return false
 
@@ -236,10 +238,11 @@ func save_achievements() -> void:
 ## Loads all achievements from user://achievements.json. It's recommended to encrypt achievements if you don't want an average user to be able to modify them.
 func load_achievements() -> void:
 	if ProjectSettings.get_setting("milestone/general/save_as_json", true) == true:
-		var file = FileAccess.open("user://achievements.json", FileAccess.READ)
-		if file:
-			var json = file.get_as_text()
-			file.close()
-			if json:
-				achievements = JSON.parse_string(json)
-				achievements_loaded.emit.call_deferred()
+		if FileAccess.file_exists("user://achievements.json"):
+			var file = FileAccess.open("user://achievements.json", FileAccess.READ)
+			if file:
+				var json = file.get_as_text()
+				file.close()
+				if json:
+					achievements = JSON.parse_string(json)
+					achievements_loaded.emit.call_deferred()
