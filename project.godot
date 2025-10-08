@@ -40,7 +40,7 @@ enabled=PackedStringArray("res://addons/explore-editor-theme/plugin.cfg", "res:/
 
 general/achievements_path="res://addons/milestone/demo/achievements/"
 debug/print_errors=true
-debug/print_output=false
+debug/print_output=true
 general/save_as_json=true
 
 [rendering]
