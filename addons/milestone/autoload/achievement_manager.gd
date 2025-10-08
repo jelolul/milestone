@@ -172,7 +172,7 @@ func unlock_all_achievements() -> void:
 ## Returns true if the achievement is unlocked.
 func is_unlocked(achievement_id: String) -> bool:
 	if achievements.has(achievement_id):
-		return true
+		return achievements[achievement_id].unlocked
 	else:
 		return false
 
