@@ -1,3 +1,6 @@
+> [!NOTE] 
+> This plugin is still in beta and may contain bugs or incomplete features. Please report any issues you encounter on the [GitHub repository](https://github.com/jelolul/milestone/issues).
+
 <p align="center">
   <img alt="Milestone logo" src="https://raw.githubusercontent.com/jelolul/milestone/refs/heads/main/assets/logo/cover.png">
 </p>
@@ -14,15 +17,12 @@
 
 ## Table of Contents
 
-- [Note](#note)
+> [!IMPORTANT]
+> The API has been moved and can be found [here](https://github.com/jelolul/milestone/wiki/API).
+
 - [Features](#features)
 - [Installation](#installation)
-- [API](#api)
 - [License](#license)
-
-## Note
-
-This plugin is still in beta and may contain bugs or incomplete features. Please report any issues you encounter on the [GitHub repository](https://github.com/jelolul/milestone/issues).
 
 ## Features
 
@@ -38,22 +38,12 @@ This plugin is still in beta and may contain bugs or incomplete features. Please
 To install Milestone, follow these steps:
 
 1. Make sure you have Godot **4.4** or later installed (i didn't test older versions, but i'm using UIDs which weren't really used in 4.3).
-1. Download the latest release from the [releases page](https://github.com/jelolul/milestone/releases).
-1. Extract the `addons` folder from the downloaded ZIP file into your root project directory. Should look like this:
-   ```
-   my_game/
-   ├── addons/
-   │   └── milestone/
-   │       ├── autoload/
-   │       ├── components/
-   │       ├── scripts/
-   │       └── ...
-   ├── project.godot
-   └── ...
-   ```
-1. Open your Godot project and navigate to the `Project → Project Settings → Plugins`.
-1. Enable the Milestone plugin by checking the box next to it.
-1. You will see a new `Milestone` tab at the top in the editor. Click on it to open the Milestone manager. Have fun!
+2. Download the latest release from the [releases page](https://github.com/jelolul/milestone/releases).
+3. Extract the `addons` folder from the downloaded ZIP file into your root project directory.
+4. Open your Godot project and navigate to the `Project` → `Project Settings` → `Plugins`.
+5. Enable the Milestone plugin by checking the box next to it.
+6. Restart the engine/reload the project _(optional, but recommended)_ 
+7. You will see a new `Milestone` tab at the top in the editor. Click on it to open the Milestone manager. Have fun!
 
 ## Usage
 
@@ -64,29 +54,7 @@ To install Milestone, follow these steps:
 5. Modify `AchievementNotifier` properties to change the behavior of the notifications, their position and the notification component.
 6. Use the `AchievementManager` API to track player progress and completion of achievements.
 
-## API
-
-The `AchievementManager` API provides a simple way to manage and track achievements in your game. You can use the following methods to interact with achievements:
-| Method | Description |
-| ----------------------------------- | ------------------------------------------- |
-| `AchievementManager.unlock_achievement(achievement_id: String)` | Unlocks the achievement with the given ID. |
-| `AchievementManager.is_unlocked(achievement_id: String)` | Returns true if the achievement is unlocked. |
-| `AchievementManager.progress_achievement(achievement_id: String, progress_amount: int)` | Progresses the achievement with the given ID using the specified progress amount. |
-| `AchievementManager.progress_group(group_id: String, progress_amount: int)` | [since 1.1.0] Progresses all achievements in the group using the specified progress amount. |
-| `AchievementManager.get_progress(achievement_id: String)` | Returns the progress of the achievement. |
-| `AchievementManager.get_achievements_by_group(group_id: String)` | [since 1.1.0] Returns a list of achievements in the group. |
-| `AchievementManager.reset_achievements()` | Resets all achievements. |
-| `AchievementManager.reset_achievement(achievement_id: String)` | Resets the achievement with the given ID. |
-| `AchievementManager.unlock_all_achievements()` | Unlocks all achievements. |
-
-There are also these signals on the `AchievementManager` class:
-| Signal | Arguments | Description |
-| ----------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| `achievement_unlocked` | `achievement_id: String` | Emitted when an achievement is unlocked either directly or through progress. |
-| `achievement_progressed` | `achievement_id: String, progress_amount: int` | Emitted when an achievement is progressed. |
-| `achievement_reset` | `achievement_id: String` | Emitted when an achievement is reset. |
-| `achievements_reset` | | Emitted when reset_achievements() is called. |
-| `achievements_loaded` | | Emitted when achievements have finished loading from file. |
+---
 
 ## License
 
