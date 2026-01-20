@@ -1,5 +1,6 @@
 name: Feature proposal
 description: Propose a new feature to add to the plugin
+labels: ["feature proposal"]
 
 body:
   - type: markdown
