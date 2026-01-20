@@ -1,0 +1,23 @@
+name: Feature proposal
+description: Propose a new feature to add to the plugin
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        - Write a descriptive proposal title above.
+        - Search [open](https://github.com/jelolul/milestone/issues?q=label%3A"feature%20proposal") and [closed](https://github.com/jelolul/milestone/issues?q=label%3A"feature%20proposal"%20state%3Aclosed) proposals to ensure it has not already been proposed.
+
+  - type: textarea
+    attributes:
+      label: Describe the feature that you'd like to see
+      description: |
+        Write exactly what you'd like to see added to the plugin. Explain why you think it's important, and why it would be a good addition to the plugin.
+    validations:
+      required: true
+      
+  - type: textarea
+    attributes:
+      label: Describe how your proposal would work (with code snippets, mockups, diagrams, etc.)
+    validations:
+      required: true
