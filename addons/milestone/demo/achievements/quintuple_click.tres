@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Achievement" load_steps=4 format=3 uid="uid://dmfuvg0601rpd"]
+[gd_resource type="Resource" script_class="Achievement" format=3 uid="uid://dmfuvg0601rpd"]
 
 [ext_resource type="Texture2D" uid="uid://cg3b84ak8bsrv" path="res://addons/milestone/icons/hidden_achievement.svg" id="1_5xnxu"]
 [ext_resource type="Texture2D" uid="uid://bvljydmr46opw" path="res://addons/milestone/demo/icons/five_clicks.png" id="2_5xnxu"]

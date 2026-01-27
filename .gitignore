@@ -2,12 +2,15 @@
 .godot/
 
 # Godot-specific ignores
-addons/explore-editor-theme/
 .import/
-export.cfg
-export_presets.cfg
-project.godot
+addons/*
+!addons/milestone/
 export-tests/*
+export_presets.cfg
+export.cfg
+project.godot
+icon.svg
+icon.svg.import
 
 # Imported translations (automatically generated from CSV files)
 *.translation

@@ -1,94 +1,47 @@
-[gd_scene load_steps=24 format=3 uid="uid://b35o10vjk7vse"]
+[gd_scene format=3 uid="uid://b35o10vjk7vse"]
 
 [ext_resource type="Script" uid="uid://c8p1sd0scafee" path="res://addons/milestone/scripts/milestone_editor/milestone_panel.gd" id="1_qfjv7"]
-[ext_resource type="Texture2D" uid="uid://bse7wi72sb2m8" path="res://addons/milestone/icons/editor/logo.svg" id="1_ryifn"]
 [ext_resource type="PackedScene" uid="uid://dhdqvikxt7uvu" path="res://addons/milestone/components/achievement_notification.tscn" id="3_cg0tt"]
 [ext_resource type="Texture2D" uid="uid://ddu6571nd8sv5" path="res://addons/milestone/icons/editor/new_achievement.svg" id="3_on843"]
 [ext_resource type="PackedScene" uid="uid://b2ygwvy3dv00a" path="res://addons/milestone/components/achievement_display.tscn" id="3_q5u40"]
 [ext_resource type="PackedScene" uid="uid://76j1kceq4xk8" path="res://addons/milestone/components/editor/milestone_setting.tscn" id="5_uwxb5"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ryifn"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2fac8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfjv7"]
 content_margin_top = 0.0
 
-[sub_resource type="SystemFont" id="SystemFont_q5u40"]
-font_names = PackedStringArray("Inter")
-font_weight = 600
-subpixel_positioning = 0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qcoj7"]
+
+[sub_resource type="DPITexture" id="DPITexture_on843"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#e0e0e0\" d=\"m5 9 5.5-5.5L8 1h7v7l-2.5-2.5L7 11zm7 6H4a3 3 0 0 1-3-3V4a3 3 0 0 1 3-3h2a1 1 0 0 1 0 2H4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-2a1 1 0 0 1 2 0v2a3 3 0 0 1-3 3z\"/></svg>
+"
+saturation = 2.0
+color_map = {
+Color(1, 0.37254903, 0.37254903, 1): Color(1, 0.47, 0.42, 1),
+Color(0.37254903, 1, 0.5921569, 1): Color(0.45, 0.95, 0.5, 1),
+Color(1, 0.8666667, 0.39607844, 1): Color(0.83, 0.78, 0.62, 1)
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_on843"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwxb5"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i11vs"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g2rl1"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kf1yf"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwxb5"]
 content_margin_left = 10.0
-content_margin_top = 4.0
-content_margin_right = 10.0
-content_margin_bottom = 4.0
-bg_color = Color(0.3, 0.123, 0.14365, 0.521569)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.7, 0.288922, 0.338505, 0.8)
-corner_detail = 2
-anti_aliasing = false
+content_margin_top = 2.0
+content_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l4vfm"]
-content_margin_left = 10.0
-content_margin_top = 4.0
-content_margin_right = 10.0
-content_margin_bottom = 4.0
-bg_color = Color(0.54, 0.216, 0.2592, 0.521569)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.7, 0.288922, 0.338505, 0.8)
-corner_detail = 2
-anti_aliasing = false
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_on843"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.25009245, 0.25009245, 0.25009245, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ldk8i"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_256x5"]
-
-[sub_resource type="SystemFont" id="SystemFont_uwxb5"]
-font_names = PackedStringArray("Inter")
-font_weight = 500
-subpixel_positioning = 0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4vfm"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kf1yf"]
-content_margin_left = 10.0
-content_margin_top = 4.0
-content_margin_right = 10.0
-content_margin_bottom = 4.0
-bg_color = Color(0.16, 0.0656, 0.0766134, 0.521569)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.7, 0.288922, 0.338505, 0.8)
-corner_detail = 2
-anti_aliasing = false
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2k5sk"]
-content_margin_left = 0.0
-content_margin_top = 20.0
-content_margin_bottom = 0.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0tays"]
-content_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pwvwq"]
-
-[node name="MilestonePanel" type="PanelContainer"]
+[node name="MilestonePanel" type="PanelContainer" unique_id=1148435699]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -96,51 +49,34 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ryifn")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2fac8")
 script = ExtResource("1_qfjv7")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1581092524]
 layout_mode = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=159534913]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qfjv7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer" unique_id=264143691]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
-visible = false
-layout_mode = 2
-vertical = true
-
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/BoxContainer"]
-custom_minimum_size = Vector2(210, 0)
-layout_mode = 2
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="Logo" type="TextureRect" parent="MarginContainer/PanelContainer/VBoxContainer/BoxContainer/MarginContainer2"]
-texture_filter = 4
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-texture = ExtResource("1_ryifn")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="TabContainer" type="TabContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/PanelContainer/VBoxContainer" unique_id=33324398]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_type_variation = &"TabContainerInner"
 current_tab = 0
 
-[node name="Achievements" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer"]
+[node name="Achievements" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer" unique_id=895033185]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 0
@@ -149,508 +85,420 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 metadata/_tab_index = 0
 
-[node name="SplitContainer" type="SplitContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements"]
+[node name="SplitContainer" type="SplitContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements" unique_id=1034053535]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 10
-split_offset = 250
 
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer" unique_id=1107627704]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
 vertical = true
 
-[node name="AchievementsLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer"]
-visible = false
-layout_mode = 2
-mouse_filter = 1
-theme_override_colors/font_color = Color(0.721569, 0.737255, 0.74902, 1)
-theme_override_fonts/font = SubResource("SystemFont_q5u40")
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxEmpty_uwxb5")
-text = "Achievements"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer" unique_id=2070575789]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="NewAchievement" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/HBoxContainer"]
+[node name="NewAchievement" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/HBoxContainer" unique_id=1923524481]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-tooltip_text = "Create a new achievement."
-theme_override_styles/normal = SubResource("StyleBoxEmpty_i11vs")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_g2rl1")
+tooltip_text = "Create a new achievement"
+theme_type_variation = &"RunBarButton"
 icon = ExtResource("3_on843")
+icon_alignment = 1
 
-[node name="SaveButton" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/HBoxContainer" unique_id=278961797]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-tooltip_text = "Save the edited achievement."
-theme_override_styles/normal = SubResource("StyleBoxEmpty_i11vs")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_g2rl1")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_kf1yf")
+tooltip_text = "Save the edited achievement"
+theme_type_variation = &"RunBarButton"
 disabled = true
+icon_alignment = 1
 
-[node name="DeleteAchievementButton" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/HBoxContainer"]
+[node name="DeleteAchievementButton" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/HBoxContainer" unique_id=739176645]
 unique_name_in_owner = true
+modulate = Color(1, 0.4, 0.47843137, 1)
+custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 10
-tooltip_text = "Delete Achievement"
-theme_override_colors/font_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/font_focus_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/font_hover_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_normal_color = Color(1, 0.4, 0.48, 1)
-theme_override_colors/icon_focus_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_hover_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_hover_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_uwxb5")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_l4vfm")
-theme_override_styles/hover = SubResource("StyleBoxFlat_l4vfm")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ldk8i")
+tooltip_text = "Delete achievement"
+theme_type_variation = &"RunBarButton"
+theme_override_colors/icon_pressed_color = Color(1.15, 1.15, 1.15, 1)
+theme_override_colors/icon_hover_pressed_color = Color(1.15, 1.15, 1.15, 1)
+icon_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer" unique_id=722360081]
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_vertical = 3
-theme_type_variation = &"TreeSecondary"
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qcoj7")
 
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/PanelContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/PanelContainer" unique_id=110197837]
 layout_mode = 2
 vertical = true
 
-[node name="AchievementsTree" type="Tree" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/PanelContainer/BoxContainer"]
+[node name="AchievementsTree" type="Tree" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/PanelContainer/BoxContainer" unique_id=643558217]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/icon_max_width = 16
-theme_override_styles/panel = SubResource("StyleBoxEmpty_256x5")
+theme_type_variation = &"TreeSecondary"
 columns = 2
 allow_rmb_select = true
 hide_folding = true
 hide_root = true
 select_mode = 2
+scroll_hint_mode = 1
 
-[node name="AchievementsCount" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/PanelContainer/BoxContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/PanelContainer/BoxContainer" unique_id=1468278641]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 12
+
+[node name="VersionNumber" type="LinkButton" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/PanelContainer/BoxContainer/BoxContainer" unique_id=1943720620]
 unique_name_in_owner = true
 self_modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 2
-size_flags_vertical = 8
-text = "# of achievements loaded: 0"
-horizontal_alignment = 1
+size_flags_vertical = 4
+tooltip_text = "Open Milestone repository"
+text = "{version}"
+underline = 1
+uri = "https://github.com/jelolul/milestone"
 
-[node name="BoxContainer2" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer"]
+[node name="DocsButton" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/PanelContainer/BoxContainer/BoxContainer" unique_id=1221796747]
+unique_name_in_owner = true
 layout_mode = 2
-vertical = true
+size_flags_horizontal = 10
+size_flags_vertical = 4
+tooltip_text = "Open Milestone documentation"
+theme_type_variation = &"RunBarButton"
+text = "Docs"
+icon = SubResource("DPITexture_on843")
 
-[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2"]
+[node name="BoxContainer2" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer" unique_id=238537289]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_type_variation = &"EditorInspector"
+vertical = true
 
-[node name="SettingsContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2"]
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2" unique_id=1711597728]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_on843")
+
+[node name="SettingsContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2" unique_id=582010400]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_left = 0
+theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer" unique_id=280000882]
 layout_mode = 2
 vertical = true
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer"]
-layout_mode = 2
-theme_type_variation = &"TreeSecondary"
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-vertical = true
-
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer"]
-custom_minimum_size = Vector2(210, 0)
+[node name="PreviewLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer" unique_id=2144464327]
 layout_mode = 2
 mouse_filter = 1
-theme_override_colors/font_color = Color(0.721569, 0.737255, 0.74902, 1)
-theme_override_fonts/font = SubResource("SystemFont_uwxb5")
+theme_type_variation = &"HeaderSmall"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_uwxb5")
-text = "Achievements Preview"
-horizontal_alignment = 1
+text = "Preview"
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer"]
+[node name="PreviewPanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer" unique_id=1288581934]
+clip_contents = true
 layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"TreeSecondary"
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/PreviewPanelContainer" unique_id=375157991]
+layout_mode = 2
+vertical = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/PreviewPanelContainer/BoxContainer" unique_id=1372415891]
+layout_mode = 2
+size_flags_vertical = 3
 vertical_scroll_mode = 0
 
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/PreviewPanelContainer/BoxContainer/ScrollContainer" unique_id=1238091979]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="AchievementNotification" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer" instance=ExtResource("3_cg0tt")]
+[node name="AchievementNotification" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/PreviewPanelContainer/BoxContainer/ScrollContainer/BoxContainer" unique_id=43426553 instance=ExtResource("3_cg0tt")]
 unique_name_in_owner = true
+z_index = 0
 layout_mode = 2
 size_flags_horizontal = 1
+size_flags_vertical = 3
 
-[node name="AchievementDisplay" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer" instance=ExtResource("3_q5u40")]
+[node name="AchievementDisplay" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/PreviewPanelContainer/BoxContainer/ScrollContainer/BoxContainer" unique_id=1056186304 instance=ExtResource("3_q5u40")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer"]
+[node name="SettingsLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer" unique_id=466079982]
+layout_mode = 2
+mouse_filter = 1
+theme_type_variation = &"HeaderSmall"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uwxb5")
+text = "Settings"
+vertical_alignment = 1
+
+[node name="SettingsPanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer" unique_id=2107100409]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"TreeSecondary"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer" unique_id=1287699698]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 1
 mouse_filter = 0
 
-[node name="SettingsList" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer"]
+[node name="SettingsList" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer" unique_id=316258879]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 8
 
-[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-self_modulate = Color(1, 1, 1, 0.627451)
+[node name="SectionGeneral" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList" unique_id=1642916147]
 layout_mode = 2
-tooltip_text = "IDs should ALWAYS use snake case."
-theme_type_variation = &"TreeSecondary"
+theme_type_variation = &"HeaderSmall"
+text = "General"
 
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer2"]
+[node name="GeneralContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList" unique_id=1339223430]
 layout_mode = 2
-vertical = true
+theme_override_constants/margin_left = 8
 
-[node name="IDSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer2/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/GeneralContainer" unique_id=87047844]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="IDSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/GeneralContainer/VBoxContainer" unique_id=1216582495 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "ID"
+tooltip_text = "The ID of the achievement, used when unlocking or progressing via code.
+It must be unique from other achievements."
 setting_name = "ID"
+setting_description = "The ID of the achievement, used when unlocking or progressing via code.
+It must be unique from other achievements."
 placeholder_text = "achievement_id"
 
-[node name="PanelContainer14" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-self_modulate = Color(1, 1, 1, 0.627451)
-layout_mode = 2
-tooltip_text = "IDs should ALWAYS use snake case."
-theme_type_variation = &"TreeSecondary"
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer14"]
-layout_mode = 2
-vertical = true
-
-[node name="GroupSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer14/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="GroupIDSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/GeneralContainer/VBoxContainer" unique_id=726054999 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "Group"
-setting_name = "Group"
+tooltip_text = "The ID of the group this achievement belongs to.
+Achievements in the same group can be progressed together."
+setting_name = "Group ID"
+setting_description = "The ID of the group this achievement belongs to.
+Achievements in the same group can be progressed together."
 placeholder_text = "group_01"
 
-[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-self_modulate = Color(1, 1, 1, 0.627451)
-layout_mode = 2
-theme_type_variation = &"TreeSecondary"
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer3"]
-layout_mode = 2
-vertical = true
-
-[node name="NameSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer3/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="NameSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/GeneralContainer/VBoxContainer" unique_id=516358959 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "Name"
+tooltip_text = "The human-readable name displayed for this achievement."
 setting_name = "Name"
+setting_description = "The human-readable name displayed for this achievement."
 placeholder_text = "Achievement Name"
 
-[node name="PanelContainer4" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-self_modulate = Color(1, 1, 1, 0.627451)
-layout_mode = 2
-theme_type_variation = &"TreeSecondary"
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer4"]
-layout_mode = 2
-vertical = true
-
-[node name="DescSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer4/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="DescSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/GeneralContainer/VBoxContainer" unique_id=733482739 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "Description"
+tooltip_text = "The description displayed in the achievements list."
 setting_name = "Description"
+setting_description = "The description displayed in the achievements list."
 placeholder_text = "Achievement Description"
 
-[node name="PanelContainer5" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-self_modulate = Color(1, 1, 1, 0.627451)
+[node name="SectionVisibilityAndRarity" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList" unique_id=707590205]
 layout_mode = 2
-tooltip_text = "Toggle this on if the achievement is not supposed to be revealed before unlocking."
-theme_type_variation = &"TreeSecondary"
+theme_type_variation = &"HeaderSmall"
+text = "Visibility & Rarity"
 
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer5"]
+[node name="VisiblityAndRarityContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList" unique_id=1254798365]
 layout_mode = 2
-vertical = true
+theme_override_constants/margin_left = 8
 
-[node name="HiddenSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer5/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/VisiblityAndRarityContainer" unique_id=1307606683]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HiddenSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/VisiblityAndRarityContainer/VBoxContainer" unique_id=1899725469 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "Hidden"
+tooltip_text = "Marks the achievement as hidden."
 setting_name = "Hidden"
+setting_description = "Marks the achievement as hidden."
 setting_type = 2
 toggle_text = "On"
 
-[node name="PanelContainer6" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-self_modulate = Color(1, 1, 1, 0.627451)
-layout_mode = 2
-theme_type_variation = &"TreeSecondary"
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer6"]
-layout_mode = 2
-vertical = true
-
-[node name="ConsideredRareSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer6/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="ConsideredRareSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/VisiblityAndRarityContainer/VBoxContainer" unique_id=1881982753 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "Considered Rare"
+tooltip_text = "Marks the achievement as rare or difficult to unlock."
 setting_name = "Considered Rare"
+setting_description = "Marks the achievement as rare or difficult to unlock."
 setting_type = 2
 toggle_text = "On"
 
-[node name="PanelContainer7" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-self_modulate = Color(1, 1, 1, 0.627451)
+[node name="SectionProgress" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList" unique_id=795824641]
 layout_mode = 2
-theme_type_variation = &"TreeSecondary"
+theme_type_variation = &"HeaderSmall"
+text = "Progress"
 
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer7"]
+[node name="ProgressContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList" unique_id=1141234233]
 layout_mode = 2
-vertical = true
+theme_override_constants/margin_left = 8
 
-[node name="ProgressiveSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer7/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/ProgressContainer" unique_id=1276297509]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ProgressiveSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/ProgressContainer/VBoxContainer" unique_id=1995420235 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "Progressive"
+tooltip_text = "Whether the achievement can be progressed."
 setting_name = "Progressive"
+setting_description = "Whether the achievement can be progressed."
 setting_type = 2
 toggle_text = "On"
 
-[node name="PanelContainer8" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-self_modulate = Color(1, 1, 1, 0.627451)
-layout_mode = 2
-theme_type_variation = &"TreeSecondary"
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer8"]
-layout_mode = 2
-vertical = true
-
-[node name="ProgressGoalSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer8/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="ProgressGoalSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/ProgressContainer/VBoxContainer" unique_id=1063006157 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "Progress Goal"
+tooltip_text = "The amount of progress required to unlock the achievement."
 setting_name = "Progress Goal"
+setting_description = "The amount of progress required to unlock the achievement."
 setting_type = 3
 toggle_text = "On"
 spin_box_min = 1
+spin_box_max = 2147483647
 
-[node name="PanelContainer9" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-self_modulate = Color(1, 1, 1, 0.627451)
-layout_mode = 2
-tooltip_text = "Number of increments between each popup display.
-For example, set to 3 to show the popup every 3 increments."
-theme_type_variation = &"TreeSecondary"
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer9"]
-layout_mode = 2
-vertical = true
-
-[node name="IndicateProgressIntervalSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer9/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="IndicateProgressIntervalSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/ProgressContainer/VBoxContainer" unique_id=2014724551 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "Indicate Progress Interval"
+tooltip_text = "The interval at which progress popup is displayed."
 setting_name = "Indicate Progress Interval"
+setting_description = "The interval at which progress popup is displayed."
 setting_type = 3
 spin_box_min = 1
+spin_box_max = 2147483647
 
-[node name="PanelContainer10" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-self_modulate = Color(1, 1, 1, 0.627451)
+[node name="SectionIcon" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList" unique_id=934850216]
 layout_mode = 2
-tooltip_text = "If achievement icon is pixel art, it's recommended to set this to Nearest."
-theme_type_variation = &"TreeSecondary"
+theme_type_variation = &"HeaderSmall"
+text = "Icons"
 
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer10"]
+[node name="IconContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList" unique_id=791571713]
 layout_mode = 2
-vertical = true
+theme_override_constants/margin_left = 8
 
-[node name="IconFilterSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer10/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/IconContainer" unique_id=587490871]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="IconFilterSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/IconContainer/VBoxContainer" unique_id=1566731309 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "Icon Filter"
+tooltip_text = "The texture filter that the achievement icon should use.
+It's recommened to use Nearest for pixel art icons."
 setting_name = "Icon Filter"
+setting_description = "The texture filter that the achievement icon should use.
+It's recommened to use Nearest for pixel art icons."
 setting_type = 4
 
-[node name="PanelContainer11" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-self_modulate = Color(1, 1, 1, 0.627451)
-layout_mode = 2
-theme_type_variation = &"TreeSecondary"
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer11"]
-layout_mode = 2
-vertical = true
-
-[node name="IconSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer11/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="IconSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/IconContainer/VBoxContainer" unique_id=514763365 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "Icon"
 setting_name = "Icon"
 setting_type = 1
 base_type = "Texture2D"
 
-[node name="PanelContainer12" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-self_modulate = Color(1, 1, 1, 0.627451)
-layout_mode = 2
-tooltip_text = "If empty, it will grayscale the regular icon."
-theme_type_variation = &"TreeSecondary"
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer12"]
-layout_mode = 2
-vertical = true
-
-[node name="UnachievedIconSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer12/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="UnachievedIconSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/IconContainer/VBoxContainer" unique_id=302496070 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "Unachieved Icon"
+tooltip_text = "The icon that is displayed when the achievement isn't unlocked.
+When unset, it uses the icon set with the Icon Setting, with a grayscale filter."
 setting_name = "Unachieved Icon"
+setting_description = "The icon that is displayed when the achievement isn't unlocked.
+When unset, it uses the icon set with the Icon Setting, with a grayscale filter."
 setting_type = 1
 base_type = "Texture2D"
 
-[node name="PanelContainer13" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-self_modulate = Color(1, 1, 1, 0.627451)
-layout_mode = 2
-theme_type_variation = &"TreeSecondary"
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer13"]
-layout_mode = 2
-vertical = true
-
-[node name="HiddenIconSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/PanelContainer13/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="HiddenIconSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/SettingsPanelContainer/ScrollContainer/SettingsList/IconContainer/VBoxContainer" unique_id=1834398250 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 layout_mode = 2
-label = "Hidden Icon"
+tooltip_text = "The icon that is displayed when the achievement is hidden.
+When unset, it uses the default 'milestone/icons/hidden_achievement.svg' icon."
 setting_name = "Hidden Icon"
+setting_description = "The icon that is displayed when the achievement is hidden.
+When unset, it uses the default 'milestone/icons/hidden_achievement.svg' icon."
 setting_type = 1
 base_type = "Texture2D"
 
-[node name="Empty" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-modulate = Color(1, 1, 1, 0.588235)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_l4vfm")
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="DeleteAchievement" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/BoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/font_focus_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/font_hover_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/font_hover_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/font_disabled_color = Color(1, 0.4, 0.478431, 0.4)
-theme_override_colors/icon_normal_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_focus_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_hover_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_hover_pressed_color = Color(1, 0.4, 0.478431, 1)
-theme_override_colors/icon_disabled_color = Color(1, 0.4, 0.48, 0.4)
-theme_override_styles/normal = SubResource("StyleBoxFlat_uwxb5")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_l4vfm")
-theme_override_styles/hover = SubResource("StyleBoxFlat_l4vfm")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_kf1yf")
-text = "Delete Achievement"
-
-[node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2/SettingsContainer/BoxContainer/ScrollContainer/SettingsList/BoxContainer"]
-modulate = Color(1, 1, 1, 0.588235)
-layout_mode = 2
-text = "There's no undo for this!"
-
-[node name="NotSelectedLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2"]
+[node name="NotSelectedLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2" unique_id=289393252]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "Create a new achievement / Select an achievement"
 horizontal_alignment = 1
 
-[node name="MultiSelectingLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2"]
+[node name="MultiSelectingLabel" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer2/PanelContainer2" unique_id=1709724929]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "Selecting more than one achievement."
 horizontal_alignment = 1
 
-[node name="Settings" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer"]
+[node name="Settings" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer" unique_id=1612693932]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 metadata/_tab_index = 1
 
-[node name="SplitContainer" type="SplitContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 10
-split_offset = 250
-
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings" unique_id=1109546429]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_type_variation = &"EditorInspector"
+theme_type_variation = &"TreeSecondary"
 
-[node name="SettingsContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer"]
+[node name="SettingsContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/PanelContainer" unique_id=1561330595]
 layout_mode = 2
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/PanelContainer/SettingsContainer" unique_id=233486047]
 layout_mode = 2
 
-[node name="SettingsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer"]
+[node name="SettingsContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/PanelContainer/SettingsContainer/ScrollContainer" unique_id=1333850260]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer"]
-self_modulate = Color(1, 1, 1, 0.627451)
+[node name="Note" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer" unique_id=2112364620]
+modulate = Color(1, 0.93333334, 0.54901963, 1)
 layout_mode = 2
-theme_type_variation = &"TreeSecondary"
+theme_override_styles/normal = SubResource("StyleBoxFlat_on843")
+bbcode_enabled = true
+text = "Since this is still in beta, I'd recommend making frequent backups and/or use Version Control.
 
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer"]
-layout_mode = 2
-vertical = true
+Report any bugs/crashes you find on [b][url=https://github.com/jelolul/milestone/issues]GitHub[/url][/b]"
+fit_content = true
+scroll_active = false
 
-[node name="AchievementsFolderSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="AchievementsFolderSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer" unique_id=2033474071 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
-label = "Achievements Folder"
 setting_name = "Achievements Folder"
 setting_type = 6
 button_text = "Change..."
@@ -658,98 +506,30 @@ path_button_text = "Change Folder"
 path_button_line_edit_placeholder_text = "res://achievements/"
 path_button_line_edit_editable = false
 
-[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer"]
-self_modulate = Color(1, 1, 1, 0.627451)
-layout_mode = 2
-theme_type_variation = &"TreeSecondary"
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer2"]
-layout_mode = 2
-vertical = true
-
-[node name="SaveAsJsonSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer2/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="SaveAsJsonSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer" unique_id=1579329809 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
-label = "Save As JSON"
+tooltip_text = "Storing achievements as JSON means anyone can edit it.
+It's recommended to store it in an encrypted binary file."
 setting_name = "Save As JSON"
+setting_description = "Storing achievements as JSON means anyone can edit it.
+It's recommended to store it in an encrypted binary file."
+display_setting_description = true
 setting_type = 2
 
-[node name="Note" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer2/BoxContainer"]
-modulate = Color(1, 1, 1, 0.588235)
-layout_mode = 2
-text = "Storing achievements as JSON means anyone can edit it.
-It's recommended to store it in an encrypted binary file."
-
-[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer"]
-self_modulate = Color(1, 1, 1, 0.627451)
-layout_mode = 2
-theme_type_variation = &"TreeSecondary"
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer3"]
-layout_mode = 2
-vertical = true
-
-[node name="PrintErrorsSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer3/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="PrintErrorsSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer" unique_id=1484584334 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
-label = "Print Errors"
 setting_name = "Print Errors"
 setting_type = 2
 
-[node name="PanelContainer4" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer"]
-self_modulate = Color(1, 1, 1, 0.627451)
-layout_mode = 2
-theme_type_variation = &"TreeSecondary"
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer4"]
-layout_mode = 2
-vertical = true
-
-[node name="PrintOutputSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/PanelContainer4/BoxContainer" instance=ExtResource("5_uwxb5")]
+[node name="PrintOutputSetting" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer" unique_id=408412341 instance=ExtResource("5_uwxb5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
-label = "Print Output"
 setting_name = "Print Output"
 setting_type = 2
 
-[node name="Note3" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_2k5sk")
-text = "More settings coming soon"
-horizontal_alignment = 1
-
-[node name="Note2" type="RichTextLabel" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/SplitContainer/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer"]
-layout_mode = 2
-size_flags_vertical = 10
-theme_override_styles/normal = SubResource("StyleBoxEmpty_0tays")
-bbcode_enabled = true
-text = "[color=#FFEE8C][center]Since this is still in beta, I'd recommend making frequent backups and/or use Version Control.
-Report any bugs/crashes you find on [b][url=https://github.com/jelolul/milestone/issues]GitHub[/url][/b]"
-fit_content = true
-horizontal_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
-custom_minimum_size = Vector2(0, 16)
-layout_mode = 2
-vertical = true
-
-[node name="VersionNumber" type="LinkButton" parent="MarginContainer/PanelContainer/MarginContainer/BoxContainer"]
-unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0.588235)
-layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_pwvwq")
-text = "{version}"
-underline = 1
-uri = "https://github.com/jelolul/milestone"
+[connection signal="meta_clicked" from="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Settings/PanelContainer/SettingsContainer/ScrollContainer/SettingsContainer/Note" to="." method="_on_settings_note_meta_clicked"]

@@ -32,7 +32,7 @@ func _ready() -> void:
 	hidden_achievements_number = get_hidden_achievements().size()
 
 	if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
-		print("[Milestone] Loaded %s achievements!" % achievements_number)
+		print_rich("[b][MILESTONE][/b] Loaded achievements: %s" % achievements_number)
 
 func get_achievement_resource(achievement_id: String) -> Achievement:
 	var path = ProjectSettings.get_setting("milestone/general/achievements_path").path_join(achievement_id + ".tres")
@@ -62,13 +62,13 @@ func unlock_achievement(achievement_id: String, save_on_unlock: bool = true) -> 
 			emit_signal("achievement_unlocked", achievement_id)
 
 			if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
-				print("[Milestone] Achievement '%s' was unlocked!" % achievement_id)
-				print("[Milestone] Unlocked %s/%s achievements" % [unlocked_achievements_number, achievements_number])
+				print_rich("[b][MILESTONE][/b] Unlocked achievement: [code]%s[/code]" % achievement_id)
+				print_rich("[b][MILESTONE][/b] Unlocked [b]%s/%s[/b] achievements" % [unlocked_achievements_number, achievements_number])
 		if save_on_unlock:
 			save_achievements()
 	else:
 		if ProjectSettings.get_setting("milestone/debug/print_errors") == true and OS.is_debug_build():
-			push_error("[Milestone] Could not find achievement with ID '%s'" % achievement_id)
+			push_error("[MILESTONE] Could not find achievement with ID [code]%s[/code]" % achievement_id)
 
 ## Progresses the achievement with the given ID using the specified progress amount.
 func progress_achievement(achievement_id: String, progress_amount: int = 1) -> void:
@@ -94,13 +94,13 @@ func progress_achievement(achievement_id: String, progress_amount: int = 1) -> v
 				emit_signal("achievement_unlocked", achievement_id)
 
 				if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
-					print("[Milestone] Achievement '%s' was unlocked! (%s/%s)" % [achievement_id, achievements[achievement_id]["progress"], achievement.progress_goal])
-					print("[Milestone] Unlocked %s/%s achievements" % [unlocked_achievements_number, achievements_number])
+					print_rich("[b][MILESTONE][/b] Unlocked achievement: [code]%s[/code] (%s/%s)" % [achievement_id, achievements[achievement_id]["progress"], achievement.progress_goal])
+					print_rich("[b][MILESTONE][/b] Unlocked [b]%s/%s[/b] achievements" % [unlocked_achievements_number, achievements_number])
 			else:
 				emit_signal("achievement_progressed", achievement_id, progress_amount)
 
 				if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
-					print("[Milestone] Achievement '%s' progressed to (%s/%s)" % [achievement_id, achievements[achievement_id]["progress"], achievement.progress_goal])
+					print_rich("[b][MILESTONE][/b] Achievement [code]%s[/code] progressed (%s/%s)" % [achievement_id, achievements[achievement_id]["progress"], achievement.progress_goal])
 		else:
 			achievements[achievement_id]["unlocked"] = true
 			achievements[achievement_id]["unlocked_date"] = Time.get_unix_time_from_system()
@@ -108,12 +108,12 @@ func progress_achievement(achievement_id: String, progress_amount: int = 1) -> v
 			emit_signal("achievement_unlocked", achievement_id)
 
 			if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
-				print("[Milestone] Achievement '%s' was unlocked!" % achievement_id)
-				print("[Milestone] Unlocked %s/%s achievements" % [unlocked_achievements_number, achievements_number])
+				print_rich("[b][MILESTONE][/b] Unlocked achievement: [code]%s[/code]" % achievement_id)
+				print_rich("[b][MILESTONE][/b] Unlocked [b]%s/%s[/b] achievements" % [unlocked_achievements_number, achievements_number])
 		save_achievements()
 	else:
 		if ProjectSettings.get_setting("milestone/debug/print_errors") == true and OS.is_debug_build():
-			push_error("[Milestone] Could not find achievement with ID '%s'" % achievement_id)
+			push_error("[MILESTONE] Could not find achievement with ID [code]%s[/code]" % achievement_id)
 
 ## Progresses all achievements in the specified group by the given amount.
 func progress_group(group_id: String, amount: int = 1) -> void:
@@ -135,7 +135,7 @@ func get_achievement(achievement_id: String) -> Dictionary:
 		return achievements[achievement_id]
 	else:
 		if ProjectSettings.get_setting("milestone/debug/print_errors") == true and OS.is_debug_build():
-			print("[Milestone] Couldn't find an achievement with the ID: %s" % achievement_id)
+			print_rich("[b][MILESTONE][/b] Couldn't find an achievement with the ID: [code]%s[/code]" % achievement_id)
 		return {}
 	
 ## Returns an array of achievement resources belonging to the given group.
@@ -150,7 +150,7 @@ func get_achievements_by_group(group_id: String) -> Array:
 
 	if group_achievements.is_empty():
 		if ProjectSettings.get_setting("milestone/debug/print_errors") == true and OS.is_debug_build():
-			print("[Milestone] Couldn't find any achievements in the group: %s" % group_id)
+			print_rich("[b][MILESTONE][/b] Couldn't find achievements in the group: [code]%s[/code]" % group_id)
 
 	return group_achievements
 	
@@ -162,7 +162,7 @@ func reset_achievements() -> void:
 	save_achievements()
 	emit_signal("achievements_reset")
 	if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
-		print("[Milestone] Reset all achievements!")
+		print_rich("[b][MILESTONE][/b] All achievement progress was reset")
 
 ## Unlocks all achievements.
 func unlock_all_achievements() -> void:
@@ -184,11 +184,11 @@ func get_progress(achievement_id: String) -> int:
 		return achievements[achievement_id].progress
 	elif !achievements.has(achievement_id) and achievements_list.has(achievement_id):
 		if ProjectSettings.get_setting("milestone/debug/print_errors") == true and OS.is_debug_build():
-			print("[Milestone] Couldn't find an achievement with the ID: %s" % achievement_id)
+			print_rich("[b][MILESTONE][/b] Couldn't find an achievement with the ID: [code]%s[/code]" % achievement_id)
 		return 0
 	else:
 		if ProjectSettings.get_setting("milestone/debug/print_errors") == true and OS.is_debug_build():
-			print("[Milestone] Couldn't find an achievement with the ID: %s" % achievement_id)
+			print_rich("[b][MILESTONE][/b] Couldn't find an achievement with the ID: [code]%s[/code]" % achievement_id)
 		return 0
 
 func reset_achievement(achievement_id) -> void:
@@ -196,7 +196,7 @@ func reset_achievement(achievement_id) -> void:
 	save_achievements()
 	emit_signal("achievement_reset", achievement_id)
 	if ProjectSettings.get_setting("milestone/debug/print_output") == true and OS.is_debug_build():
-		print("[Milestone] Cleared achievement %s!" % achievement_id)
+		print_rich("[b][MILESTONE][/b] Removed achievement progress from: [code]%s[/code]" % achievement_id)
 
 func get_unlocked_achievements() -> Dictionary:
 	var _achievements: Dictionary = {}

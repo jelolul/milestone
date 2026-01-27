@@ -15,7 +15,6 @@ const ACHIEVEMENT_DISPLAY = preload("uid://b2ygwvy3dv00a")
 @export var locked_achievements_container: Node
 @export var hidden_achievements_container: Node
 
-
 func _ready() -> void:
 	%UnlockAllAchievements.pressed.connect(AchievementManager.unlock_all_achievements)
 	%ResetAchievements.pressed.connect(AchievementManager.reset_achievements)

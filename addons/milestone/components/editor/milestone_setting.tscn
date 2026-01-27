@@ -1,20 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://76j1kceq4xk8"]
+[gd_scene format=3 uid="uid://76j1kceq4xk8"]
 
 [ext_resource type="Script" uid="uid://uyk8nd77y0jx" path="res://addons/milestone/scripts/milestone_editor/milestone_setting.gd" id="1_dxau1"]
 [ext_resource type="Script" uid="uid://bcd4xuu17wi0d" path="res://addons/milestone/scripts/milestone_editor/resource_picker.gd" id="2_5qmjr"]
+[ext_resource type="Script" uid="uid://k6ju11vyqu6g" path="res://addons/milestone/scripts/milestone_editor/property.gd" id="2_yclnh"]
 
-[node name="Setting" type="EditorProperty"]
-offset_right = 259.0
-offset_bottom = 31.0
-mouse_filter = 2
-label = "Setting"
-name_split_ratio = 0.35
+[sub_resource type="SystemFont" id="SystemFont_yclnh"]
+font_names = PackedStringArray("consolas", "SF Mono", "DejaVu Sans mono")
+font_weight = 600
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mpoo7"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+
+[node name="Setting" type="PanelContainer" unique_id=1494742464]
+custom_minimum_size = Vector2(270, 0)
+offset_right = 270.0
+offset_bottom = 37.0
+size_flags_horizontal = 3
 script = ExtResource("1_dxau1")
-spin_box_max = 10000000000000
-metadata/_custom_type_script = "uid://k6ju11vyqu6g"
-metadata/_edit_use_anchors_ = true
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=920196139]
+layout_mode = 2
+
+[node name="EditorProperty" type="EditorProperty" parent="VBoxContainer" unique_id=1409668067]
+unique_name_in_owner = true
+layout_mode = 2
+label = "Setting"
+script = ExtResource("2_yclnh")
+metadata/_custom_type_script = "uid://k6ju11vyqu6g"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/EditorProperty" unique_id=2028710039]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -24,7 +40,7 @@ mouse_filter = 1
 placeholder_text = "Placeholder Text"
 flat = true
 
-[node name="TexturePicker" type="EditorResourcePicker" parent="."]
+[node name="TexturePicker" type="EditorResourcePicker" parent="VBoxContainer/EditorProperty" unique_id=436824582]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -33,7 +49,7 @@ base_type = "Texture"
 script = ExtResource("2_5qmjr")
 metadata/_custom_type_script = "uid://bcd4xuu17wi0d"
 
-[node name="CheckBox" type="CheckBox" parent="."]
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/EditorProperty" unique_id=548389234]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -42,30 +58,30 @@ mouse_filter = 1
 text = "On"
 flat = true
 
-[node name="SpinBox" type="SpinBox" parent="."]
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/EditorProperty" unique_id=2015077207]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 mouse_filter = 1
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/EditorProperty" unique_id=692316960]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 mouse_filter = 1
 flat = true
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="VBoxContainer/EditorProperty" unique_id=2004510792]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="PathButton" type="BoxContainer" parent="."]
+[node name="PathButton" type="BoxContainer" parent="VBoxContainer/EditorProperty" unique_id=236331462]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="PathButton"]
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/EditorProperty/PathButton" unique_id=1989662989]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -73,5 +89,17 @@ size_flags_vertical = 4
 mouse_filter = 1
 flat = true
 
-[node name="Button" type="Button" parent="PathButton"]
+[node name="Button" type="Button" parent="VBoxContainer/EditorProperty/PathButton" unique_id=1021086021]
 layout_mode = 2
+
+[node name="SettingDescription" type="RichTextLabel" parent="VBoxContainer" unique_id=235164935]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 2
+theme_override_constants/line_separation = 4
+theme_override_fonts/mono_font = SubResource("SystemFont_yclnh")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mpoo7")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
