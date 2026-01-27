@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dgujxn340oh7j"]
+[gd_scene format=3 uid="uid://dgujxn340oh7j"]
 
 [ext_resource type="Script" uid="uid://ce0l0apak5iqi" path="res://addons/milestone/demo/scripts/demo_achievements.gd" id="1_fibc6"]
 [ext_resource type="Script" uid="uid://wn30x7o3f47m" path="res://addons/milestone/scripts/achievements/achievement_notifier.gd" id="2_gbuwq"]
@@ -173,7 +173,10 @@ content_margin_bottom = 20.0
 font_names = PackedStringArray("Segoe UI", "Inter")
 font_weight = 700
 
-[node name="DemoAchievements" type="Control" node_paths=PackedStringArray("achievement_notifier", "achievements_unlocked_label", "achievements_unlocked_percentage", "achievements_progress_bar", "unlocked_container", "unlocked_achievements_container", "locked_container", "locked_achievements_container", "hidden_achievements_container")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fibc6"]
+content_margin_bottom = 4.0
+
+[node name="DemoAchievements" type="Control" unique_id=181826651 node_paths=PackedStringArray("achievement_notifier", "achievements_unlocked_label", "achievements_unlocked_percentage", "achievements_progress_bar", "unlocked_container", "unlocked_achievements_container", "locked_container", "locked_achievements_container", "hidden_achievements_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -193,7 +196,7 @@ locked_container = NodePath("PanelContainer/BoxContainer/PanelContainer/MarginCo
 locked_achievements_container = NodePath("PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer/LockedAchievementContainer")
 hidden_achievements_container = NodePath("PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer/HiddenAchievementContainer")
 
-[node name="AchievementNotifier" type="Control" parent="."]
+[node name="AchievementNotifier" type="Control" parent="." unique_id=1306591240]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -206,7 +209,7 @@ volume = 0.3
 pitch_scale = 1.2
 metadata/_custom_type_script = "uid://wn30x7o3f47m"
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1328448236]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -216,20 +219,20 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_8h6ex")
 
-[node name="BoxContainer" type="BoxContainer" parent="PanelContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer" unique_id=186647652]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 alignment = 1
 vertical = true
 
-[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer" unique_id=1604689345]
 layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="UnlockAllAchievements" type="Button" parent="PanelContainer/BoxContainer/BoxContainer"]
+[node name="UnlockAllAchievements" type="Button" parent="PanelContainer/BoxContainer/BoxContainer" unique_id=39227896]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
@@ -251,7 +254,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6ex")
 action_mode = 0
 text = "Unlock all achievements"
 
-[node name="ResetAchievements" type="Button" parent="PanelContainer/BoxContainer/BoxContainer"]
+[node name="ResetAchievements" type="Button" parent="PanelContainer/BoxContainer/BoxContainer" unique_id=612866398]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
@@ -273,7 +276,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6ex")
 action_mode = 0
 text = "Reset Achievements"
 
-[node name="CloseGame" type="Button" parent="PanelContainer/BoxContainer/BoxContainer"]
+[node name="CloseGame" type="Button" parent="PanelContainer/BoxContainer/BoxContainer" unique_id=57928482]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
@@ -295,26 +298,26 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_8h6ex")
 action_mode = 0
 text = "Close game"
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/BoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/BoxContainer" unique_id=1681503422]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_4g53w")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/BoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/BoxContainer/PanelContainer" unique_id=443176157]
 custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 15
 
-[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer" unique_id=161071026]
 layout_mode = 2
 theme_override_constants/separation = 20
 vertical = true
 
-[node name="Label" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer" unique_id=688208127]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.721569, 0.737255, 0.74902, 1)
@@ -324,21 +327,21 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_4g53w")
 text = "Achievements"
 uppercase = true
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer" unique_id=26284460]
 layout_mode = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_uyofh")
 
-[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer" unique_id=1558490670]
 layout_mode = 2
 theme_override_constants/separation = 5
 vertical = true
 
-[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer" unique_id=1330141031]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AchievementsUnlockedLabel" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer/BoxContainer"]
+[node name="AchievementsUnlockedLabel" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer/BoxContainer" unique_id=837071820]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
@@ -349,7 +352,7 @@ text = "% of % achievements unlocked"
 vertical_alignment = 1
 uppercase = true
 
-[node name="AchievementsUnlockedPercentage" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer/BoxContainer"]
+[node name="AchievementsUnlockedPercentage" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer/BoxContainer" unique_id=1409575721]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
@@ -362,7 +365,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 uppercase = true
 
-[node name="AchievementsProgressBar" type="ProgressBar" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer"]
+[node name="AchievementsProgressBar" type="ProgressBar" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/PanelContainer/BoxContainer" unique_id=1734893403]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
@@ -371,33 +374,33 @@ theme_override_styles/background = SubResource("StyleBoxFlat_a28wf")
 theme_override_styles/fill = SubResource("StyleBoxFlat_aa0m6")
 show_percentage = false
 
-[node name="HSeparator2" type="HSeparator" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer" unique_id=48511005]
 layout_mode = 2
 mouse_filter = 1
 theme_override_constants/separation = 1
 theme_override_styles/separator = SubResource("StyleBoxLine_8h6ex")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer" unique_id=221813151]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pgbcl")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 4
 
-[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer" unique_id=1258778961]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 25
 vertical = true
 
-[node name="UnlockedContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer"]
+[node name="UnlockedContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer" unique_id=1756691198]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8
 vertical = true
 
-[node name="Label" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/UnlockedContainer"]
+[node name="Label" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/UnlockedContainer" unique_id=907480569]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.721569, 0.737255, 0.74902, 1)
@@ -406,40 +409,41 @@ theme_override_font_sizes/font_size = 12
 text = "Unlocked Achievements"
 uppercase = true
 
-[node name="UnlockedAchievementContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/UnlockedContainer"]
+[node name="UnlockedAchievementContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/UnlockedContainer" unique_id=1123946296]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8
 vertical = true
 
-[node name="LockedContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer"]
+[node name="LockedContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer" unique_id=98989212]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 4
 vertical = true
 
-[node name="Label" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer"]
+[node name="Label" type="Label" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer" unique_id=1019846685]
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/font_color = Color(0.721569, 0.737255, 0.74902, 1)
 theme_override_fonts/font = SubResource("SystemFont_t5dxj")
 theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fibc6")
 text = "Locked Achievements"
 uppercase = true
 
-[node name="LockedAchievementContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer"]
+[node name="LockedAchievementContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer" unique_id=1233170035]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8
 vertical = true
 
-[node name="HiddenAchievementContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer"]
+[node name="HiddenAchievementContainer" type="BoxContainer" parent="PanelContainer/BoxContainer/PanelContainer/MarginContainer/BoxContainer/ScrollContainer/BoxContainer/LockedContainer" unique_id=1262343122]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8
 vertical = true
 
-[node name="Label" type="Label" parent="PanelContainer/BoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/BoxContainer" unique_id=1858893779]
 self_modulate = Color(1, 1, 1, 0.196078)
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
