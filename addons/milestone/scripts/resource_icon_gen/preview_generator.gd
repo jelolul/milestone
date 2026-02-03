@@ -8,18 +8,19 @@ func _generate(resource, size, _metadata) -> Texture2D:
 	var img: Image = Image.new()
 
 	if "icon" in resource and resource is Achievement:
-		if resource.hidden:
-			if resource.hidden_icon:
-				img = resource.hidden_icon.get_image()
-				img.resize(size.x, size.y, Image.INTERPOLATE_LANCZOS)
-		else:
-			if resource.icon:
-				img = resource.icon.get_image()
-				img.resize(size.x, size.y, Image.INTERPOLATE_LANCZOS)
+		var tex: Texture2D = null
+
+		if resource.hidden and resource.hidden_icon:
+			tex = resource.hidden_icon
+		elif not resource.hidden and resource.icon:
+			tex = resource.icon
+
+		if tex:
+			img = tex.get_image()
 
 	if img.is_empty():
 		return null
-
+	
 	return ImageTexture.create_from_image(img)
 
 func _handles(type) -> bool:
