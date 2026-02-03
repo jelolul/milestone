@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b2ygwvy3dv00a"]
+[gd_scene format=3 uid="uid://b2ygwvy3dv00a"]
 
 [ext_resource type="Script" uid="uid://duq7n487fomxs" path="res://addons/milestone/scripts/achievements/achievement_display.gd" id="1_7177w"]
 [ext_resource type="Shader" uid="uid://5j1fq85a0wof" path="res://addons/milestone/shaders/ray_shine.gdshader" id="2_f3trb"]
@@ -88,9 +88,9 @@ corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
-[node name="AchievementDisplay" type="PanelContainer" node_paths=PackedStringArray("achievement_rare_overlay", "achievement_icon", "achievement_name", "achievement_description", "achievement_action_label", "progress_container", "achievement_progress_label", "achievement_progress_bar")]
-offset_right = 484.0
-offset_bottom = 78.0
+[node name="AchievementDisplay" type="PanelContainer" unique_id=1597144887 node_paths=PackedStringArray("achievement_rare_overlay", "achievement_icon", "achievement_name", "achievement_description", "achievement_action_label", "progress_container", "achievement_progress_label", "achievement_progress_bar")]
+offset_right = 439.0
+offset_bottom = 86.0
 size_flags_vertical = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pv48d")
@@ -104,25 +104,25 @@ progress_container = NodePath("MarginContainer/BoxContainer/BoxContainer2/Progre
 achievement_progress_label = NodePath("MarginContainer/BoxContainer/BoxContainer2/ProgressContainer/AchievementProgressLabel")
 achievement_progress_bar = NodePath("MarginContainer/BoxContainer/BoxContainer2/ProgressContainer/AchievementProgressBar")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1774605592]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer" unique_id=1715826655]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/BoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/BoxContainer" unique_id=1639014615]
 custom_minimum_size = Vector2(66, 66)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_t5dxj")
 
-[node name="AchievementRareOverlay" type="Panel" parent="MarginContainer/BoxContainer/PanelContainer"]
+[node name="AchievementRareOverlay" type="Panel" parent="MarginContainer/BoxContainer/PanelContainer" unique_id=1288459403]
 unique_name_in_owner = true
 visible = false
 show_behind_parent = true
@@ -130,7 +130,7 @@ material = SubResource("ShaderMaterial_7177w")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_uyofh")
 
-[node name="AchievementIcon" type="TextureRect" parent="MarginContainer/BoxContainer/PanelContainer"]
+[node name="AchievementIcon" type="TextureRect" parent="MarginContainer/BoxContainer/PanelContainer" unique_id=1226733598]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_uyofh")
 layout_mode = 2
@@ -138,14 +138,14 @@ texture = ExtResource("4_7177w")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/BoxContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/BoxContainer" unique_id=660907922]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 2
 alignment = 1
 vertical = true
 
-[node name="AchievementName" type="Label" parent="MarginContainer/BoxContainer/BoxContainer"]
+[node name="AchievementName" type="Label" parent="MarginContainer/BoxContainer/BoxContainer" unique_id=2037704389]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
@@ -155,7 +155,7 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxEmpty_f3trb")
 text = "achievement_name"
 
-[node name="AchievementDescription" type="Label" parent="MarginContainer/BoxContainer/BoxContainer"]
+[node name="AchievementDescription" type="Label" parent="MarginContainer/BoxContainer/BoxContainer" unique_id=1842315760]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
@@ -165,15 +165,14 @@ theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sngl5")
 text = "achievement_description"
 
-[node name="BoxContainer2" type="BoxContainer" parent="MarginContainer/BoxContainer"]
-custom_minimum_size = Vector2(180, 0)
+[node name="BoxContainer2" type="BoxContainer" parent="MarginContainer/BoxContainer" unique_id=352447019]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 3
 alignment = 1
 vertical = true
 
-[node name="AchievementActionLabel" type="Label" parent="MarginContainer/BoxContainer/BoxContainer2"]
+[node name="AchievementActionLabel" type="Label" parent="MarginContainer/BoxContainer/BoxContainer2" unique_id=726314383]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.545098, 0.572549, 0.603922, 1)
@@ -184,14 +183,14 @@ text = "achievement_action"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="ProgressContainer" type="BoxContainer" parent="MarginContainer/BoxContainer/BoxContainer2"]
+[node name="ProgressContainer" type="BoxContainer" parent="MarginContainer/BoxContainer/BoxContainer2" unique_id=167501010]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 2
 vertical = true
 
-[node name="AchievementProgressLabel" type="Label" parent="MarginContainer/BoxContainer/BoxContainer2/ProgressContainer"]
+[node name="AchievementProgressLabel" type="Label" parent="MarginContainer/BoxContainer/BoxContainer2/ProgressContainer" unique_id=63551000]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.862745, 0.870588, 0.87451, 1)
@@ -202,8 +201,9 @@ text = "0/0"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="AchievementProgressBar" type="ProgressBar" parent="MarginContainer/BoxContainer/BoxContainer2/ProgressContainer"]
+[node name="AchievementProgressBar" type="ProgressBar" parent="MarginContainer/BoxContainer/BoxContainer2/ProgressContainer" unique_id=1876947566]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
