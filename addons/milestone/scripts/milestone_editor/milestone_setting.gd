@@ -10,8 +10,13 @@ enum SETTING_TYPE {
 	BUTTON,
 	PATH_BUTTON,
 }
-
+@onready var editor_property: EditorProperty
+@onready var description: RichTextLabel
 @export var setting_name: String = "Setting"
+@export_multiline var setting_description: String = ""
+# By default, the 'setting_description' variable is  applied on tooltip text.
+# This boolean displays it below the EditorProperty.
+@export var display_setting_description: bool = false
 @export var setting_type: SETTING_TYPE = SETTING_TYPE.TEXT_INPUT
 
 @export_category("Text Input")
@@ -55,6 +60,8 @@ enum SETTING_TYPE {
 signal setting_changed(setting_name: String, value: Variant)
 
 func _ready() -> void:
+	editor_property = %EditorProperty
+	description = %SettingDescription
 	texture_picker = %TexturePicker
 	line_edit = %LineEdit
 	toggle = %CheckBox
@@ -120,7 +127,14 @@ func update_setting() -> void:
 	button.visible = false
 	path_button_container.visible = false
 
-	self.label = setting_name
+	editor_property.label = setting_name
+	
+	if display_setting_description:
+		description.visible = false if setting_description.is_empty() else true
+		description.text = setting_description
+	else:
+		self.tooltip_text = setting_description
+	
 	if setting_type == SETTING_TYPE.TEXT_INPUT:
 		line_edit.visible = true
 		line_edit.placeholder_text = placeholder_text

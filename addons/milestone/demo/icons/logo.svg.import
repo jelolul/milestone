@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctdctl2mfp36l"
-path="res://.godot/imported/icon-x16.svg-80a70feb12cd2940e7c647099d8fb405.ctex"
+uid="uid://bse7wi72sb2m8"
+path="res://.godot/imported/logo.svg-c028413bbe1000733b0366db9336c569.ctex"
 metadata={
 "has_editor_variant": true,
 "vram_texture": false
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/milestone/icons/editor/icon-x16.svg"
-dest_files=["res://.godot/imported/icon-x16.svg-80a70feb12cd2940e7c647099d8fb405.ctex"]
+source_file="res://addons/milestone/demo/icons/logo.svg"
+dest_files=["res://.godot/imported/logo.svg-c028413bbe1000733b0366db9336c569.ctex"]
 
 [params]
 
@@ -24,7 +24,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
