@@ -12,7 +12,7 @@ var achievements_resource: Script = preload("uid://dtyojmellf4e5")
 
 func _enable_plugin() -> void:
 	add_autoload_singleton("AchievementManager", "autoload/achievement_manager.gd")
-
+	
 	add_settings()
 
 func _disable_plugin() -> void:
@@ -31,6 +31,9 @@ func _enter_tree() -> void:
 	preview_gen = PREVIEW_GENERATOR.new()
 	EditorInterface.get_resource_previewer().add_preview_generator(preview_gen)
 	add_settings()
+	
+	if Engine.is_editor_hint():
+		print_rich("[b][color=#FFCC3F]Milestone %s[/color][/b] - Plugin loaded" % get_version())
 
 func _exit_tree() -> void:
 	remove_custom_type("Achievement")
@@ -64,6 +67,7 @@ func get_version() -> String:
 	return config.get_value("plugin", "version")
 
 func add_settings() -> void:
+	# Project Settings
 	if not ProjectSettings.has_setting("milestone/general/achievements_path"):
 		ProjectSettings.set_setting("milestone/general/achievements_path", get_plugin_path() + "/demo/achievements/")
 	if not ProjectSettings.has_setting("milestone/debug/print_errors"):
@@ -72,5 +76,22 @@ func add_settings() -> void:
 		ProjectSettings.set_setting("milestone/debug/print_output", true)
 	if not ProjectSettings.has_setting("milestone/general/save_as_json"):
 		ProjectSettings.set_setting("milestone/general/save_as_json", true)
+	
+	ProjectSettings.save()
+	
+	# Editor Settings [TBD]
+
+func _uninstall_plugin() -> void:
+	_remove_project_settings()
+
+func _remove_project_settings() -> void:
+	if ProjectSettings.has_setting("milestone/general/achievements_path"):
+		ProjectSettings.set_setting("milestone/general/achievements_path", null)
+	if ProjectSettings.has_setting("milestone/debug/print_errors"):
+		ProjectSettings.set_setting("milestone/debug/print_errors", null)
+	if ProjectSettings.has_setting("milestone/debug/print_output"):
+		ProjectSettings.set_setting("milestone/debug/print_output", null)
+	if ProjectSettings.has_setting("milestone/general/save_as_json"):
+		ProjectSettings.set_setting("milestone/general/save_as_json", null)
 
 	ProjectSettings.save()
