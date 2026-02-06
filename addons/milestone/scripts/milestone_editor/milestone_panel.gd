@@ -11,6 +11,13 @@ var selected_item
 var selected_id
 var last_visible: bool = false
 var _achievements: Array = []
+
+var icon_folder: Texture2D
+var icon_save: Texture2D
+var icon_remove: Texture2D
+var icon_visible: Texture2D
+var icon_hidden: Texture2D
+
 var filter_term: String
 
 @onready var tree: Tree = %AchievementsTree
@@ -32,7 +39,6 @@ var filter_term: String
 @onready var new_achievement = %NewAchievement
 @onready var delete_achievement = %DeleteAchievementButton
 @onready var icon_picker = icon_setting.texture_picker
-@onready var save_button = %SaveButton
 
 # Settings
 @onready var change_folder_button = %AchievementsFolderSetting.path_button
@@ -41,12 +47,17 @@ var filter_term: String
 @onready var print_errors_setting = %PrintErrorsSetting.toggle
 @onready var print_output_setting = %PrintOutputSetting.toggle
 
-
 func _ready() -> void:
 	if !self.is_part_of_edited_scene():
 		plugin = Engine.get_meta("MilestonePlugin")
 
 		self.add_theme_stylebox_override("panel", get_theme_stylebox("Content", "EditorStyles"))
+
+		icon_folder = get_theme_icon("Folder", "EditorIcons")
+		icon_save = get_theme_icon("Save", "EditorIcons")
+		icon_remove = get_theme_icon("Remove", "EditorIcons")
+		icon_visible = get_theme_icon("GuiVisibilityVisible", "EditorIcons")
+		icon_hidden = get_theme_icon("GuiVisibilityHidden", "EditorIcons")
 
 		change_folder_line_edit.text = ProjectSettings.get_setting("milestone/general/achievements_path", "res://achievements/")
 		change_folder_button.icon = get_theme_icon("Folder", "EditorIcons")
@@ -60,16 +71,12 @@ func _ready() -> void:
 		print_output_setting.button_pressed = ProjectSettings.get_setting("milestone/debug/print_output", true)
 		print_output_setting.pressed.connect(_on_print_output_setting_pressed)
 
-		new_achievement.pressed.connect(_on_add_achievement_pressed.bind("new_achievement"))
-
-		save_button.icon = get_theme_icon("Save", "EditorIcons")
-		save_button.pressed.connect(_on_save_button_pressed.bind(save_button))
+		new_achievement.pressed.connect(_on_add_achievement_pressed)
 
 		delete_achievement.icon = get_theme_icon("Remove", "EditorIcons")
 		delete_achievement.pressed.connect(_on_delete_achievement_pressed)
 
 		%SettingsContainer.visible = false
-		save_button.disabled = true
 		%NotSelectedLabel.visible = true
 
 		icon_filter_setting.option_button.add_item("Inherit")
@@ -81,6 +88,20 @@ func _ready() -> void:
 		icon_filter_setting.option_button.add_item("Linear Mipmap Anisotropic")
 		%FilterLineEdit.right_icon = get_theme_icon("Search", "EditorIcons")
 		%FilterLineEdit.text_changed.connect(_on_filter_changed)
+
+		tree.custom_item_clicked.connect(func(_mouse_button_index: int):
+			var edited_item = tree.get_edited()
+			var item = get_achievement_resource(edited_item.get_metadata(0))
+			item.hidden = !item.hidden
+			rename_resource(item, item.id)
+			
+			_update_tree_item_visibility_icon(edited_item, item.hidden)
+			
+			if selected_achievement and selected_achievement.id == item.id:
+				hidden_setting.toggle.button_pressed = item.hidden
+				_update_notification(achievement_notification)
+				_update_notification(achievement_display)
+		)
 
 		tree.item_selected.connect(
 			func():
@@ -146,13 +167,11 @@ func _process(_delta: float) -> void:
 		%SettingsContainer.visible = false
 		%NotSelectedLabel.visible = true
 		%MultiSelectingLabel.visible = false
-		save_button.disabled = true
 		delete_achievement.disabled = true
 	if selected_achievements.size() == 1 and selected_achievement != null:
 		%SettingsContainer.visible = true
 		%NotSelectedLabel.visible = false
 		%MultiSelectingLabel.visible = false
-		save_button.disabled = false
 		delete_achievement.disabled = false
 
 	if self.visible != last_visible:
@@ -303,17 +322,18 @@ func _on_load_achievements() -> void:
 			if resource.id.is_empty() or display_name.is_empty():
 				continue
 			var achievement_item = tree.create_item(root)
+			achievement_item.set_metadata(0, resource.id)
+			achievement_item.set_selectable(0, true)
 			achievement_item.set_text(0, display_name)
 			achievement_item.set_icon(0, resource.icon)
-			achievement_item.set_selectable(0, true)
 			achievement_item.set_icon_max_width(0, get_theme_constant("class_icon_size", "Editor"))
-			achievement_item.set_icon_max_width(1, get_theme_constant("class_icon_size", "Editor"))
-			achievement_item.set_metadata(0, resource.id)
-			if resource.hidden:
-				achievement_item.set_icon(1, resource.hidden_icon)
-			else:
-				achievement_item.set_icon(1, null)
+			
 			achievement_item.set_selectable(1, false)
+			achievement_item.set_editable(1, true)
+			achievement_item.set_cell_mode(1, TreeItem.CELL_MODE_CUSTOM)
+			achievement_item.set_icon_max_width(1, get_theme_constant("class_icon_size", "Editor"))
+			_update_tree_item_visibility_icon(achievement_item, resource.hidden)
+			
 			_achievements.append(achievement_item)
 
 			if display_name == selected_id:
@@ -376,9 +396,7 @@ func _on_tree_item_clicked() -> void:
 			else:
 				_setting.setting_changed.connect(_on_setting_changed)
 
-	save_button.disabled = false
-
-	_update_notification(achievement_notification)
+		_update_notification(achievement_notification)
 	_update_notification(achievement_display)
 
 
@@ -425,21 +443,31 @@ func _store_changes(_achievement = selected_achievement) -> void:
 		tree_item.set_text(0, achievement.id.to_snake_case())
 		tree_item.set_metadata(0, achievement.id.to_snake_case())
 		tree_item.set_icon(0, achievement.icon)
-		tree_item.set_icon(1, achievement.hidden_icon if achievement.hidden else null)
+		_update_tree_item_visibility_icon(tree_item, achievement.hidden)
 
 	rename_resource(achievement, achievement.id.to_snake_case())
 	suppress_filesystem_update = false
 
 
-func _on_add_achievement_pressed(achievement_name: String = "new_achievement") -> void:
+func _on_add_achievement_pressed() -> void:
+	var new_resource = create_achievement_resource()
+	
 	var achievement_item = tree.create_item(root)
-	achievement_item.set_text(0, achievement_name.to_snake_case())
-	achievement_item.set_icon_max_width(0, 16)
-	achievement_item.set_icon_max_width(1, 16)
-	achievement_item.set_metadata(0, achievement_name.to_snake_case())
-	achievement_item.set_icon(1, hidden_icon_setting.texture_picker.edited_resource)
+	achievement_item.set_text(0, new_resource.id)
+	achievement_item.set_icon(0, new_resource.icon)
+	achievement_item.set_icon_max_width(0, get_theme_constant("class_icon_size", "Editor"))
+	achievement_item.set_icon_max_width(1, get_theme_constant("class_icon_size", "Editor"))
+	achievement_item.set_metadata(0, new_resource.id)
+	_update_tree_item_visibility_icon(achievement_item, false)
+	
 	_achievements.append(achievement_item)
+	
+	tree.deselect_all()
 	selected_achievements.clear()
+	selected_achievement = null
+
+	if achievement_item.visible:
+		tree.set_selected(achievement_item, 0)
 	
 	_show_all_tree_items(root)
 
@@ -450,7 +478,7 @@ func _on_delete_achievement_pressed() -> void:
 	popup.dialog_text = "Are you sure you want to delete this achievement?\nThis action cannot be undone."
 	popup.get_label().horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	popup.get_ok_button().text = "Delete"
-	popup.get_ok_button().icon = get_theme_icon("Remove", "EditorIcons")
+	popup.get_ok_button().icon = icon_remove
 	popup.get_cancel_button().text = "Cancel"
 	popup.confirmed.connect(_on_delete_achievement_confirmed)
 	popup.popup_centered_ratio(0.1)
@@ -487,6 +515,15 @@ func _on_save_button_pressed(_button: Button) -> void:
 func _on_icon_selected(_resource: Resource) -> void:
 	pass
 
+func _update_tree_item_visibility_icon(item: TreeItem, is_hidden: bool) -> void:
+	if is_hidden:
+		item.set_tooltip_text(1, "Achievement is hidden")
+		item.set_icon(1, icon_hidden)
+		item.set_icon_modulate(1, get_theme_color("icon_disabled_color", "Editor"))
+	else:
+		item.set_tooltip_text(1, "Achievement is visible")
+		item.set_icon(1, icon_visible)
+		item.set_icon_modulate(1, get_theme_color("icon_normal_color", "Editor"))
 
 func _on_save_as_json_setting_pressed() -> void:
 	ProjectSettings.set_setting("milestone/general/save_as_json", save_as_json_setting.button_pressed)
@@ -533,15 +570,17 @@ func _update_tree() -> void:
 		return
 
 	selected_item = tree.get_selected()
-	selected_id = selected_item.get_metadata(0) if selected_item else selected_achievement.id if selected_achievement else null
+	selected_id = null
+	if selected_item:
+		selected_id = selected_item.get_metadata(0)
+	elif selected_achievement:
+		selected_id = selected_achievement.id
 
 	tree.clear()
 	_achievements.clear()
 
 	root = tree.create_item()
-	root.set_text(0, "Achievements")
-	#root.set_icon_max_width(0, 16)
-	root.set_selectable(0, false)
+
 	tree.set_hide_root(true)
 	tree.set_column_expand(1, false)
 
@@ -553,17 +592,7 @@ func _update_tree() -> void:
 				tree.set_selected(item, 0)
 				break
 
-
-func _update_selected_tree_item():
-	var item := tree.get_selected()
-	if not item or not selected_achievement:
-		return
-
-	item.set_text(0, selected_achievement.id)
-	item.set_metadata(0, selected_achievement.id)
-	item.set_icon(0, selected_achievement.icon)
-	item.set_icon(1, selected_achievement.hidden_icon if selected_achievement.hidden else null)
-
+	%TabContainer.set_tab_title(0, "Achievements (%d)" % _achievements.size())
 
 func _update_notification(node) -> void:
 	var achievement_name = node.achievement_name
