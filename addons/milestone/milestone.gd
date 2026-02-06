@@ -14,6 +14,10 @@ func _enable_plugin() -> void:
 	add_autoload_singleton("AchievementManager", "autoload/achievement_manager.gd")
 	
 	add_settings()
+	
+	if Engine.is_editor_hint():
+		print_rich("[b][color=#FFCC3F]Milestone %s[/color][/b] - Plugin loaded" % get_version())
+
 
 func _disable_plugin() -> void:
 	remove_autoload_singleton("AchievementManager")
@@ -31,9 +35,6 @@ func _enter_tree() -> void:
 	preview_gen = PREVIEW_GENERATOR.new()
 	EditorInterface.get_resource_previewer().add_preview_generator(preview_gen)
 	add_settings()
-	
-	if Engine.is_editor_hint():
-		print_rich("[b][color=#FFCC3F]Milestone %s[/color][/b] - Plugin loaded" % get_version())
 
 func _exit_tree() -> void:
 	remove_custom_type("Achievement")
