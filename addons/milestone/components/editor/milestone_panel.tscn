@@ -121,12 +121,23 @@ unique_name_in_owner = true
 modulate = Color(1, 0.4, 0.47843137, 1)
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 tooltip_text = "Delete achievement"
 theme_type_variation = &"RunBarButton"
 theme_override_colors/icon_pressed_color = Color(1.15, 1.15, 1.15, 1)
 theme_override_colors/icon_hover_pressed_color = Color(1.15, 1.15, 1.15, 1)
 icon_alignment = 1
+
+[node name="FilterLineEdit" type="LineEdit" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer/HBoxContainer" unique_id=931415907]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Filter achievements by their ID. Filtering is case-insensitive."
+theme_override_constants/minimum_character_width = 0
+placeholder_text = "Filter Achievements"
+clear_button_enabled = true
+icon_expand_mode = 2
+right_icon_scale = 0.6
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/VBoxContainer/TabContainer/Achievements/SplitContainer/BoxContainer" unique_id=722360081]
 custom_minimum_size = Vector2(220, 0)

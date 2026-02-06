@@ -11,6 +11,7 @@ var selected_item
 var selected_id
 var last_visible: bool = false
 var _achievements: Array = []
+var filter_term: String
 
 @onready var tree: Tree = %AchievementsTree
 @onready var achievement_notification = %AchievementNotification
@@ -78,6 +79,8 @@ func _ready() -> void:
 		icon_filter_setting.option_button.add_item("Linear Mipmap")
 		icon_filter_setting.option_button.add_item("Nearest Mipmap Anisotropic")
 		icon_filter_setting.option_button.add_item("Linear Mipmap Anisotropic")
+		%FilterLineEdit.right_icon = get_theme_icon("Search", "EditorIcons")
+		%FilterLineEdit.text_changed.connect(_on_filter_changed)
 
 		tree.item_selected.connect(
 			func():
@@ -437,9 +440,8 @@ func _on_add_achievement_pressed(achievement_name: String = "new_achievement") -
 	achievement_item.set_icon(1, hidden_icon_setting.texture_picker.edited_resource)
 	_achievements.append(achievement_item)
 	selected_achievements.clear()
-	selected_achievements.append(achievement_item)
-	create_achievement_resource()
-
+	
+	_show_all_tree_items(root)
 
 func _on_delete_achievement_pressed() -> void:
 	var popup = ConfirmationDialog.new()
@@ -628,6 +630,44 @@ func _update_progress_label(value, label: Label, node: Node):
 		else:
 			label.text = "%d/%d" % [int(value), selected_achievement.progress_goal]
 
+func _on_filter_changed(new_text: String) -> void:
+	filter_term = new_text.to_lower()
+	apply_filter()
+
+func apply_filter():
+	if root == null:
+		return
+	
+	if filter_term.is_empty():
+		_show_all_tree_items(root)
+		return
+	
+	_filter_tree_items(root, filter_term)
+
+func _filter_tree_items(item: TreeItem, _filter_term: String) -> bool:
+	var should_show = false
+	
+	var item_text = item.get_text(0).to_lower()
+	if _filter_term in item_text:
+		should_show = true
+	
+	var child = item.get_first_child()
+	while child != null:
+		var child_visible = _filter_tree_items(child, _filter_term)
+		if child_visible:
+			should_show = true
+		child = child.get_next()
+	
+	item.visible = should_show
+	return should_show
+
+func _show_all_tree_items(item: TreeItem):
+	%FilterLineEdit.text = ""
+	item.visible = true
+	var child = item.get_first_child()
+	while child != null:
+		_show_all_tree_items(child)
+		child = child.get_next()
 
 func _on_settings_note_meta_clicked(meta: Variant) -> void:
 	OS.shell_open(str(meta))
