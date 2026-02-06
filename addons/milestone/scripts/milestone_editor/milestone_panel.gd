@@ -124,6 +124,8 @@ func _ready() -> void:
 									_on_delete_achievement_pressed()
 						)
 						popup.popup()
+						await popup.popup_hide
+						popup.queue_free()
 		)
 
 		tree.multi_selected.connect(
@@ -156,26 +158,28 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if get_tree().edited_scene_root in [self, owner]:
 		return
-
-	if selected_achievements.size() > 1:
+	
+	var selection_count = selected_achievements.size()
+	var has_selection = selected_achievement != null
+	
+	if selection_count > 1:
 		%SettingsContainer.visible = false
 		%NotSelectedLabel.visible = false
 		%MultiSelectingLabel.visible = true
-		save_button.disabled = true
 		delete_achievement.disabled = false
-	if selected_achievements.size() == 0 or selected_achievement == null:
+		return
+	
+	if selection_count == 0 or not has_selection:
 		%SettingsContainer.visible = false
 		%NotSelectedLabel.visible = true
 		%MultiSelectingLabel.visible = false
 		delete_achievement.disabled = true
-	if selected_achievements.size() == 1 and selected_achievement != null:
-		%SettingsContainer.visible = true
-		%NotSelectedLabel.visible = false
-		%MultiSelectingLabel.visible = false
-		delete_achievement.disabled = false
-
-	if self.visible != last_visible:
-		last_visible = self.visible
+		return
+	
+	%SettingsContainer.visible = true
+	%NotSelectedLabel.visible = false
+	%MultiSelectingLabel.visible = false
+	delete_achievement.disabled = false
 
 
 func get_all_descendants(node: Node) -> Array:
@@ -235,14 +239,23 @@ func comparator(a: String, b: String) -> bool:
 
 
 func get_achievement_resource(achievement_id: String) -> Achievement:
-	if !achievement_id:
+	if not achievement_id:
 		return null
-
-	var achievement: Achievement = load(ProjectSettings.get_setting("milestone/general/achievements_path").path_join(achievement_id + ".tres"))
-
-	if !achievement:
+	
+	var path = ProjectSettings.get_setting("milestone/general/achievements_path").path_join(achievement_id + ".tres")
+	
+	if not ResourceLoader.exists(path):
+		if ProjectSettings.get_setting("milestone/debug/print_errors"):
+			push_error("[Milestone] Achievement resource not found: " + path)
 		return null
-
+	
+	var achievement: Achievement = load(path)
+	
+	if not achievement:
+		if ProjectSettings.get_setting("milestone/debug/print_errors"):
+			push_error("[Milestone] Failed to load achievement: " + path)
+		return null
+	
 	return achievement
 
 
@@ -252,24 +265,25 @@ func create_achievement_resource() -> Achievement:
 	var path: String = ""
 	var i: int = 1
 
-	var dir: DirAccess = DirAccess.open(ProjectSettings.get_setting("milestone/general/achievements_path"))
+	var achievements_path = ProjectSettings.get_setting("milestone/general/achievements_path")
+	var dir: DirAccess = DirAccess.open(achievements_path)
 
 	while true:
-		path = str(ProjectSettings.get_setting("milestone/general/achievements_path")) + resource_name + ".tres"
+		path = achievements_path.path_join(resource_name + ".tres")
 		if not dir.file_exists(path):
 			break
 		resource_name = base_name + "_" + str(i).pad_zeros(3)
 		i += 1
 
 	var _new_achievement := Achievement.new()
+	_new_achievement.resource_path = path
 	_new_achievement.id = resource_name
 	_new_achievement.name = "NEW_ACHIEVEMENT_NAME"
 	_new_achievement.description = "NEW_ACHIEVEMENT_DESC"
 	_new_achievement.icon = load("uid://dmbey47vfsa2g")
 
 	ResourceSaver.save(_new_achievement, path)
-	_new_achievement.set_path(path)
-	_update_tree()
+	
 	return _new_achievement
 
 
@@ -388,19 +402,14 @@ func _on_tree_item_clicked() -> void:
 
 	for _setting in get_all_descendants(%SettingsList):
 		if _setting.has_signal("setting_changed"):
-			if _setting.setting_changed.is_connected(_on_setting_changed):
-				_setting.setting_changed.disconnect(_on_setting_changed)
+			if not _setting.setting_changed.is_connected(_on_setting_changed):
 				_setting.setting_changed.connect(_on_setting_changed)
-			else:
-				_setting.setting_changed.connect(_on_setting_changed)
-
-		_update_notification(achievement_notification)
+	
+	_update_notification(achievement_notification)
 	_update_notification(achievement_display)
-
 
 func _on_setting_changed(_setting_name: String, _value: Variant) -> void:
 	_store_changes()
-
 
 func _store_changes(_achievement = selected_achievement) -> void:
 	if !_achievement:
@@ -484,10 +493,17 @@ func _on_delete_achievement_pressed() -> void:
 
 func _on_delete_achievement_confirmed() -> void:
 	if selected_achievements:
+		var items_to_delete = []
 		for _selected_item in selected_achievements:
 			if _selected_item == root:
 				continue
-			var resource: Achievement = get_achievement_resource(_selected_item.get_metadata(0))
+			items_to_delete.append({
+				"item": _selected_item,
+				"id": _selected_item.get_metadata(0)
+			})
+		
+		for item_data in items_to_delete:
+			var resource: Achievement = get_achievement_resource(item_data.id)
 			if resource:
 				var path := resource.resource_path
 				if path != "":
@@ -496,20 +512,20 @@ func _on_delete_achievement_confirmed() -> void:
 						var err := dir.remove(path)
 						if err != OK:
 							push_error("Failed to delete resource: %s" % path)
-							return
+							continue
 
-				_achievements.erase(_selected_item.get_metadata(0))
+				_achievements.erase(item_data.item)
 				resource = null
-			_selected_item.free()
-			selected_achievement = null
+			item_data.item.free()
+		
+		selected_achievement = null
+		selected_achievements.clear()
 		tree.deselect_all()
-		_update_tree()
-
+		
 		%TabContainer.set_tab_title(0, "Achievements (%d)" % _achievements.size())
 
 func _on_save_button_pressed(_button: Button) -> void:
 	_store_changes()
-
 
 func _on_icon_selected(_resource: Resource) -> void:
 	pass
@@ -649,7 +665,6 @@ func _update_notification(node) -> void:
 
 	if achievement_badge:
 		achievement_badge.visible = false
-
 
 func _update_progress_label(value, label: Label, node: Node):
 	if selected_achievement:
