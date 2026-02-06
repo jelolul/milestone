@@ -339,8 +339,6 @@ func _on_load_achievements() -> void:
 			if display_name == selected_id:
 				tree.set_selected(achievement_item, 0)
 
-	%TabContainer.set_tab_title(0, "Achievements (%d)" % _achievements.size())
-
 
 func _get_selected_tree_item() -> TreeItem:
 	var item = tree.get_selected()
@@ -507,6 +505,7 @@ func _on_delete_achievement_confirmed() -> void:
 		tree.deselect_all()
 		_update_tree()
 
+		%TabContainer.set_tab_title(0, "Achievements (%d)" % _achievements.size())
 
 func _on_save_button_pressed(_button: Button) -> void:
 	_store_changes()
